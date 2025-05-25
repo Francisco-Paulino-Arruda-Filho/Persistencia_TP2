@@ -1,14 +1,15 @@
-from typing import List, Optional
+from typing import List, Optional, TYPE_CHECKING
 from sqlmodel import SQLModel, Field, Relationship
 
-from app.models.EmployeeBenefit import EmployeeBenefit
+if TYPE_CHECKING:
+    from app.models.EmployeeBenefit import EmployeeBenefit
 
 class Benefit(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     name: str
     description: Optional[str] = None
     amount: float
-    type: str  # e.g.: "Transportation", "Food", etc.
+    type: str  
     active: bool = True
 
     employees: List["EmployeeBenefit"] = Relationship(back_populates="benefit")

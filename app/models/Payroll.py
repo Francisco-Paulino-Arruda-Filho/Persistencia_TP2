@@ -1,7 +1,8 @@
-from typing import Optional
+from typing import Optional, TYPE_CHECKING
 from sqlmodel import SQLModel, Field, Relationship
 
-from app.models.Employee import Employee
+if TYPE_CHECKING:
+    from app.models.Employee import Employee
 
 class Payroll(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
@@ -9,6 +10,6 @@ class Payroll(SQLModel, table=True):
     gross_salary: float
     deductions: float
     net_salary: float
-    reference_month: str  # e.g.: "2025-03"
+    reference_month: str  
 
-    employee: Optional[Employee] = Relationship(back_populates="payrolls")
+    employee: Optional["Employee"] = Relationship(back_populates="payrolls")

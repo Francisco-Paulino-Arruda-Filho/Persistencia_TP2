@@ -1,0 +1,47 @@
+2025-05-24 15:26:46,452 - INFO - BEGIN (implicit)
+2025-05-24 15:26:46,453 - INFO - PRAGMA main.table_info("benefit")
+2025-05-24 15:26:46,453 - INFO - [raw sql] ()
+2025-05-24 15:26:46,456 - INFO - PRAGMA main.table_info("department")
+2025-05-24 15:26:46,456 - INFO - [raw sql] ()
+2025-05-24 15:26:46,457 - INFO - PRAGMA main.table_info("employee")
+2025-05-24 15:26:46,458 - INFO - [raw sql] ()
+2025-05-24 15:26:46,459 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-05-24 15:26:46,459 - INFO - [raw sql] ()
+2025-05-24 15:26:46,461 - INFO - PRAGMA main.table_info("payroll")
+2025-05-24 15:26:46,463 - INFO - [raw sql] ()
+2025-05-24 15:26:46,464 - INFO - COMMIT
+2025-05-24 15:27:29,821 - INFO - BEGIN (implicit)
+2025-05-24 15:27:29,828 - INFO - SELECT department.id AS department_id, department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension 
+FROM department
+2025-05-24 15:27:29,831 - INFO - [generated in 0.00325s] ()
+2025-05-24 15:27:29,836 - INFO - 1 departamentos encontrados.
+2025-05-24 15:27:29,841 - INFO - ROLLBACK
+2025-05-24 15:27:59,228 - INFO - BEGIN (implicit)
+2025-05-24 15:27:59,229 - INFO - SELECT department.id AS department_id, department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension 
+FROM department
+2025-05-24 15:27:59,230 - INFO - [cached since 29.4s ago] ()
+2025-05-24 15:27:59,231 - INFO - 1 departamentos encontrados.
+2025-05-24 15:27:59,233 - INFO - ROLLBACK
+2025-05-24 15:28:13,384 - INFO - BEGIN (implicit)
+2025-05-24 15:28:13,384 - INFO - SELECT department.id AS department_id, department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension 
+FROM department
+2025-05-24 15:28:13,385 - INFO - [cached since 43.56s ago] ()
+2025-05-24 15:28:13,386 - INFO - 1 departamentos encontrados.
+2025-05-24 15:28:13,387 - INFO - ROLLBACK
+2025-05-24 15:29:57,444 - INFO - BEGIN (implicit)
+2025-05-24 15:29:57,449 - INFO - INSERT INTO department (id, name, location, description, extension) VALUES (?, ?, ?, ?, ?)
+2025-05-24 15:29:57,450 - INFO - [generated in 0.00153s] (10, 'string', 'string', 'string', 'string')
+2025-05-24 15:29:57,458 - INFO - COMMIT
+2025-05-24 15:29:57,468 - INFO - BEGIN (implicit)
+2025-05-24 15:29:57,476 - INFO - SELECT department.id, department.name, department.location, department.description, department.extension 
+FROM department 
+WHERE department.id = ?
+2025-05-24 15:29:57,478 - INFO - [generated in 0.00179s] (10,)
+2025-05-24 15:29:57,482 - INFO - Departamento criado com sucesso: id=10 description='string' location='string' name='string' extension='string'
+2025-05-24 15:29:57,486 - INFO - ROLLBACK
+2025-05-24 15:58:56,156 - INFO - BEGIN (implicit)
+2025-05-24 15:58:56,179 - INFO - SELECT department.id AS department_id, department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension 
+FROM department
+2025-05-24 15:58:56,182 - INFO - [cached since 1886s ago] ()
+2025-05-24 15:58:56,206 - INFO - 2 departamentos encontrados.
+2025-05-24 15:58:56,221 - INFO - ROLLBACK

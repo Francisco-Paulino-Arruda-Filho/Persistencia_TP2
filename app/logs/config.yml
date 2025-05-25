@@ -1,6 +1,6 @@
 logging:
   level: "INFO"  # Nível do log: DEBUG, INFO, WARNING, ERROR, CRITICAL
-  file: "app.log"
+  file: "api.log"
   format: "%(asctime)s - %(levelname)s - %(message)s"
 
 data:
