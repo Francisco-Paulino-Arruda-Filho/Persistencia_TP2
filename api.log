@@ -542,3 +542,15 @@ WHERE benefit.id = ?
 2025-05-28 17:56:56,689 - INFO - PRAGMA main.table_info("payroll")
 2025-05-28 17:56:56,689 - INFO - [raw sql] ()
 2025-05-28 17:56:56,689 - INFO - COMMIT
+2025-05-28 18:49:52,615 - INFO - BEGIN (implicit)
+2025-05-28 18:49:52,616 - INFO - PRAGMA main.table_info("benefit")
+2025-05-28 18:49:52,617 - INFO - [raw sql] ()
+2025-05-28 18:49:52,620 - INFO - PRAGMA main.table_info("department")
+2025-05-28 18:49:52,620 - INFO - [raw sql] ()
+2025-05-28 18:49:52,622 - INFO - PRAGMA main.table_info("employee")
+2025-05-28 18:49:52,623 - INFO - [raw sql] ()
+2025-05-28 18:49:52,624 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-05-28 18:49:52,624 - INFO - [raw sql] ()
+2025-05-28 18:49:52,625 - INFO - PRAGMA main.table_info("payroll")
+2025-05-28 18:49:52,625 - INFO - [raw sql] ()
+2025-05-28 18:49:52,627 - INFO - COMMIT
