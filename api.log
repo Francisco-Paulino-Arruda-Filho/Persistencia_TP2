@@ -578,3 +578,31 @@ WHERE benefit.id = ?
 2025-05-28 19:15:27,616 - INFO - PRAGMA main.table_info("payroll")
 2025-05-28 19:15:27,617 - INFO - [raw sql] ()
 2025-05-28 19:15:27,617 - INFO - COMMIT
+2025-05-28 20:14:51,341 - INFO - BEGIN (implicit)
+2025-05-28 20:14:51,343 - INFO - PRAGMA main.table_info("benefit")
+2025-05-28 20:14:51,344 - INFO - [raw sql] ()
+2025-05-28 20:14:51,350 - INFO - PRAGMA main.table_info("department")
+2025-05-28 20:14:51,351 - INFO - [raw sql] ()
+2025-05-28 20:14:51,354 - INFO - PRAGMA main.table_info("employee")
+2025-05-28 20:14:51,355 - INFO - [raw sql] ()
+2025-05-28 20:14:51,356 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-05-28 20:14:51,357 - INFO - [raw sql] ()
+2025-05-28 20:14:51,359 - INFO - PRAGMA main.table_info("payroll")
+2025-05-28 20:14:51,359 - INFO - [raw sql] ()
+2025-05-28 20:14:51,360 - INFO - COMMIT
+2025-05-28 20:15:06,786 - INFO - BEGIN (implicit)
+2025-05-28 20:15:06,813 - INFO - INSERT INTO employee (name, cpf, position, admission_date, department_id) VALUES (?, ?, ?, ?, ?)
+2025-05-28 20:15:06,829 - INFO - [generated in 0.01601s] ('string', 'string', 'string', 'string', 0)
+2025-05-28 20:15:06,855 - INFO - COMMIT
+2025-05-28 20:15:06,892 - INFO - BEGIN (implicit)
+2025-05-28 20:15:06,939 - INFO - SELECT employee.name, employee.cpf, employee.position, employee.admission_date, employee.department_id, employee.id 
+FROM employee 
+WHERE employee.id = ?
+2025-05-28 20:15:06,963 - INFO - [generated in 0.02391s] (1,)
+2025-05-28 20:15:06,981 - INFO - Funcionário criado com sucesso: name='string' admission_date='string' id=1 cpf='string' position='string' department_id=0
+2025-05-28 20:15:06,986 - INFO - ROLLBACK
+2025-05-28 20:15:17,463 - INFO - BEGIN (implicit)
+2025-05-28 20:15:17,466 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee
+2025-05-28 20:15:17,468 - INFO - [generated in 0.00159s] ()
+2025-05-28 20:15:17,474 - INFO - ROLLBACK
