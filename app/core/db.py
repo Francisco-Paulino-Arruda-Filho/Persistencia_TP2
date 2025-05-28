@@ -1,6 +1,14 @@
 from sqlmodel import SQLModel, create_engine, Session
+from dotenv import load_dotenv
+import os
 
-DATABASE_URL = "sqlite:///./rh.db"
+# Carrega as variáveis do .env
+load_dotenv()
+
+# Obtém a variável de ambiente DATABASE_URL
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+# Cria o engine com a URL do banco
 engine = create_engine(DATABASE_URL, echo=True)
 
 def create_db_and_tables():

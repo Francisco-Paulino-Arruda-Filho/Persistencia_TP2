@@ -22,3 +22,523 @@
 2025-05-24 16:05:33,822 - INFO - PRAGMA main.table_info("payroll")
 2025-05-24 16:05:33,823 - INFO - [raw sql] ()
 2025-05-24 16:05:33,825 - INFO - COMMIT
+2025-05-28 13:54:37,270 - INFO - BEGIN (implicit)
+2025-05-28 13:54:37,273 - INFO - PRAGMA main.table_info("benefit")
+2025-05-28 13:54:37,273 - INFO - [raw sql] ()
+2025-05-28 13:54:37,276 - INFO - PRAGMA main.table_info("department")
+2025-05-28 13:54:37,277 - INFO - [raw sql] ()
+2025-05-28 13:54:37,278 - INFO - PRAGMA main.table_info("employee")
+2025-05-28 13:54:37,278 - INFO - [raw sql] ()
+2025-05-28 13:54:37,280 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-05-28 13:54:37,280 - INFO - [raw sql] ()
+2025-05-28 13:54:37,281 - INFO - PRAGMA main.table_info("payroll")
+2025-05-28 13:54:37,283 - INFO - [raw sql] ()
+2025-05-28 13:54:37,285 - INFO - COMMIT
+2025-05-28 14:07:56,937 - INFO - BEGIN (implicit)
+2025-05-28 14:07:56,938 - INFO - PRAGMA main.table_info("benefit")
+2025-05-28 14:07:56,938 - INFO - [raw sql] ()
+2025-05-28 14:07:56,942 - INFO - PRAGMA main.table_info("department")
+2025-05-28 14:07:56,942 - INFO - [raw sql] ()
+2025-05-28 14:07:56,943 - INFO - PRAGMA main.table_info("employee")
+2025-05-28 14:07:56,943 - INFO - [raw sql] ()
+2025-05-28 14:07:56,945 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-05-28 14:07:56,945 - INFO - [raw sql] ()
+2025-05-28 14:07:56,949 - INFO - PRAGMA main.table_info("payroll")
+2025-05-28 14:07:56,949 - INFO - [raw sql] ()
+2025-05-28 14:07:56,951 - INFO - COMMIT
+2025-05-28 14:08:11,527 - INFO - BEGIN (implicit)
+2025-05-28 14:08:11,535 - INFO - SELECT department.id AS department_id, department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension 
+FROM department
+2025-05-28 14:08:11,536 - INFO - [generated in 0.00182s] ()
+2025-05-28 14:08:11,540 - INFO - 2 departamentos encontrados.
+2025-05-28 14:08:11,551 - INFO - ROLLBACK
+2025-05-28 14:29:11,946 - INFO - BEGIN (implicit)
+2025-05-28 14:29:11,949 - INFO - INSERT INTO department (id, name, location, description, extension) VALUES (?, ?, ?, ?, ?)
+2025-05-28 14:29:11,949 - INFO - [generated in 0.00060s] (2, 'string', 'string', 'string', 'string')
+2025-05-28 14:29:11,954 - INFO - COMMIT
+2025-05-28 14:29:11,961 - INFO - BEGIN (implicit)
+2025-05-28 14:29:11,966 - INFO - SELECT department.id, department.name, department.location, department.description, department.extension 
+FROM department 
+WHERE department.id = ?
+2025-05-28 14:29:11,966 - INFO - [generated in 0.00068s] (2,)
+2025-05-28 14:29:11,969 - INFO - Departamento criado com sucesso: id=2 description='string' location='string' name='string' extension='string'
+2025-05-28 14:29:11,970 - INFO - ROLLBACK
+2025-05-28 14:29:24,733 - INFO - BEGIN (implicit)
+2025-05-28 14:29:24,734 - INFO - SELECT department.id AS department_id, department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension 
+FROM department
+2025-05-28 14:29:24,734 - INFO - [cached since 1273s ago] ()
+2025-05-28 14:29:24,735 - INFO - 3 departamentos encontrados.
+2025-05-28 14:29:24,737 - INFO - ROLLBACK
+2025-05-28 14:35:46,947 - INFO - BEGIN (implicit)
+2025-05-28 14:35:46,948 - INFO - PRAGMA main.table_info("benefit")
+2025-05-28 14:35:46,948 - INFO - [raw sql] ()
+2025-05-28 14:35:46,950 - INFO - PRAGMA main.table_info("department")
+2025-05-28 14:35:46,951 - INFO - [raw sql] ()
+2025-05-28 14:35:46,952 - INFO - PRAGMA main.table_info("employee")
+2025-05-28 14:35:46,953 - INFO - [raw sql] ()
+2025-05-28 14:35:46,954 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-05-28 14:35:46,955 - INFO - [raw sql] ()
+2025-05-28 14:35:46,957 - INFO - PRAGMA main.table_info("payroll")
+2025-05-28 14:35:46,958 - INFO - [raw sql] ()
+2025-05-28 14:35:46,960 - INFO - COMMIT
+2025-05-28 14:35:48,837 - INFO - BEGIN (implicit)
+2025-05-28 14:35:48,838 - INFO - PRAGMA main.table_info("benefit")
+2025-05-28 14:35:48,838 - INFO - [raw sql] ()
+2025-05-28 14:35:48,839 - INFO - PRAGMA main.table_info("department")
+2025-05-28 14:35:48,840 - INFO - [raw sql] ()
+2025-05-28 14:35:48,840 - INFO - PRAGMA main.table_info("employee")
+2025-05-28 14:35:48,840 - INFO - [raw sql] ()
+2025-05-28 14:35:48,841 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-05-28 14:35:48,842 - INFO - [raw sql] ()
+2025-05-28 14:35:48,843 - INFO - PRAGMA main.table_info("payroll")
+2025-05-28 14:35:48,843 - INFO - [raw sql] ()
+2025-05-28 14:35:48,845 - INFO - COMMIT
+2025-05-28 14:41:37,735 - INFO - BEGIN (implicit)
+2025-05-28 14:41:37,735 - INFO - PRAGMA main.table_info("benefit")
+2025-05-28 14:41:37,736 - INFO - [raw sql] ()
+2025-05-28 14:41:37,737 - INFO - PRAGMA main.table_info("department")
+2025-05-28 14:41:37,738 - INFO - [raw sql] ()
+2025-05-28 14:41:37,738 - INFO - PRAGMA main.table_info("employee")
+2025-05-28 14:41:37,739 - INFO - [raw sql] ()
+2025-05-28 14:41:37,739 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-05-28 14:41:37,740 - INFO - [raw sql] ()
+2025-05-28 14:41:37,741 - INFO - PRAGMA main.table_info("payroll")
+2025-05-28 14:41:37,742 - INFO - [raw sql] ()
+2025-05-28 14:41:37,743 - INFO - COMMIT
+2025-05-28 14:45:49,592 - INFO - BEGIN (implicit)
+2025-05-28 14:45:49,593 - INFO - PRAGMA main.table_info("benefit")
+2025-05-28 14:45:49,594 - INFO - [raw sql] ()
+2025-05-28 14:45:49,596 - INFO - PRAGMA main.table_info("department")
+2025-05-28 14:45:49,597 - INFO - [raw sql] ()
+2025-05-28 14:45:49,599 - INFO - PRAGMA main.table_info("employee")
+2025-05-28 14:45:49,600 - INFO - [raw sql] ()
+2025-05-28 14:45:49,601 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-05-28 14:45:49,602 - INFO - [raw sql] ()
+2025-05-28 14:45:49,604 - INFO - PRAGMA main.table_info("payroll")
+2025-05-28 14:45:49,606 - INFO - [raw sql] ()
+2025-05-28 14:45:49,609 - INFO - COMMIT
+2025-05-28 14:47:12,254 - INFO - BEGIN (implicit)
+2025-05-28 14:47:12,254 - INFO - PRAGMA main.table_info("benefit")
+2025-05-28 14:47:12,255 - INFO - [raw sql] ()
+2025-05-28 14:47:12,256 - INFO - PRAGMA main.table_info("department")
+2025-05-28 14:47:12,257 - INFO - [raw sql] ()
+2025-05-28 14:47:12,258 - INFO - PRAGMA main.table_info("employee")
+2025-05-28 14:47:12,259 - INFO - [raw sql] ()
+2025-05-28 14:47:12,260 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-05-28 14:47:12,260 - INFO - [raw sql] ()
+2025-05-28 14:47:12,261 - INFO - PRAGMA main.table_info("payroll")
+2025-05-28 14:47:12,262 - INFO - [raw sql] ()
+2025-05-28 14:47:12,264 - INFO - COMMIT
+2025-05-28 14:47:22,645 - INFO - BEGIN (implicit)
+2025-05-28 14:47:22,652 - INFO - INSERT INTO department (name, location, description, extension) VALUES (?, ?, ?, ?)
+2025-05-28 14:47:22,654 - INFO - [generated in 0.00172s] ('string', 'string', 'string', 'string')
+2025-05-28 14:47:22,664 - INFO - COMMIT
+2025-05-28 14:47:22,675 - INFO - BEGIN (implicit)
+2025-05-28 14:47:22,683 - INFO - SELECT department.name, department.location, department.description, department.extension, department.id 
+FROM department 
+WHERE department.id = ?
+2025-05-28 14:47:22,685 - INFO - [generated in 0.00210s] (11,)
+2025-05-28 14:47:22,690 - INFO - Departamento criado com sucesso: description='string' location='string' id=11 name='string' extension='string'
+2025-05-28 14:47:22,695 - INFO - ROLLBACK
+2025-05-28 14:47:38,150 - INFO - BEGIN (implicit)
+2025-05-28 14:47:38,153 - INFO - SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id 
+FROM department
+2025-05-28 14:47:38,154 - INFO - [generated in 0.00142s] ()
+2025-05-28 14:47:38,158 - INFO - 4 departamentos encontrados.
+2025-05-28 14:47:38,167 - INFO - ROLLBACK
+2025-05-28 14:50:51,067 - INFO - BEGIN (implicit)
+2025-05-28 14:50:51,068 - INFO - PRAGMA main.table_info("benefit")
+2025-05-28 14:50:51,069 - INFO - [raw sql] ()
+2025-05-28 14:50:51,072 - INFO - PRAGMA main.table_info("department")
+2025-05-28 14:50:51,073 - INFO - [raw sql] ()
+2025-05-28 14:50:51,074 - INFO - PRAGMA main.table_info("employee")
+2025-05-28 14:50:51,080 - INFO - [raw sql] ()
+2025-05-28 14:50:51,081 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-05-28 14:50:51,081 - INFO - [raw sql] ()
+2025-05-28 14:50:51,082 - INFO - PRAGMA main.table_info("payroll")
+2025-05-28 14:50:51,082 - INFO - [raw sql] ()
+2025-05-28 14:50:51,084 - INFO - COMMIT
+2025-05-28 14:53:32,018 - INFO - BEGIN (implicit)
+2025-05-28 14:53:32,019 - INFO - PRAGMA main.table_info("benefit")
+2025-05-28 14:53:32,020 - INFO - [raw sql] ()
+2025-05-28 14:53:32,022 - INFO - PRAGMA main.table_info("department")
+2025-05-28 14:53:32,022 - INFO - [raw sql] ()
+2025-05-28 14:53:32,023 - INFO - PRAGMA main.table_info("employee")
+2025-05-28 14:53:32,024 - INFO - [raw sql] ()
+2025-05-28 14:53:32,025 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-05-28 14:53:32,026 - INFO - [raw sql] ()
+2025-05-28 14:53:32,028 - INFO - PRAGMA main.table_info("payroll")
+2025-05-28 14:53:32,029 - INFO - [raw sql] ()
+2025-05-28 14:53:32,030 - INFO - COMMIT
+2025-05-28 14:54:22,398 - ERROR - Erro ao criar departamento
+Traceback (most recent call last):
+  File "C:\Users\fpaul\Documents\GitHub\Persistencia_TP2\app\routers\DepartmentRouter.py", line 13, in create_department
+    db_department = Department(
+                    ^^^^^^^^^^^
+  File "<string>", line 4, in __init__
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state.py", line 566, in _initialize_instance
+    manager.dispatch.init(self, args, kwargs)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\event\attr.py", line 497, in __call__
+    fn(*args, **kw)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4406, in _event_on_init
+    instrumenting_mapper._check_configure()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4251, in _do_configure_registries
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[Department(department)]'. Original exception was: Could not determine join condition between parent/child tables on relationship Department.manager - there are multiple foreign key paths linking the tables.  Specify the 'foreign_keys' argument, providing a list of those columns which should be counted as containing a foreign key reference to the parent table.
+2025-05-28 14:55:29,374 - INFO - BEGIN (implicit)
+2025-05-28 14:55:29,375 - INFO - PRAGMA main.table_info("benefit")
+2025-05-28 14:55:29,376 - INFO - [raw sql] ()
+2025-05-28 14:55:29,378 - INFO - PRAGMA main.table_info("department")
+2025-05-28 14:55:29,378 - INFO - [raw sql] ()
+2025-05-28 14:55:29,380 - INFO - PRAGMA main.table_info("employee")
+2025-05-28 14:55:29,381 - INFO - [raw sql] ()
+2025-05-28 14:55:29,383 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-05-28 14:55:29,384 - INFO - [raw sql] ()
+2025-05-28 14:55:29,384 - INFO - PRAGMA main.table_info("payroll")
+2025-05-28 14:55:29,385 - INFO - [raw sql] ()
+2025-05-28 14:55:29,386 - INFO - COMMIT
+2025-05-28 14:55:35,821 - ERROR - Erro ao criar departamento
+Traceback (most recent call last):
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2522, in get_property
+    return self._props[key]
+           ~~~~~~~~~~~^^^^^
+KeyError: 'manages_department'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\fpaul\Documents\GitHub\Persistencia_TP2\app\routers\DepartmentRouter.py", line 13, in create_department
+    db_department = Department(
+                    ^^^^^^^^^^^
+  File "<string>", line 4, in __init__
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state.py", line 566, in _initialize_instance
+    manager.dispatch.init(self, args, kwargs)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\event\attr.py", line 497, in __call__
+    fn(*args, **kw)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4406, in _event_on_init
+    instrumenting_mapper._check_configure()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4255, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2418, in _post_configure_properties
+    prop.init()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\interfaces.py", line 589, in init
+    self.do_init()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1661, in do_init
+    self._generate_backref()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 2147, in _generate_backref
+    self._add_reverse_property(self.back_populates)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1592, in _add_reverse_property
+    other = self.mapper.get_property(key, _configure_mappers=False)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2524, in get_property
+    raise sa_exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: Mapper 'Mapper[Employee(employee)]' has no property 'manages_department'.  If this property was indicated from other mappers or configure events, ensure registry.configure() has been called.
+2025-05-28 14:55:50,098 - ERROR - Erro ao listar departamentos
+Traceback (most recent call last):
+  File "C:\Users\fpaul\Documents\GitHub\Persistencia_TP2\app\routers\DepartmentRouter.py", line 101, in get_all_departments
+    departments = session.query(Department).all()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\typing_extensions.py", line 3253, in wrapper
+    return arg(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlmodel\orm\session.py", line 159, in query
+    return super().query(*entities, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 2955, in query
+    return self._query_cls(entities, self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\query.py", line 276, in __init__
+    self._set_entities(entities)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\query.py", line 288, in _set_entities
+    self._raw_columns = [
+                        ^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\query.py", line 289, in <listcomp>
+    coercions.expect(
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\coercions.py", line 388, in expect
+    insp._post_inspect
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 1257, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2724, in _post_inspect
+    self._check_configure()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4251, in _do_configure_registries
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[Department(department)]'. Original exception was: Mapper 'Mapper[Employee(employee)]' has no property 'manages_department'.  If this property was indicated from other mappers or configure events, ensure registry.configure() has been called.
+2025-05-28 14:57:29,177 - INFO - BEGIN (implicit)
+2025-05-28 14:57:29,178 - INFO - PRAGMA main.table_info("benefit")
+2025-05-28 14:57:29,178 - INFO - [raw sql] ()
+2025-05-28 14:57:29,179 - INFO - PRAGMA main.table_info("department")
+2025-05-28 14:57:29,179 - INFO - [raw sql] ()
+2025-05-28 14:57:29,180 - INFO - PRAGMA main.table_info("employee")
+2025-05-28 14:57:29,180 - INFO - [raw sql] ()
+2025-05-28 14:57:29,181 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-05-28 14:57:29,181 - INFO - [raw sql] ()
+2025-05-28 14:57:29,182 - INFO - PRAGMA main.table_info("payroll")
+2025-05-28 14:57:29,182 - INFO - [raw sql] ()
+2025-05-28 14:57:29,184 - INFO - COMMIT
+2025-05-28 14:57:55,732 - ERROR - Erro ao listar departamentos
+Traceback (most recent call last):
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2522, in get_property
+    return self._props[key]
+           ~~~~~~~~~~~^^^^^
+KeyError: 'manages_department'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\fpaul\Documents\GitHub\Persistencia_TP2\app\routers\DepartmentRouter.py", line 101, in get_all_departments
+    departments = session.query(Department).all()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\typing_extensions.py", line 3253, in wrapper
+    return arg(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlmodel\orm\session.py", line 159, in query
+    return super().query(*entities, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 2955, in query
+    return self._query_cls(entities, self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\query.py", line 276, in __init__
+    self._set_entities(entities)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\query.py", line 288, in _set_entities
+    self._raw_columns = [
+                        ^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\query.py", line 289, in <listcomp>
+    coercions.expect(
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\coercions.py", line 388, in expect
+    insp._post_inspect
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 1257, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2724, in _post_inspect
+    self._check_configure()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4255, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2418, in _post_configure_properties
+    prop.init()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\interfaces.py", line 589, in init
+    self.do_init()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1661, in do_init
+    self._generate_backref()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 2147, in _generate_backref
+    self._add_reverse_property(self.back_populates)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1592, in _add_reverse_property
+    other = self.mapper.get_property(key, _configure_mappers=False)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2524, in get_property
+    raise sa_exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: Mapper 'Mapper[Employee(employee)]' has no property 'manages_department'.  If this property was indicated from other mappers or configure events, ensure registry.configure() has been called.
+2025-05-28 14:58:12,240 - ERROR - Erro ao criar departamento
+Traceback (most recent call last):
+  File "C:\Users\fpaul\Documents\GitHub\Persistencia_TP2\app\routers\DepartmentRouter.py", line 13, in create_department
+    db_department = Department(
+                    ^^^^^^^^^^^
+  File "<string>", line 4, in __init__
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state.py", line 566, in _initialize_instance
+    manager.dispatch.init(self, args, kwargs)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\event\attr.py", line 497, in __call__
+    fn(*args, **kw)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4406, in _event_on_init
+    instrumenting_mapper._check_configure()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4251, in _do_configure_registries
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[Department(department)]'. Original exception was: Mapper 'Mapper[Employee(employee)]' has no property 'manages_department'.  If this property was indicated from other mappers or configure events, ensure registry.configure() has been called.
+2025-05-28 14:58:24,458 - ERROR - Erro ao listar departamentos
+Traceback (most recent call last):
+  File "C:\Users\fpaul\Documents\GitHub\Persistencia_TP2\app\routers\DepartmentRouter.py", line 101, in get_all_departments
+    departments = session.query(Department).all()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\typing_extensions.py", line 3253, in wrapper
+    return arg(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlmodel\orm\session.py", line 159, in query
+    return super().query(*entities, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 2955, in query
+    return self._query_cls(entities, self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\query.py", line 276, in __init__
+    self._set_entities(entities)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\query.py", line 288, in _set_entities
+    self._raw_columns = [
+                        ^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\query.py", line 289, in <listcomp>
+    coercions.expect(
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\coercions.py", line 388, in expect
+    insp._post_inspect
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 1257, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2724, in _post_inspect
+    self._check_configure()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4251, in _do_configure_registries
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[Department(department)]'. Original exception was: Mapper 'Mapper[Employee(employee)]' has no property 'manages_department'.  If this property was indicated from other mappers or configure events, ensure registry.configure() has been called.
+2025-05-28 15:01:17,344 - INFO - BEGIN (implicit)
+2025-05-28 15:01:17,344 - INFO - PRAGMA main.table_info("benefit")
+2025-05-28 15:01:17,345 - INFO - [raw sql] ()
+2025-05-28 15:01:17,348 - INFO - PRAGMA main.table_info("department")
+2025-05-28 15:01:17,349 - INFO - [raw sql] ()
+2025-05-28 15:01:17,350 - INFO - PRAGMA main.table_info("employee")
+2025-05-28 15:01:17,350 - INFO - [raw sql] ()
+2025-05-28 15:01:17,351 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-05-28 15:01:17,351 - INFO - [raw sql] ()
+2025-05-28 15:01:17,352 - INFO - PRAGMA main.table_info("payroll")
+2025-05-28 15:01:17,352 - INFO - [raw sql] ()
+2025-05-28 15:01:17,352 - INFO - COMMIT
+2025-05-28 15:01:31,640 - INFO - BEGIN (implicit)
+2025-05-28 15:01:31,649 - INFO - SELECT department.id AS department_id, department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension 
+FROM department
+2025-05-28 15:01:31,650 - INFO - [generated in 0.00264s] ()
+2025-05-28 15:01:31,655 - INFO - 4 departamentos encontrados.
+2025-05-28 15:01:31,664 - INFO - ROLLBACK
+2025-05-28 15:02:01,039 - INFO - BEGIN (implicit)
+2025-05-28 15:02:01,045 - INFO - INSERT INTO department (id, name, location, description, extension) VALUES (?, ?, ?, ?, ?)
+2025-05-28 15:02:01,046 - INFO - [generated in 0.00166s] (13, 'string', 'string', 'string', 'string')
+2025-05-28 15:02:01,052 - INFO - COMMIT
+2025-05-28 15:02:01,061 - INFO - BEGIN (implicit)
+2025-05-28 15:02:01,071 - INFO - SELECT department.id, department.name, department.location, department.description, department.extension 
+FROM department 
+WHERE department.id = ?
+2025-05-28 15:02:01,072 - INFO - [generated in 0.00118s] (13,)
+2025-05-28 15:02:01,075 - INFO - Departamento criado com sucesso: id=13 description='string' name='string' location='string' extension='string'
+2025-05-28 15:02:01,080 - INFO - ROLLBACK
+2025-05-28 15:02:15,842 - INFO - BEGIN (implicit)
+2025-05-28 15:02:15,843 - INFO - SELECT department.id AS department_id, department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension 
+FROM department
+2025-05-28 15:02:15,845 - INFO - [cached since 44.2s ago] ()
+2025-05-28 15:02:15,847 - INFO - 5 departamentos encontrados.
+2025-05-28 15:02:15,853 - INFO - ROLLBACK
+2025-05-28 17:50:13,413 - INFO - BEGIN (implicit)
+2025-05-28 17:50:13,414 - INFO - PRAGMA main.table_info("benefit")
+2025-05-28 17:50:13,414 - INFO - [raw sql] ()
+2025-05-28 17:50:13,417 - INFO - PRAGMA main.table_info("department")
+2025-05-28 17:50:13,418 - INFO - [raw sql] ()
+2025-05-28 17:50:13,418 - INFO - PRAGMA main.table_info("employee")
+2025-05-28 17:50:13,420 - INFO - [raw sql] ()
+2025-05-28 17:50:13,421 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-05-28 17:50:13,421 - INFO - [raw sql] ()
+2025-05-28 17:50:13,422 - INFO - PRAGMA main.table_info("payroll")
+2025-05-28 17:50:13,423 - INFO - [raw sql] ()
+2025-05-28 17:50:13,424 - INFO - COMMIT
+2025-05-28 17:50:33,392 - INFO - BEGIN (implicit)
+2025-05-28 17:50:33,400 - INFO - SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id 
+FROM department
+2025-05-28 17:50:33,402 - INFO - [generated in 0.00270s] ()
+2025-05-28 17:50:33,406 - INFO - 5 departamentos encontrados.
+2025-05-28 17:50:33,416 - INFO - ROLLBACK
+2025-05-28 17:50:47,973 - INFO - BEGIN (implicit)
+2025-05-28 17:50:47,976 - INFO - INSERT INTO department (name, location, description, extension) VALUES (?, ?, ?, ?)
+2025-05-28 17:50:47,978 - INFO - [generated in 0.00151s] ('string', 'string', 'string', 'string')
+2025-05-28 17:50:47,986 - INFO - COMMIT
+2025-05-28 17:50:47,998 - INFO - BEGIN (implicit)
+2025-05-28 17:50:48,005 - INFO - SELECT department.name, department.location, department.description, department.extension, department.id 
+FROM department 
+WHERE department.id = ?
+2025-05-28 17:50:48,007 - INFO - [generated in 0.00263s] (14,)
+2025-05-28 17:50:48,011 - INFO - Departamento criado com sucesso: location='string' description='string' id=14 name='string' extension='string'
+2025-05-28 17:50:48,017 - INFO - ROLLBACK
+2025-05-28 17:51:01,310 - INFO - BEGIN (implicit)
+2025-05-28 17:51:01,310 - INFO - SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id 
+FROM department
+2025-05-28 17:51:01,313 - INFO - [cached since 27.91s ago] ()
+2025-05-28 17:51:01,314 - INFO - 6 departamentos encontrados.
+2025-05-28 17:51:01,321 - INFO - ROLLBACK
+2025-05-28 17:51:14,931 - INFO - BEGIN (implicit)
+2025-05-28 17:51:14,937 - INFO - SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id 
+FROM department 
+WHERE department.id = ?
+ LIMIT ? OFFSET ?
+2025-05-28 17:51:14,938 - INFO - [generated in 0.00129s] (14, 1, 0)
+2025-05-28 17:51:14,952 - INFO - SELECT employee.id AS employee_id, employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id 
+FROM employee 
+WHERE ? = employee.department_id
+2025-05-28 17:51:14,953 - INFO - [generated in 0.00174s] (14,)
+2025-05-28 17:51:14,960 - INFO - SELECT employee.id AS employee_id, employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id 
+FROM employee 
+WHERE ? = employee.department_id
+2025-05-28 17:51:14,962 - INFO - [generated in 0.00264s] (14,)
+2025-05-28 17:51:14,971 - INFO - DELETE FROM department WHERE department.id = ?
+2025-05-28 17:51:14,973 - INFO - [generated in 0.00163s] (14,)
+2025-05-28 17:51:14,978 - INFO - COMMIT
+2025-05-28 17:51:14,988 - INFO - Departamento deletado com sucesso: ID 14
+2025-05-28 17:51:27,865 - INFO - BEGIN (implicit)
+2025-05-28 17:51:27,867 - INFO - SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id 
+FROM department 
+WHERE department.id = ?
+ LIMIT ? OFFSET ?
+2025-05-28 17:51:27,868 - INFO - [cached since 12.93s ago] (13, 1, 0)
+2025-05-28 17:51:27,876 - INFO - UPDATE department SET name=? WHERE department.id = ?
+2025-05-28 17:51:27,878 - INFO - [generated in 0.00235s] ('strin2g', 13)
+2025-05-28 17:51:27,885 - INFO - COMMIT
+2025-05-28 17:51:27,892 - INFO - BEGIN (implicit)
+2025-05-28 17:51:27,896 - INFO - SELECT department.name, department.location, department.description, department.extension, department.id 
+FROM department 
+WHERE department.id = ?
+2025-05-28 17:51:27,898 - INFO - [cached since 39.89s ago] (13,)
+2025-05-28 17:51:27,904 - INFO - ROLLBACK
+2025-05-28 17:51:36,711 - INFO - BEGIN (implicit)
+2025-05-28 17:51:36,713 - INFO - SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id 
+FROM department
+2025-05-28 17:51:36,714 - INFO - [cached since 63.31s ago] ()
+2025-05-28 17:51:36,715 - INFO - 5 departamentos encontrados.
+2025-05-28 17:51:36,723 - INFO - ROLLBACK
+2025-05-28 17:53:52,380 - INFO - BEGIN (implicit)
+2025-05-28 17:53:52,381 - INFO - PRAGMA main.table_info("benefit")
+2025-05-28 17:53:52,382 - INFO - [raw sql] ()
+2025-05-28 17:53:52,383 - INFO - PRAGMA main.table_info("department")
+2025-05-28 17:53:52,384 - INFO - [raw sql] ()
+2025-05-28 17:53:52,384 - INFO - PRAGMA main.table_info("employee")
+2025-05-28 17:53:52,384 - INFO - [raw sql] ()
+2025-05-28 17:53:52,385 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-05-28 17:53:52,386 - INFO - [raw sql] ()
+2025-05-28 17:53:52,388 - INFO - PRAGMA main.table_info("payroll")
+2025-05-28 17:53:52,388 - INFO - [raw sql] ()
+2025-05-28 17:53:52,390 - INFO - COMMIT
+2025-05-28 17:54:05,392 - INFO - BEGIN (implicit)
+2025-05-28 17:54:05,398 - INFO - INSERT INTO benefit (name, description, amount, type, active) VALUES (?, ?, ?, ?, ?)
+2025-05-28 17:54:05,399 - INFO - [generated in 0.00166s] ('string', 'string', 0.0, 'string', 1)
+2025-05-28 17:54:05,407 - INFO - COMMIT
+2025-05-28 17:54:05,418 - INFO - BEGIN (implicit)
+2025-05-28 17:54:05,427 - INFO - SELECT benefit.name, benefit.description, benefit.amount, benefit.type, benefit.active, benefit.id 
+FROM benefit 
+WHERE benefit.id = ?
+2025-05-28 17:54:05,429 - INFO - [generated in 0.00164s] (1,)
+2025-05-28 17:54:05,433 - INFO - Benefício criado com sucesso: description='string' name='string' active=True amount=0.0 type='string' id=1
+2025-05-28 17:54:05,438 - INFO - ROLLBACK
+2025-05-28 17:56:56,682 - INFO - BEGIN (implicit)
+2025-05-28 17:56:56,683 - INFO - PRAGMA main.table_info("benefit")
+2025-05-28 17:56:56,683 - INFO - [raw sql] ()
+2025-05-28 17:56:56,684 - INFO - PRAGMA main.table_info("department")
+2025-05-28 17:56:56,685 - INFO - [raw sql] ()
+2025-05-28 17:56:56,685 - INFO - PRAGMA main.table_info("employee")
+2025-05-28 17:56:56,687 - INFO - [raw sql] ()
+2025-05-28 17:56:56,688 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-05-28 17:56:56,688 - INFO - [raw sql] ()
+2025-05-28 17:56:56,689 - INFO - PRAGMA main.table_info("payroll")
+2025-05-28 17:56:56,689 - INFO - [raw sql] ()
+2025-05-28 17:56:56,689 - INFO - COMMIT
