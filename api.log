@@ -1849,3 +1849,1147 @@ FROM benefit) AS anon_1
 2025-06-07 13:40:12,159 - INFO - PRAGMA main.table_info("payroll")
 2025-06-07 13:40:12,159 - INFO - [raw sql] ()
 2025-06-07 13:40:12,160 - INFO - COMMIT
+2025-06-07 14:02:29,250 - INFO - BEGIN (implicit)
+2025-06-07 14:02:29,251 - INFO - PRAGMA main.table_info("benefit")
+2025-06-07 14:02:29,252 - INFO - [raw sql] ()
+2025-06-07 14:02:29,254 - INFO - PRAGMA main.table_info("department")
+2025-06-07 14:02:29,254 - INFO - [raw sql] ()
+2025-06-07 14:02:29,255 - INFO - PRAGMA main.table_info("employee")
+2025-06-07 14:02:29,256 - INFO - [raw sql] ()
+2025-06-07 14:02:29,257 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-07 14:02:29,258 - INFO - [raw sql] ()
+2025-06-07 14:02:29,258 - INFO - PRAGMA main.table_info("payroll")
+2025-06-07 14:02:29,259 - INFO - [raw sql] ()
+2025-06-07 14:02:29,261 - INFO - COMMIT
+2025-06-07 14:02:45,973 - INFO - BEGIN (implicit)
+2025-06-07 14:02:45,974 - INFO - PRAGMA main.table_info("benefit")
+2025-06-07 14:02:45,976 - INFO - [raw sql] ()
+2025-06-07 14:02:45,978 - INFO - PRAGMA temp.table_info("benefit")
+2025-06-07 14:02:45,979 - INFO - [raw sql] ()
+2025-06-07 14:02:45,980 - INFO - PRAGMA main.table_info("department")
+2025-06-07 14:02:45,980 - INFO - [raw sql] ()
+2025-06-07 14:02:45,981 - INFO - PRAGMA temp.table_info("department")
+2025-06-07 14:02:45,984 - INFO - [raw sql] ()
+2025-06-07 14:02:45,986 - INFO - PRAGMA main.table_info("employee")
+2025-06-07 14:02:45,988 - INFO - [raw sql] ()
+2025-06-07 14:02:45,989 - INFO - PRAGMA temp.table_info("employee")
+2025-06-07 14:02:45,989 - INFO - [raw sql] ()
+2025-06-07 14:02:45,991 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-07 14:02:45,992 - INFO - [raw sql] ()
+2025-06-07 14:02:45,993 - INFO - PRAGMA temp.table_info("employeebenefit")
+2025-06-07 14:02:45,994 - INFO - [raw sql] ()
+2025-06-07 14:02:45,995 - INFO - PRAGMA main.table_info("payroll")
+2025-06-07 14:02:45,997 - INFO - [raw sql] ()
+2025-06-07 14:02:45,999 - INFO - PRAGMA temp.table_info("payroll")
+2025-06-07 14:02:45,999 - INFO - [raw sql] ()
+2025-06-07 14:02:46,000 - INFO - 
+CREATE TABLE benefit (
+	name VARCHAR NOT NULL, 
+	description VARCHAR, 
+	amount FLOAT NOT NULL, 
+	type VARCHAR NOT NULL, 
+	active BOOLEAN NOT NULL, 
+	id INTEGER NOT NULL, 
+	PRIMARY KEY (id)
+)
+
+
+2025-06-07 14:02:46,001 - INFO - [no key 0.00088s] ()
+2025-06-07 14:02:46,007 - INFO - 
+CREATE TABLE department (
+	name VARCHAR NOT NULL, 
+	location VARCHAR NOT NULL, 
+	description VARCHAR, 
+	extension VARCHAR, 
+	id INTEGER NOT NULL, 
+	PRIMARY KEY (id)
+)
+
+
+2025-06-07 14:02:46,008 - INFO - [no key 0.00075s] ()
+2025-06-07 14:02:46,012 - INFO - 
+CREATE TABLE employee (
+	name VARCHAR NOT NULL, 
+	cpf VARCHAR NOT NULL, 
+	position VARCHAR NOT NULL, 
+	admission_date VARCHAR NOT NULL, 
+	department_id INTEGER, 
+	id INTEGER NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(department_id) REFERENCES department (id)
+)
+
+
+2025-06-07 14:02:46,014 - INFO - [no key 0.00179s] ()
+2025-06-07 14:02:46,019 - INFO - 
+CREATE TABLE employeebenefit (
+	id INTEGER NOT NULL, 
+	employee_id INTEGER NOT NULL, 
+	benefit_id INTEGER NOT NULL, 
+	start_date VARCHAR NOT NULL, 
+	end_date VARCHAR, 
+	custom_amount FLOAT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(employee_id) REFERENCES employee (id), 
+	FOREIGN KEY(benefit_id) REFERENCES benefit (id)
+)
+
+
+2025-06-07 14:02:46,021 - INFO - [no key 0.00208s] ()
+2025-06-07 14:02:46,028 - INFO - 
+CREATE TABLE payroll (
+	id INTEGER NOT NULL, 
+	employee_id INTEGER NOT NULL, 
+	gross_salary FLOAT NOT NULL, 
+	deductions FLOAT NOT NULL, 
+	net_salary FLOAT NOT NULL, 
+	reference_month VARCHAR NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(employee_id) REFERENCES employee (id)
+)
+
+
+2025-06-07 14:02:46,029 - INFO - [no key 0.00099s] ()
+2025-06-07 14:02:46,032 - INFO - COMMIT
+2025-06-07 14:05:41,201 - INFO - BEGIN (implicit)
+2025-06-07 14:05:41,204 - INFO - INSERT INTO department (name, location, description, extension) VALUES (?, ?, ?, ?)
+2025-06-07 14:05:41,205 - INFO - [generated in 0.00101s] ('Jurídico', 'Prédio A - 5º Andar', 'Assessoramento legal e gestão de contratos', 'JUR')
+2025-06-07 14:05:41,209 - INFO - COMMIT
+2025-06-07 14:05:41,215 - INFO - BEGIN (implicit)
+2025-06-07 14:05:41,220 - INFO - SELECT department.name, department.location, department.description, department.extension, department.id 
+FROM department 
+WHERE department.id = ?
+2025-06-07 14:05:41,220 - INFO - [generated in 0.00068s] (1,)
+2025-06-07 14:05:41,221 - INFO - Departamento criado com sucesso: name='Jurídico' extension='JUR' description='Assessoramento legal e gestão de contratos' location='Prédio A - 5º Andar' id=1
+2025-06-07 14:05:41,226 - INFO - ROLLBACK
+2025-06-07 14:05:49,206 - INFO - BEGIN (implicit)
+2025-06-07 14:05:49,209 - INFO - INSERT INTO department (name, location, description, extension) VALUES (?, ?, ?, ?)
+2025-06-07 14:05:49,211 - INFO - [cached since 8.007s ago] ('Marketing', 'Prédio D - 3º Andar', 'Cuida da comunicação institucional e campanhas publicitárias', 'MKT')
+2025-06-07 14:05:49,214 - INFO - COMMIT
+2025-06-07 14:05:49,220 - INFO - BEGIN (implicit)
+2025-06-07 14:05:49,222 - INFO - SELECT department.name, department.location, department.description, department.extension, department.id 
+FROM department 
+WHERE department.id = ?
+2025-06-07 14:05:49,222 - INFO - [cached since 8.003s ago] (2,)
+2025-06-07 14:05:49,225 - INFO - Departamento criado com sucesso: name='Marketing' extension='MKT' description='Cuida da comunicação institucional e campanhas publicitárias' location='Prédio D - 3º Andar' id=2
+2025-06-07 14:05:49,234 - INFO - ROLLBACK
+2025-06-07 14:05:54,010 - INFO - BEGIN (implicit)
+2025-06-07 14:05:54,011 - INFO - INSERT INTO department (name, location, description, extension) VALUES (?, ?, ?, ?)
+2025-06-07 14:05:54,012 - INFO - [cached since 12.81s ago] ('Financeiro', 'Prédio C - 1º Andar', 'Responsável pelo controle financeiro e contabilidade', 'FIN')
+2025-06-07 14:05:54,015 - INFO - COMMIT
+2025-06-07 14:05:54,020 - INFO - BEGIN (implicit)
+2025-06-07 14:05:54,021 - INFO - SELECT department.name, department.location, department.description, department.extension, department.id 
+FROM department 
+WHERE department.id = ?
+2025-06-07 14:05:54,021 - INFO - [cached since 12.8s ago] (3,)
+2025-06-07 14:05:54,022 - INFO - Departamento criado com sucesso: name='Financeiro' extension='FIN' description='Responsável pelo controle financeiro e contabilidade' location='Prédio C - 1º Andar' id=3
+2025-06-07 14:05:54,024 - INFO - ROLLBACK
+2025-06-07 14:06:00,550 - INFO - BEGIN (implicit)
+2025-06-07 14:06:00,551 - INFO - INSERT INTO department (name, location, description, extension) VALUES (?, ?, ?, ?)
+2025-06-07 14:06:00,551 - INFO - [cached since 19.35s ago] ('Tecnologia da Informação', 'Prédio B - 4º Andar', 'Gerencia os sistemas de informação e suporte técnico', 'TI')
+2025-06-07 14:06:00,553 - INFO - COMMIT
+2025-06-07 14:06:00,557 - INFO - BEGIN (implicit)
+2025-06-07 14:06:00,558 - INFO - SELECT department.name, department.location, department.description, department.extension, department.id 
+FROM department 
+WHERE department.id = ?
+2025-06-07 14:06:00,559 - INFO - [cached since 19.34s ago] (4,)
+2025-06-07 14:06:00,560 - INFO - Departamento criado com sucesso: name='Tecnologia da Informação' extension='TI' description='Gerencia os sistemas de informação e suporte técnico' location='Prédio B - 4º Andar' id=4
+2025-06-07 14:06:00,562 - INFO - ROLLBACK
+2025-06-07 14:06:06,258 - INFO - BEGIN (implicit)
+2025-06-07 14:06:06,259 - INFO - INSERT INTO department (name, location, description, extension) VALUES (?, ?, ?, ?)
+2025-06-07 14:06:06,259 - INFO - [cached since 25.06s ago] ('Recursos Humanos', 'Prédio A - 2º Andar', 'Responsável pela gestão de pessoas e processos de recrutamento', 'RH')
+2025-06-07 14:06:06,262 - INFO - COMMIT
+2025-06-07 14:06:06,265 - INFO - BEGIN (implicit)
+2025-06-07 14:06:06,266 - INFO - SELECT department.name, department.location, department.description, department.extension, department.id 
+FROM department 
+WHERE department.id = ?
+2025-06-07 14:06:06,267 - INFO - [cached since 25.05s ago] (5,)
+2025-06-07 14:06:06,268 - INFO - Departamento criado com sucesso: name='Recursos Humanos' extension='RH' description='Responsável pela gestão de pessoas e processos de recrutamento' location='Prédio A - 2º Andar' id=5
+2025-06-07 14:06:06,269 - INFO - ROLLBACK
+2025-06-07 14:06:11,615 - INFO - BEGIN (implicit)
+2025-06-07 14:06:11,618 - INFO - SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id 
+FROM department
+2025-06-07 14:06:11,618 - INFO - [generated in 0.00081s] ()
+2025-06-07 14:06:11,620 - INFO - 5 departamentos encontrados.
+2025-06-07 14:06:11,623 - INFO - ROLLBACK
+2025-06-07 14:06:34,048 - INFO - BEGIN (implicit)
+2025-06-07 14:06:34,052 - INFO - SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id 
+FROM department 
+WHERE department.name = ?
+ LIMIT ? OFFSET ?
+2025-06-07 14:06:34,052 - INFO - [generated in 0.00087s] ('Recursos Humanos', 1, 0)
+2025-06-07 14:06:34,054 - INFO - Departamento encontrado por nome: name='Recursos Humanos' extension='RH' description='Responsável pela gestão de pessoas e processos de recrutamento' location='Prédio A - 2º Andar' id=5
+2025-06-07 14:06:34,057 - INFO - ROLLBACK
+2025-06-07 14:06:49,275 - INFO - BEGIN (implicit)
+2025-06-07 14:06:49,281 - INFO - SELECT count(*) AS count_1 
+FROM (SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id 
+FROM department) AS anon_1
+2025-06-07 14:06:49,282 - INFO - [generated in 0.00077s] ()
+2025-06-07 14:06:49,285 - INFO - Quantidade total de departamentos: 5
+2025-06-07 14:06:49,287 - INFO - ROLLBACK
+2025-06-07 14:07:18,259 - INFO - BEGIN (implicit)
+2025-06-07 14:07:18,261 - INFO - INSERT INTO benefit (name, description, amount, type, active) VALUES (?, ?, ?, ?, ?)
+2025-06-07 14:07:18,261 - INFO - [generated in 0.00076s] ('Vale Refeição', 'Benefício mensal para alimentação em restaurantes', 500.0, 'Alimentação', 1)
+2025-06-07 14:07:18,264 - INFO - COMMIT
+2025-06-07 14:07:18,267 - INFO - BEGIN (implicit)
+2025-06-07 14:07:18,270 - INFO - SELECT benefit.name, benefit.description, benefit.amount, benefit.type, benefit.active, benefit.id 
+FROM benefit 
+WHERE benefit.id = ?
+2025-06-07 14:07:18,271 - INFO - [generated in 0.00080s] (1,)
+2025-06-07 14:07:18,273 - INFO - Benefício criado com sucesso: description='Benefício mensal para alimentação em restaurantes' name='Vale Refeição' active=True amount=500.0 type='Alimentação' id=1
+2025-06-07 14:07:18,277 - INFO - ROLLBACK
+2025-06-07 14:07:29,877 - INFO - BEGIN (implicit)
+2025-06-07 14:07:29,878 - INFO - INSERT INTO benefit (name, description, amount, type, active) VALUES (?, ?, ?, ?, ?)
+2025-06-07 14:07:29,878 - INFO - [cached since 11.62s ago] ('Plano de Saúde', 'Plano médico corporativo com cobertura nacional', 350.0, 'Saúde', 1)
+2025-06-07 14:07:29,881 - INFO - COMMIT
+2025-06-07 14:07:29,884 - INFO - BEGIN (implicit)
+2025-06-07 14:07:29,885 - INFO - SELECT benefit.name, benefit.description, benefit.amount, benefit.type, benefit.active, benefit.id 
+FROM benefit 
+WHERE benefit.id = ?
+2025-06-07 14:07:29,886 - INFO - [cached since 11.62s ago] (2,)
+2025-06-07 14:07:29,888 - INFO - Benefício criado com sucesso: description='Plano médico corporativo com cobertura nacional' name='Plano de Saúde' active=True amount=350.0 type='Saúde' id=2
+2025-06-07 14:07:29,889 - INFO - ROLLBACK
+2025-06-07 14:07:34,995 - INFO - BEGIN (implicit)
+2025-06-07 14:07:34,996 - INFO - INSERT INTO benefit (name, description, amount, type, active) VALUES (?, ?, ?, ?, ?)
+2025-06-07 14:07:34,996 - INFO - [cached since 16.74s ago] ('Auxílio Home Office', 'Ajuda de custo para colaboradores remotos', 150.0, 'Trabalho Remoto', 1)
+2025-06-07 14:07:34,999 - INFO - COMMIT
+2025-06-07 14:07:35,001 - INFO - BEGIN (implicit)
+2025-06-07 14:07:35,002 - INFO - SELECT benefit.name, benefit.description, benefit.amount, benefit.type, benefit.active, benefit.id 
+FROM benefit 
+WHERE benefit.id = ?
+2025-06-07 14:07:35,004 - INFO - [cached since 16.73s ago] (3,)
+2025-06-07 14:07:35,005 - INFO - Benefício criado com sucesso: description='Ajuda de custo para colaboradores remotos' name='Auxílio Home Office' active=True amount=150.0 type='Trabalho Remoto' id=3
+2025-06-07 14:07:35,007 - INFO - ROLLBACK
+2025-06-07 14:07:42,263 - INFO - BEGIN (implicit)
+2025-06-07 14:07:42,264 - INFO - INSERT INTO benefit (name, description, amount, type, active) VALUES (?, ?, ?, ?, ?)
+2025-06-07 14:07:42,264 - INFO - [cached since 24s ago] ('Bônus de Desempenho', 'Gratificação por metas alcançadas no trimestre', 1000.0, 'Variável', 0)
+2025-06-07 14:07:42,269 - INFO - COMMIT
+2025-06-07 14:07:42,273 - INFO - BEGIN (implicit)
+2025-06-07 14:07:42,274 - INFO - SELECT benefit.name, benefit.description, benefit.amount, benefit.type, benefit.active, benefit.id 
+FROM benefit 
+WHERE benefit.id = ?
+2025-06-07 14:07:42,275 - INFO - [cached since 24.01s ago] (4,)
+2025-06-07 14:07:42,276 - INFO - Benefício criado com sucesso: description='Gratificação por metas alcançadas no trimestre' name='Bônus de Desempenho' active=False amount=1000.0 type='Variável' id=4
+2025-06-07 14:07:42,278 - INFO - ROLLBACK
+2025-06-07 14:07:47,069 - INFO - BEGIN (implicit)
+2025-06-07 14:07:47,070 - INFO - INSERT INTO benefit (name, description, amount, type, active) VALUES (?, ?, ?, ?, ?)
+2025-06-07 14:07:47,071 - INFO - [cached since 28.81s ago] ('Seguro de Vida', 'Cobertura em caso de morte ou invalidez', 70.0, 'Segurança', 1)
+2025-06-07 14:07:47,073 - INFO - COMMIT
+2025-06-07 14:07:47,078 - INFO - BEGIN (implicit)
+2025-06-07 14:07:47,079 - INFO - SELECT benefit.name, benefit.description, benefit.amount, benefit.type, benefit.active, benefit.id 
+FROM benefit 
+WHERE benefit.id = ?
+2025-06-07 14:07:47,080 - INFO - [cached since 28.81s ago] (5,)
+2025-06-07 14:07:47,081 - INFO - Benefício criado com sucesso: description='Cobertura em caso de morte ou invalidez' name='Seguro de Vida' active=True amount=70.0 type='Segurança' id=5
+2025-06-07 14:07:47,082 - INFO - ROLLBACK
+2025-06-07 14:07:54,262 - INFO - BEGIN (implicit)
+2025-06-07 14:07:54,265 - INFO - SELECT benefit.name AS benefit_name, benefit.description AS benefit_description, benefit.amount AS benefit_amount, benefit.type AS benefit_type, benefit.active AS benefit_active, benefit.id AS benefit_id 
+FROM benefit
+2025-06-07 14:07:54,266 - INFO - [generated in 0.00098s] ()
+2025-06-07 14:07:54,273 - INFO - ROLLBACK
+2025-06-07 14:11:21,978 - INFO - BEGIN (implicit)
+2025-06-07 14:11:21,978 - INFO - PRAGMA main.table_info("benefit")
+2025-06-07 14:11:21,979 - INFO - [raw sql] ()
+2025-06-07 14:11:21,980 - INFO - PRAGMA main.table_info("department")
+2025-06-07 14:11:21,980 - INFO - [raw sql] ()
+2025-06-07 14:11:21,981 - INFO - PRAGMA main.table_info("employee")
+2025-06-07 14:11:21,983 - INFO - [raw sql] ()
+2025-06-07 14:11:21,985 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-07 14:11:21,985 - INFO - [raw sql] ()
+2025-06-07 14:11:21,986 - INFO - PRAGMA main.table_info("payroll")
+2025-06-07 14:11:21,987 - INFO - [raw sql] ()
+2025-06-07 14:11:21,988 - INFO - COMMIT
+2025-06-07 14:11:40,257 - INFO - BEGIN (implicit)
+2025-06-07 14:11:40,259 - INFO - SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id 
+FROM department
+2025-06-07 14:11:40,260 - INFO - [generated in 0.00073s] ()
+2025-06-07 14:11:40,261 - INFO - 5 departamentos encontrados.
+2025-06-07 14:11:40,263 - INFO - ROLLBACK
+2025-06-07 14:11:50,622 - INFO - BEGIN (implicit)
+2025-06-07 14:11:50,623 - INFO - SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id 
+FROM department
+2025-06-07 14:11:50,623 - INFO - [cached since 10.36s ago] ()
+2025-06-07 14:11:50,624 - INFO - 5 departamentos encontrados.
+2025-06-07 14:11:50,627 - INFO - ROLLBACK
+2025-06-07 14:11:58,120 - INFO - BEGIN (implicit)
+2025-06-07 14:11:58,122 - INFO - SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id 
+FROM department
+2025-06-07 14:11:58,123 - INFO - [cached since 17.86s ago] ()
+2025-06-07 14:11:58,125 - INFO - 5 departamentos encontrados.
+2025-06-07 14:11:58,130 - INFO - ROLLBACK
+2025-06-07 14:12:56,794 - INFO - BEGIN (implicit)
+2025-06-07 14:12:56,794 - INFO - PRAGMA main.table_info("benefit")
+2025-06-07 14:12:56,795 - INFO - [raw sql] ()
+2025-06-07 14:12:56,796 - INFO - PRAGMA main.table_info("department")
+2025-06-07 14:12:56,796 - INFO - [raw sql] ()
+2025-06-07 14:12:56,797 - INFO - PRAGMA main.table_info("employee")
+2025-06-07 14:12:56,797 - INFO - [raw sql] ()
+2025-06-07 14:12:56,798 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-07 14:12:56,798 - INFO - [raw sql] ()
+2025-06-07 14:12:56,799 - INFO - PRAGMA main.table_info("payroll")
+2025-06-07 14:12:56,800 - INFO - [raw sql] ()
+2025-06-07 14:12:56,801 - INFO - COMMIT
+2025-06-07 14:13:10,578 - INFO - BEGIN (implicit)
+2025-06-07 14:13:10,580 - INFO - SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id 
+FROM department
+ LIMIT ? OFFSET ?
+2025-06-07 14:13:10,581 - INFO - [generated in 0.00052s] (2, 0)
+2025-06-07 14:13:10,582 - INFO - 2 departamentos recuperados na página 1
+2025-06-07 14:13:10,584 - INFO - ROLLBACK
+2025-06-07 14:13:17,149 - INFO - BEGIN (implicit)
+2025-06-07 14:13:17,149 - INFO - SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id 
+FROM department
+ LIMIT ? OFFSET ?
+2025-06-07 14:13:17,150 - INFO - [cached since 6.57s ago] (2, 2)
+2025-06-07 14:13:17,151 - INFO - 2 departamentos recuperados na página 2
+2025-06-07 14:13:17,152 - INFO - ROLLBACK
+2025-06-07 14:17:57,428 - INFO - BEGIN (implicit)
+2025-06-07 14:17:57,428 - INFO - PRAGMA main.table_info("benefit")
+2025-06-07 14:17:57,429 - INFO - [raw sql] ()
+2025-06-07 14:17:57,429 - INFO - PRAGMA main.table_info("department")
+2025-06-07 14:17:57,430 - INFO - [raw sql] ()
+2025-06-07 14:17:57,430 - INFO - PRAGMA main.table_info("employee")
+2025-06-07 14:17:57,431 - INFO - [raw sql] ()
+2025-06-07 14:17:57,431 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-07 14:17:57,431 - INFO - [raw sql] ()
+2025-06-07 14:17:57,432 - INFO - PRAGMA main.table_info("payroll")
+2025-06-07 14:17:57,433 - INFO - [raw sql] ()
+2025-06-07 14:17:57,433 - INFO - COMMIT
+2025-06-07 14:20:02,843 - INFO - BEGIN (implicit)
+2025-06-07 14:20:02,853 - INFO - SELECT benefit.name AS benefit_name, benefit.description AS benefit_description, benefit.amount AS benefit_amount, benefit.type AS benefit_type, benefit.active AS benefit_active, benefit.id AS benefit_id 
+FROM benefit
+2025-06-07 14:20:02,855 - INFO - [generated in 0.00178s] ()
+2025-06-07 14:20:02,877 - INFO - ROLLBACK
+2025-06-07 14:20:34,817 - INFO - BEGIN (implicit)
+2025-06-07 14:20:34,818 - INFO - PRAGMA main.table_info("benefit")
+2025-06-07 14:20:34,818 - INFO - [raw sql] ()
+2025-06-07 14:20:34,820 - INFO - PRAGMA main.table_info("department")
+2025-06-07 14:20:34,821 - INFO - [raw sql] ()
+2025-06-07 14:20:34,822 - INFO - PRAGMA main.table_info("employee")
+2025-06-07 14:20:34,823 - INFO - [raw sql] ()
+2025-06-07 14:20:34,824 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-07 14:20:34,824 - INFO - [raw sql] ()
+2025-06-07 14:20:34,826 - INFO - PRAGMA main.table_info("payroll")
+2025-06-07 14:20:34,826 - INFO - [raw sql] ()
+2025-06-07 14:20:34,829 - INFO - COMMIT
+2025-06-07 14:21:28,639 - INFO - BEGIN (implicit)
+2025-06-07 14:21:28,639 - INFO - PRAGMA main.table_info("benefit")
+2025-06-07 14:21:28,640 - INFO - [raw sql] ()
+2025-06-07 14:21:28,642 - INFO - PRAGMA main.table_info("department")
+2025-06-07 14:21:28,642 - INFO - [raw sql] ()
+2025-06-07 14:21:28,644 - INFO - PRAGMA main.table_info("employee")
+2025-06-07 14:21:28,644 - INFO - [raw sql] ()
+2025-06-07 14:21:28,645 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-07 14:21:28,646 - INFO - [raw sql] ()
+2025-06-07 14:21:28,647 - INFO - PRAGMA main.table_info("payroll")
+2025-06-07 14:21:28,647 - INFO - [raw sql] ()
+2025-06-07 14:21:28,649 - INFO - COMMIT
+2025-06-07 14:21:42,601 - INFO - BEGIN (implicit)
+2025-06-07 14:21:42,608 - INFO - SELECT benefit.name AS benefit_name, benefit.description AS benefit_description, benefit.amount AS benefit_amount, benefit.type AS benefit_type, benefit.active AS benefit_active, benefit.id AS benefit_id 
+FROM benefit
+ LIMIT ? OFFSET ?
+2025-06-07 14:21:42,610 - INFO - [generated in 0.00196s] (2, 0)
+2025-06-07 14:21:42,614 - INFO - 2 benefícios recuperados na página 1
+2025-06-07 14:21:42,622 - INFO - ROLLBACK
+2025-06-07 14:22:10,777 - INFO - BEGIN (implicit)
+2025-06-07 14:22:10,792 - INFO - SELECT count(*) AS count_1 
+FROM (SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee) AS anon_1
+2025-06-07 14:22:10,794 - INFO - [generated in 0.00179s] ()
+2025-06-07 14:22:10,798 - INFO - Quantidade total de funcionários: 0
+2025-06-07 14:22:10,801 - INFO - ROLLBACK
+2025-06-07 14:28:40,873 - INFO - BEGIN (implicit)
+2025-06-07 14:28:40,876 - INFO - PRAGMA main.table_info("benefit")
+2025-06-07 14:28:40,878 - INFO - [raw sql] ()
+2025-06-07 14:28:40,882 - INFO - PRAGMA main.table_info("department")
+2025-06-07 14:28:40,884 - INFO - [raw sql] ()
+2025-06-07 14:28:40,885 - INFO - PRAGMA main.table_info("employee")
+2025-06-07 14:28:40,886 - INFO - [raw sql] ()
+2025-06-07 14:28:40,887 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-07 14:28:40,889 - INFO - [raw sql] ()
+2025-06-07 14:28:40,891 - INFO - PRAGMA main.table_info("payroll")
+2025-06-07 14:28:40,892 - INFO - [raw sql] ()
+2025-06-07 14:28:40,894 - INFO - COMMIT
+2025-06-07 14:31:00,168 - INFO - BEGIN (implicit)
+2025-06-07 14:31:00,178 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee
+ LIMIT ? OFFSET ?
+2025-06-07 14:31:00,181 - INFO - [generated in 0.00250s] (1, 0)
+2025-06-07 14:31:00,185 - INFO - 0 funcionários recuperados na página 1
+2025-06-07 14:31:00,190 - INFO - ROLLBACK
+2025-06-07 14:31:16,647 - INFO - BEGIN (implicit)
+2025-06-07 14:31:16,649 - INFO - INSERT INTO employee (name, cpf, position, admission_date, department_id) VALUES (?, ?, ?, ?, ?)
+2025-06-07 14:31:16,650 - INFO - [generated in 0.00152s] ('string', 'string', 'string', 'string', 0)
+2025-06-07 14:31:16,657 - INFO - COMMIT
+2025-06-07 14:31:16,665 - INFO - BEGIN (implicit)
+2025-06-07 14:31:16,670 - INFO - SELECT employee.name, employee.cpf, employee.position, employee.admission_date, employee.department_id, employee.id 
+FROM employee 
+WHERE employee.id = ?
+2025-06-07 14:31:16,673 - INFO - [generated in 0.00236s] (1,)
+2025-06-07 14:31:16,678 - INFO - Funcionário criado com sucesso: name='string' admission_date='string' id=1 cpf='string' position='string' department_id=0
+2025-06-07 14:31:16,683 - INFO - ROLLBACK
+2025-06-07 14:31:20,751 - INFO - BEGIN (implicit)
+2025-06-07 14:31:20,752 - INFO - INSERT INTO employee (name, cpf, position, admission_date, department_id) VALUES (?, ?, ?, ?, ?)
+2025-06-07 14:31:20,753 - INFO - [cached since 4.104s ago] ('string', 'string', 'string', 'string', 0)
+2025-06-07 14:31:20,760 - INFO - COMMIT
+2025-06-07 14:31:20,766 - INFO - BEGIN (implicit)
+2025-06-07 14:31:20,768 - INFO - SELECT employee.name, employee.cpf, employee.position, employee.admission_date, employee.department_id, employee.id 
+FROM employee 
+WHERE employee.id = ?
+2025-06-07 14:31:20,769 - INFO - [cached since 4.099s ago] (2,)
+2025-06-07 14:31:20,771 - INFO - Funcionário criado com sucesso: name='string' admission_date='string' id=2 cpf='string' position='string' department_id=0
+2025-06-07 14:31:20,777 - INFO - ROLLBACK
+2025-06-07 14:31:21,571 - INFO - BEGIN (implicit)
+2025-06-07 14:31:21,573 - INFO - INSERT INTO employee (name, cpf, position, admission_date, department_id) VALUES (?, ?, ?, ?, ?)
+2025-06-07 14:31:21,573 - INFO - [cached since 4.925s ago] ('string', 'string', 'string', 'string', 0)
+2025-06-07 14:31:21,578 - INFO - COMMIT
+2025-06-07 14:31:21,583 - INFO - BEGIN (implicit)
+2025-06-07 14:31:21,585 - INFO - SELECT employee.name, employee.cpf, employee.position, employee.admission_date, employee.department_id, employee.id 
+FROM employee 
+WHERE employee.id = ?
+2025-06-07 14:31:21,586 - INFO - [cached since 4.915s ago] (3,)
+2025-06-07 14:31:21,590 - INFO - Funcionário criado com sucesso: name='string' admission_date='string' id=3 cpf='string' position='string' department_id=0
+2025-06-07 14:31:21,594 - INFO - ROLLBACK
+2025-06-07 14:31:23,024 - INFO - BEGIN (implicit)
+2025-06-07 14:31:23,025 - INFO - INSERT INTO employee (name, cpf, position, admission_date, department_id) VALUES (?, ?, ?, ?, ?)
+2025-06-07 14:31:23,026 - INFO - [cached since 6.377s ago] ('string', 'string', 'string', 'string', 0)
+2025-06-07 14:31:23,030 - INFO - COMMIT
+2025-06-07 14:31:23,035 - INFO - BEGIN (implicit)
+2025-06-07 14:31:23,037 - INFO - SELECT employee.name, employee.cpf, employee.position, employee.admission_date, employee.department_id, employee.id 
+FROM employee 
+WHERE employee.id = ?
+2025-06-07 14:31:23,038 - INFO - [cached since 6.367s ago] (4,)
+2025-06-07 14:31:23,039 - INFO - Funcionário criado com sucesso: name='string' admission_date='string' id=4 cpf='string' position='string' department_id=0
+2025-06-07 14:31:23,042 - INFO - ROLLBACK
+2025-06-07 14:31:23,331 - INFO - BEGIN (implicit)
+2025-06-07 14:31:23,332 - INFO - INSERT INTO employee (name, cpf, position, admission_date, department_id) VALUES (?, ?, ?, ?, ?)
+2025-06-07 14:31:23,334 - INFO - [cached since 6.685s ago] ('string', 'string', 'string', 'string', 0)
+2025-06-07 14:31:23,336 - INFO - COMMIT
+2025-06-07 14:31:23,343 - INFO - BEGIN (implicit)
+2025-06-07 14:31:23,344 - INFO - SELECT employee.name, employee.cpf, employee.position, employee.admission_date, employee.department_id, employee.id 
+FROM employee 
+WHERE employee.id = ?
+2025-06-07 14:31:23,346 - INFO - [cached since 6.675s ago] (5,)
+2025-06-07 14:31:23,348 - INFO - Funcionário criado com sucesso: name='string' admission_date='string' id=5 cpf='string' position='string' department_id=0
+2025-06-07 14:31:23,350 - INFO - ROLLBACK
+2025-06-07 14:31:23,447 - INFO - BEGIN (implicit)
+2025-06-07 14:31:23,448 - INFO - INSERT INTO employee (name, cpf, position, admission_date, department_id) VALUES (?, ?, ?, ?, ?)
+2025-06-07 14:31:23,449 - INFO - [cached since 6.8s ago] ('string', 'string', 'string', 'string', 0)
+2025-06-07 14:31:23,454 - INFO - COMMIT
+2025-06-07 14:31:23,459 - INFO - BEGIN (implicit)
+2025-06-07 14:31:23,460 - INFO - SELECT employee.name, employee.cpf, employee.position, employee.admission_date, employee.department_id, employee.id 
+FROM employee 
+WHERE employee.id = ?
+2025-06-07 14:31:23,461 - INFO - [cached since 6.791s ago] (6,)
+2025-06-07 14:31:23,463 - INFO - Funcionário criado com sucesso: name='string' admission_date='string' id=6 cpf='string' position='string' department_id=0
+2025-06-07 14:31:23,466 - INFO - ROLLBACK
+2025-06-07 14:31:23,632 - INFO - BEGIN (implicit)
+2025-06-07 14:31:23,633 - INFO - INSERT INTO employee (name, cpf, position, admission_date, department_id) VALUES (?, ?, ?, ?, ?)
+2025-06-07 14:31:23,634 - INFO - [cached since 6.985s ago] ('string', 'string', 'string', 'string', 0)
+2025-06-07 14:31:23,636 - INFO - COMMIT
+2025-06-07 14:31:23,643 - INFO - BEGIN (implicit)
+2025-06-07 14:31:23,645 - INFO - SELECT employee.name, employee.cpf, employee.position, employee.admission_date, employee.department_id, employee.id 
+FROM employee 
+WHERE employee.id = ?
+2025-06-07 14:31:23,647 - INFO - [cached since 6.976s ago] (7,)
+2025-06-07 14:31:23,648 - INFO - Funcionário criado com sucesso: name='string' admission_date='string' id=7 cpf='string' position='string' department_id=0
+2025-06-07 14:31:23,654 - INFO - ROLLBACK
+2025-06-07 14:31:23,764 - INFO - BEGIN (implicit)
+2025-06-07 14:31:23,766 - INFO - INSERT INTO employee (name, cpf, position, admission_date, department_id) VALUES (?, ?, ?, ?, ?)
+2025-06-07 14:31:23,768 - INFO - [cached since 7.119s ago] ('string', 'string', 'string', 'string', 0)
+2025-06-07 14:31:23,770 - INFO - COMMIT
+2025-06-07 14:31:23,775 - INFO - BEGIN (implicit)
+2025-06-07 14:31:23,780 - INFO - SELECT employee.name, employee.cpf, employee.position, employee.admission_date, employee.department_id, employee.id 
+FROM employee 
+WHERE employee.id = ?
+2025-06-07 14:31:23,781 - INFO - [cached since 7.111s ago] (8,)
+2025-06-07 14:31:23,783 - INFO - Funcionário criado com sucesso: name='string' admission_date='string' id=8 cpf='string' position='string' department_id=0
+2025-06-07 14:31:23,787 - INFO - ROLLBACK
+2025-06-07 14:31:23,981 - INFO - BEGIN (implicit)
+2025-06-07 14:31:23,982 - INFO - INSERT INTO employee (name, cpf, position, admission_date, department_id) VALUES (?, ?, ?, ?, ?)
+2025-06-07 14:31:23,983 - INFO - [cached since 7.334s ago] ('string', 'string', 'string', 'string', 0)
+2025-06-07 14:31:23,987 - INFO - COMMIT
+2025-06-07 14:31:23,994 - INFO - BEGIN (implicit)
+2025-06-07 14:31:23,997 - INFO - SELECT employee.name, employee.cpf, employee.position, employee.admission_date, employee.department_id, employee.id 
+FROM employee 
+WHERE employee.id = ?
+2025-06-07 14:31:23,998 - INFO - [cached since 7.327s ago] (9,)
+2025-06-07 14:31:24,001 - INFO - Funcionário criado com sucesso: name='string' admission_date='string' id=9 cpf='string' position='string' department_id=0
+2025-06-07 14:31:24,005 - INFO - ROLLBACK
+2025-06-07 14:31:24,153 - INFO - BEGIN (implicit)
+2025-06-07 14:31:24,155 - INFO - INSERT INTO employee (name, cpf, position, admission_date, department_id) VALUES (?, ?, ?, ?, ?)
+2025-06-07 14:31:24,155 - INFO - [cached since 7.507s ago] ('string', 'string', 'string', 'string', 0)
+2025-06-07 14:31:24,159 - INFO - COMMIT
+2025-06-07 14:31:24,163 - INFO - BEGIN (implicit)
+2025-06-07 14:31:24,166 - INFO - SELECT employee.name, employee.cpf, employee.position, employee.admission_date, employee.department_id, employee.id 
+FROM employee 
+WHERE employee.id = ?
+2025-06-07 14:31:24,167 - INFO - [cached since 7.497s ago] (10,)
+2025-06-07 14:31:24,170 - INFO - Funcionário criado com sucesso: name='string' admission_date='string' id=10 cpf='string' position='string' department_id=0
+2025-06-07 14:31:24,173 - INFO - ROLLBACK
+2025-06-07 14:31:31,239 - INFO - BEGIN (implicit)
+2025-06-07 14:31:31,241 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee
+2025-06-07 14:31:31,242 - INFO - [generated in 0.00107s] ()
+2025-06-07 14:31:31,250 - INFO - ROLLBACK
+2025-06-07 14:31:42,295 - INFO - BEGIN (implicit)
+2025-06-07 14:31:42,305 - INFO - SELECT count(*) AS count_1 
+FROM (SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee) AS anon_1
+2025-06-07 14:31:42,307 - INFO - [generated in 0.00143s] ()
+2025-06-07 14:31:42,309 - INFO - Quantidade total de funcionários: 10
+2025-06-07 14:31:42,311 - INFO - ROLLBACK
+2025-06-07 14:31:55,013 - INFO - BEGIN (implicit)
+2025-06-07 14:31:55,016 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee 
+WHERE employee.department_id = ?
+2025-06-07 14:31:55,018 - INFO - [generated in 0.00151s] (1,)
+2025-06-07 14:31:55,020 - WARNING - Nenhum funcionário encontrado no departamento ID 1
+2025-06-07 14:31:55,023 - INFO - ROLLBACK
+2025-06-07 14:32:05,020 - INFO - BEGIN (implicit)
+2025-06-07 14:32:05,022 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee 
+WHERE employee.department_id = ?
+2025-06-07 14:32:05,022 - INFO - [cached since 10.01s ago] (0,)
+2025-06-07 14:32:05,028 - INFO - ROLLBACK
+2025-06-07 14:32:24,825 - INFO - BEGIN (implicit)
+2025-06-07 14:32:24,826 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee
+2025-06-07 14:32:24,828 - INFO - [cached since 53.59s ago] ()
+2025-06-07 14:32:24,836 - INFO - ROLLBACK
+2025-06-07 14:32:42,268 - INFO - BEGIN (implicit)
+2025-06-07 14:32:42,268 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee
+ LIMIT ? OFFSET ?
+2025-06-07 14:32:42,269 - INFO - [cached since 102.1s ago] (5, 0)
+2025-06-07 14:32:42,270 - INFO - 5 funcionários recuperados na página 1
+2025-06-07 14:32:42,274 - INFO - ROLLBACK
+2025-06-07 14:36:18,338 - INFO - BEGIN (implicit)
+2025-06-07 14:36:18,342 - INFO - SELECT benefit.name AS benefit_name, benefit.description AS benefit_description, benefit.amount AS benefit_amount, benefit.type AS benefit_type, benefit.active AS benefit_active, benefit.id AS benefit_id 
+FROM benefit
+2025-06-07 14:36:18,343 - INFO - [generated in 0.00098s] ()
+2025-06-07 14:36:18,352 - INFO - ROLLBACK
+2025-06-07 14:36:29,098 - INFO - BEGIN (implicit)
+2025-06-07 14:36:29,099 - INFO - SELECT benefit.name AS benefit_name, benefit.description AS benefit_description, benefit.amount AS benefit_amount, benefit.type AS benefit_type, benefit.active AS benefit_active, benefit.id AS benefit_id 
+FROM benefit
+2025-06-07 14:36:29,099 - INFO - [cached since 10.76s ago] ()
+2025-06-07 14:36:29,106 - INFO - ROLLBACK
+2025-06-07 14:36:32,253 - INFO - BEGIN (implicit)
+2025-06-07 14:36:32,256 - INFO - SELECT benefit.name AS benefit_name, benefit.description AS benefit_description, benefit.amount AS benefit_amount, benefit.type AS benefit_type, benefit.active AS benefit_active, benefit.id AS benefit_id 
+FROM benefit 
+WHERE lower(benefit.name) LIKE lower(?)
+2025-06-07 14:36:32,258 - INFO - [generated in 0.00147s] ('%Benefício mensal para alimentação em restaurantes%',)
+2025-06-07 14:36:32,265 - INFO - ROLLBACK
+2025-06-07 14:36:56,431 - INFO - BEGIN (implicit)
+2025-06-07 14:36:56,432 - INFO - SELECT benefit.name AS benefit_name, benefit.description AS benefit_description, benefit.amount AS benefit_amount, benefit.type AS benefit_type, benefit.active AS benefit_active, benefit.id AS benefit_id 
+FROM benefit 
+WHERE lower(benefit.name) LIKE lower(?)
+2025-06-07 14:36:56,433 - INFO - [cached since 24.18s ago] ('%Vale refeição%',)
+2025-06-07 14:36:56,436 - INFO - ROLLBACK
+2025-06-07 14:43:16,075 - INFO - BEGIN (implicit)
+2025-06-07 14:43:16,076 - INFO - PRAGMA main.table_info("benefit")
+2025-06-07 14:43:16,077 - INFO - [raw sql] ()
+2025-06-07 14:43:16,079 - INFO - PRAGMA main.table_info("employee")
+2025-06-07 14:43:16,080 - INFO - [raw sql] ()
+2025-06-07 14:43:16,081 - INFO - PRAGMA main.table_info("department")
+2025-06-07 14:43:16,081 - INFO - [raw sql] ()
+2025-06-07 14:43:16,082 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-07 14:43:16,083 - INFO - [raw sql] ()
+2025-06-07 14:43:16,085 - INFO - PRAGMA main.table_info("payroll")
+2025-06-07 14:43:16,086 - INFO - [raw sql] ()
+2025-06-07 14:43:16,086 - INFO - COMMIT
+2025-06-07 14:43:32,824 - INFO - BEGIN (implicit)
+2025-06-07 14:43:32,834 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee 
+WHERE employee.id IN (?)
+2025-06-07 14:43:32,835 - INFO - [generated in 0.00166s] (0,)
+2025-06-07 14:43:32,840 - INFO - ROLLBACK
+2025-06-07 14:43:51,855 - INFO - BEGIN (implicit)
+2025-06-07 14:43:51,858 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee 
+WHERE employee.id IN (?)
+2025-06-07 14:43:51,859 - INFO - [cached since 19.03s ago] (1,)
+2025-06-07 14:43:51,869 - INFO - INSERT INTO department (name, location, description, extension) VALUES (?, ?, ?, ?)
+2025-06-07 14:43:51,871 - INFO - [generated in 0.00177s] ('string', 'string', 'string', 'string')
+2025-06-07 14:43:51,882 - INFO - UPDATE employee SET department_id=? WHERE employee.id = ?
+2025-06-07 14:43:51,884 - INFO - [generated in 0.00169s] (6, 1)
+2025-06-07 14:43:51,888 - INFO - COMMIT
+2025-06-07 14:43:51,898 - INFO - BEGIN (implicit)
+2025-06-07 14:43:51,903 - INFO - SELECT department.name, department.location, department.description, department.extension, department.id 
+FROM department 
+WHERE department.id = ?
+2025-06-07 14:43:51,904 - INFO - [generated in 0.00200s] (6,)
+2025-06-07 14:43:51,907 - INFO - Departamento criado com sucesso: description='string' location='string' id=6 name='string' extension='string'
+2025-06-07 14:43:51,916 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee 
+WHERE ? = employee.department_id
+2025-06-07 14:43:51,917 - INFO - [generated in 0.00156s] (6,)
+2025-06-07 14:43:51,924 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee 
+WHERE ? = employee.department_id
+2025-06-07 14:43:51,926 - INFO - [generated in 0.00231s] (6,)
+2025-06-07 14:43:51,934 - INFO - ROLLBACK
+2025-06-07 14:44:06,013 - INFO - BEGIN (implicit)
+2025-06-07 14:44:06,015 - INFO - SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id 
+FROM department
+2025-06-07 14:44:06,017 - INFO - [generated in 0.00125s] ()
+2025-06-07 14:44:06,020 - INFO - 6 departamentos encontrados.
+2025-06-07 14:44:06,032 - INFO - ROLLBACK
+2025-06-07 14:44:32,406 - INFO - BEGIN (implicit)
+2025-06-07 14:44:32,407 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee 
+WHERE employee.id IN (?)
+2025-06-07 14:44:32,408 - INFO - [cached since 59.57s ago] (2,)
+2025-06-07 14:44:32,410 - INFO - INSERT INTO department (name, location, description, extension) VALUES (?, ?, ?, ?)
+2025-06-07 14:44:32,411 - INFO - [cached since 40.54s ago] ('string', 'string', 'string', 'string')
+2025-06-07 14:44:32,416 - INFO - UPDATE employee SET department_id=? WHERE employee.id = ?
+2025-06-07 14:44:32,417 - INFO - [cached since 40.54s ago] (7, 2)
+2025-06-07 14:44:32,420 - INFO - COMMIT
+2025-06-07 14:44:32,424 - INFO - BEGIN (implicit)
+2025-06-07 14:44:32,425 - INFO - SELECT department.name, department.location, department.description, department.extension, department.id 
+FROM department 
+WHERE department.id = ?
+2025-06-07 14:44:32,425 - INFO - [cached since 40.52s ago] (7,)
+2025-06-07 14:44:32,426 - INFO - Departamento criado com sucesso: description='string' location='string' id=7 name='string' extension='string'
+2025-06-07 14:44:32,428 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee 
+WHERE ? = employee.department_id
+2025-06-07 14:44:32,429 - INFO - [cached since 40.51s ago] (7,)
+2025-06-07 14:44:32,431 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee 
+WHERE ? = employee.department_id
+2025-06-07 14:44:32,431 - INFO - [cached since 40.51s ago] (7,)
+2025-06-07 14:44:32,435 - INFO - ROLLBACK
+2025-06-07 14:44:42,742 - INFO - BEGIN (implicit)
+2025-06-07 14:44:42,743 - INFO - SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id 
+FROM department
+2025-06-07 14:44:42,744 - INFO - [cached since 36.73s ago] ()
+2025-06-07 14:44:42,744 - INFO - 7 departamentos encontrados.
+2025-06-07 14:44:42,748 - INFO - ROLLBACK
+2025-06-07 14:46:20,382 - INFO - BEGIN (implicit)
+2025-06-07 14:46:20,383 - INFO - PRAGMA main.table_info("benefit")
+2025-06-07 14:46:20,383 - INFO - [raw sql] ()
+2025-06-07 14:46:20,384 - INFO - PRAGMA temp.table_info("benefit")
+2025-06-07 14:46:20,385 - INFO - [raw sql] ()
+2025-06-07 14:46:20,385 - INFO - PRAGMA main.table_info("employee")
+2025-06-07 14:46:20,386 - INFO - [raw sql] ()
+2025-06-07 14:46:20,387 - INFO - PRAGMA temp.table_info("employee")
+2025-06-07 14:46:20,387 - INFO - [raw sql] ()
+2025-06-07 14:46:20,387 - INFO - PRAGMA main.table_info("department")
+2025-06-07 14:46:20,388 - INFO - [raw sql] ()
+2025-06-07 14:46:20,388 - INFO - PRAGMA temp.table_info("department")
+2025-06-07 14:46:20,389 - INFO - [raw sql] ()
+2025-06-07 14:46:20,389 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-07 14:46:20,389 - INFO - [raw sql] ()
+2025-06-07 14:46:20,391 - INFO - PRAGMA temp.table_info("employeebenefit")
+2025-06-07 14:46:20,391 - INFO - [raw sql] ()
+2025-06-07 14:46:20,392 - INFO - PRAGMA main.table_info("payroll")
+2025-06-07 14:46:20,392 - INFO - [raw sql] ()
+2025-06-07 14:46:20,393 - INFO - PRAGMA temp.table_info("payroll")
+2025-06-07 14:46:20,394 - INFO - [raw sql] ()
+2025-06-07 14:46:20,396 - INFO - 
+CREATE TABLE benefit (
+	name VARCHAR NOT NULL, 
+	description VARCHAR, 
+	amount FLOAT NOT NULL, 
+	type VARCHAR NOT NULL, 
+	active BOOLEAN NOT NULL, 
+	id INTEGER NOT NULL, 
+	PRIMARY KEY (id)
+)
+
+
+2025-06-07 14:46:20,398 - INFO - [no key 0.00135s] ()
+2025-06-07 14:46:20,403 - INFO - 
+CREATE TABLE department (
+	name VARCHAR NOT NULL, 
+	location VARCHAR NOT NULL, 
+	description VARCHAR, 
+	extension VARCHAR, 
+	id INTEGER NOT NULL, 
+	PRIMARY KEY (id)
+)
+
+
+2025-06-07 14:46:20,404 - INFO - [no key 0.00096s] ()
+2025-06-07 14:46:20,409 - INFO - 
+CREATE TABLE employee (
+	name VARCHAR NOT NULL, 
+	cpf VARCHAR NOT NULL, 
+	position VARCHAR NOT NULL, 
+	admission_date VARCHAR NOT NULL, 
+	department_id INTEGER, 
+	id INTEGER NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(department_id) REFERENCES department (id)
+)
+
+
+2025-06-07 14:46:20,410 - INFO - [no key 0.00077s] ()
+2025-06-07 14:46:20,415 - INFO - 
+CREATE TABLE employeebenefit (
+	id INTEGER NOT NULL, 
+	employee_id INTEGER NOT NULL, 
+	benefit_id INTEGER NOT NULL, 
+	start_date VARCHAR NOT NULL, 
+	end_date VARCHAR, 
+	custom_amount FLOAT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(employee_id) REFERENCES employee (id), 
+	FOREIGN KEY(benefit_id) REFERENCES benefit (id)
+)
+
+
+2025-06-07 14:46:20,415 - INFO - [no key 0.00078s] ()
+2025-06-07 14:46:20,419 - INFO - 
+CREATE TABLE payroll (
+	id INTEGER NOT NULL, 
+	employee_id INTEGER NOT NULL, 
+	gross_salary FLOAT NOT NULL, 
+	deductions FLOAT NOT NULL, 
+	net_salary FLOAT NOT NULL, 
+	reference_month VARCHAR NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(employee_id) REFERENCES employee (id)
+)
+
+
+2025-06-07 14:46:20,421 - INFO - [no key 0.00136s] ()
+2025-06-07 14:46:20,425 - INFO - COMMIT
+2025-06-07 14:46:39,413 - INFO - BEGIN (implicit)
+2025-06-07 14:46:39,420 - INFO - INSERT INTO employee (name, cpf, position, admission_date, department_id) VALUES (?, ?, ?, ?, ?)
+2025-06-07 14:46:39,422 - INFO - [generated in 0.00251s] ('string', 'string', 'string', 'string', 0)
+2025-06-07 14:46:39,431 - INFO - COMMIT
+2025-06-07 14:46:39,438 - INFO - BEGIN (implicit)
+2025-06-07 14:46:39,447 - INFO - SELECT employee.name, employee.cpf, employee.position, employee.admission_date, employee.department_id, employee.id 
+FROM employee 
+WHERE employee.id = ?
+2025-06-07 14:46:39,449 - INFO - [generated in 0.00152s] (1,)
+2025-06-07 14:46:39,451 - INFO - Funcionário criado com sucesso: name='string' admission_date='string' id=1 cpf='string' position='string' department_id=0
+2025-06-07 14:46:39,458 - INFO - ROLLBACK
+2025-06-07 14:46:51,422 - INFO - BEGIN (implicit)
+2025-06-07 14:46:51,424 - INFO - INSERT INTO employee (name, cpf, position, admission_date, department_id) VALUES (?, ?, ?, ?, ?)
+2025-06-07 14:46:51,425 - INFO - [cached since 12.01s ago] ('string', 'string', 'string', 'string', 1)
+2025-06-07 14:46:51,429 - INFO - COMMIT
+2025-06-07 14:46:51,435 - INFO - BEGIN (implicit)
+2025-06-07 14:46:51,439 - INFO - SELECT employee.name, employee.cpf, employee.position, employee.admission_date, employee.department_id, employee.id 
+FROM employee 
+WHERE employee.id = ?
+2025-06-07 14:46:51,441 - INFO - [cached since 11.99s ago] (2,)
+2025-06-07 14:46:51,444 - INFO - Funcionário criado com sucesso: name='string' admission_date='string' id=2 cpf='string' position='string' department_id=1
+2025-06-07 14:46:51,447 - INFO - ROLLBACK
+2025-06-07 14:46:55,405 - INFO - BEGIN (implicit)
+2025-06-07 14:46:55,407 - INFO - INSERT INTO employee (name, cpf, position, admission_date, department_id) VALUES (?, ?, ?, ?, ?)
+2025-06-07 14:46:55,408 - INFO - [cached since 15.99s ago] ('string', 'string', 'string', 'string', 2)
+2025-06-07 14:46:55,412 - INFO - COMMIT
+2025-06-07 14:46:55,417 - INFO - BEGIN (implicit)
+2025-06-07 14:46:55,419 - INFO - SELECT employee.name, employee.cpf, employee.position, employee.admission_date, employee.department_id, employee.id 
+FROM employee 
+WHERE employee.id = ?
+2025-06-07 14:46:55,420 - INFO - [cached since 15.97s ago] (3,)
+2025-06-07 14:46:55,422 - INFO - Funcionário criado com sucesso: name='string' admission_date='string' id=3 cpf='string' position='string' department_id=2
+2025-06-07 14:46:55,425 - INFO - ROLLBACK
+2025-06-07 14:47:16,512 - INFO - BEGIN (implicit)
+2025-06-07 14:47:16,516 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee 
+WHERE employee.id = ?
+2025-06-07 14:47:16,518 - INFO - [generated in 0.00144s] (1,)
+2025-06-07 14:47:16,531 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee 
+WHERE employee.id IN (?)
+2025-06-07 14:47:16,532 - INFO - [generated in 0.00177s] (1,)
+2025-06-07 14:47:16,544 - INFO - INSERT INTO department (name, location, description, extension) VALUES (?, ?, ?, ?)
+2025-06-07 14:47:16,545 - INFO - [generated in 0.00158s] ('string', 'string', 'string', 'string')
+2025-06-07 14:47:16,555 - INFO - UPDATE employee SET department_id=? WHERE employee.id = ?
+2025-06-07 14:47:16,558 - INFO - [generated in 0.00279s] (1, 1)
+2025-06-07 14:47:16,562 - INFO - COMMIT
+2025-06-07 14:47:16,572 - INFO - BEGIN (implicit)
+2025-06-07 14:47:16,579 - INFO - SELECT department.name, department.location, department.description, department.extension, department.id 
+FROM department 
+WHERE department.id = ?
+2025-06-07 14:47:16,580 - INFO - [generated in 0.00144s] (1,)
+2025-06-07 14:47:16,582 - INFO - Departamento criado com sucesso: name='string' extension='string' description='string' location='string' id=1
+2025-06-07 14:47:16,589 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee 
+WHERE ? = employee.department_id
+2025-06-07 14:47:16,592 - INFO - [generated in 0.00219s] (1,)
+2025-06-07 14:47:16,728 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee 
+WHERE ? = employee.department_id
+2025-06-07 14:47:16,730 - INFO - [generated in 0.00194s] (1,)
+2025-06-07 14:47:16,738 - INFO - ROLLBACK
+2025-06-07 14:47:26,477 - INFO - BEGIN (implicit)
+2025-06-07 14:47:26,479 - INFO - SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id 
+FROM department
+2025-06-07 14:47:26,480 - INFO - [generated in 0.00084s] ()
+2025-06-07 14:47:26,481 - INFO - 1 departamentos encontrados.
+2025-06-07 14:47:26,485 - INFO - ROLLBACK
+2025-06-07 14:52:04,986 - INFO - BEGIN (implicit)
+2025-06-07 14:52:04,986 - INFO - PRAGMA main.table_info("benefit")
+2025-06-07 14:52:04,987 - INFO - [raw sql] ()
+2025-06-07 14:52:04,990 - INFO - PRAGMA main.table_info("employee")
+2025-06-07 14:52:04,991 - INFO - [raw sql] ()
+2025-06-07 14:52:04,992 - INFO - PRAGMA main.table_info("department")
+2025-06-07 14:52:04,993 - INFO - [raw sql] ()
+2025-06-07 14:52:04,994 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-07 14:52:04,994 - INFO - [raw sql] ()
+2025-06-07 14:52:04,995 - INFO - PRAGMA main.table_info("payroll")
+2025-06-07 14:52:04,995 - INFO - [raw sql] ()
+2025-06-07 14:52:04,996 - INFO - COMMIT
+2025-06-07 14:52:12,392 - INFO - BEGIN (implicit)
+2025-06-07 14:52:12,401 - INFO - SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id 
+FROM department
+2025-06-07 14:52:12,403 - INFO - [generated in 0.00201s] ()
+2025-06-07 14:52:12,408 - INFO - 1 departamentos encontrados.
+2025-06-07 14:52:12,414 - INFO - ROLLBACK
+2025-06-07 14:52:26,869 - INFO - BEGIN (implicit)
+2025-06-07 14:52:26,874 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee 
+WHERE employee.id IN (?)
+2025-06-07 14:52:26,875 - INFO - [generated in 0.00152s] (1,)
+2025-06-07 14:52:26,892 - INFO - INSERT INTO department (name, location, description, extension) VALUES (?, ?, ?, ?)
+2025-06-07 14:52:26,899 - INFO - [generated in 0.00770s] ('string', 'string', 'string', 'string')
+2025-06-07 14:52:26,920 - INFO - UPDATE employee SET department_id=? WHERE employee.id = ?
+2025-06-07 14:52:26,927 - INFO - [generated in 0.00788s] (2, 1)
+2025-06-07 14:52:26,938 - INFO - COMMIT
+2025-06-07 14:52:26,957 - INFO - BEGIN (implicit)
+2025-06-07 14:52:26,973 - INFO - SELECT department.name, department.location, department.description, department.extension, department.id 
+FROM department 
+WHERE department.id = ?
+2025-06-07 14:52:26,986 - INFO - [generated in 0.01295s] (2,)
+2025-06-07 14:52:27,002 - INFO - Departamento criado com sucesso: location='string' description='string' id=2 name='string' extension='string'
+2025-06-07 14:52:27,019 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee 
+WHERE ? = employee.department_id
+2025-06-07 14:52:27,046 - INFO - [generated in 0.02691s] (2,)
+2025-06-07 14:52:27,075 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee 
+WHERE ? = employee.department_id
+2025-06-07 14:52:27,086 - INFO - [generated in 0.01144s] (2,)
+2025-06-07 14:52:27,105 - INFO - ROLLBACK
+2025-06-07 14:52:35,906 - INFO - BEGIN (implicit)
+2025-06-07 14:52:35,907 - INFO - SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id 
+FROM department
+2025-06-07 14:52:35,908 - INFO - [cached since 23.51s ago] ()
+2025-06-07 14:52:35,910 - INFO - 2 departamentos encontrados.
+2025-06-07 14:52:35,916 - INFO - ROLLBACK
+2025-06-07 15:33:13,147 - INFO - BEGIN (implicit)
+2025-06-07 15:33:13,148 - INFO - PRAGMA main.table_info("benefit")
+2025-06-07 15:33:13,149 - INFO - [raw sql] ()
+2025-06-07 15:33:13,153 - INFO - PRAGMA main.table_info("employee")
+2025-06-07 15:33:13,155 - INFO - [raw sql] ()
+2025-06-07 15:33:13,158 - INFO - PRAGMA main.table_info("department")
+2025-06-07 15:33:13,158 - INFO - [raw sql] ()
+2025-06-07 15:33:13,159 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-07 15:33:13,159 - INFO - [raw sql] ()
+2025-06-07 15:33:13,160 - INFO - PRAGMA main.table_info("payroll")
+2025-06-07 15:33:13,160 - INFO - [raw sql] ()
+2025-06-07 15:33:13,161 - INFO - COMMIT
+2025-06-07 15:34:13,495 - INFO - BEGIN (implicit)
+2025-06-07 15:34:13,495 - INFO - PRAGMA main.table_info("benefit")
+2025-06-07 15:34:13,496 - INFO - [raw sql] ()
+2025-06-07 15:34:13,497 - INFO - PRAGMA main.table_info("employee")
+2025-06-07 15:34:13,498 - INFO - [raw sql] ()
+2025-06-07 15:34:13,498 - INFO - PRAGMA main.table_info("department")
+2025-06-07 15:34:13,499 - INFO - [raw sql] ()
+2025-06-07 15:34:13,501 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-07 15:34:13,501 - INFO - [raw sql] ()
+2025-06-07 15:34:13,502 - INFO - PRAGMA main.table_info("payroll")
+2025-06-07 15:34:13,503 - INFO - [raw sql] ()
+2025-06-07 15:34:13,506 - INFO - COMMIT
+2025-06-07 15:36:33,655 - INFO - BEGIN (implicit)
+2025-06-07 15:36:33,655 - INFO - PRAGMA main.table_info("benefit")
+2025-06-07 15:36:33,656 - INFO - [raw sql] ()
+2025-06-07 15:36:33,657 - INFO - PRAGMA main.table_info("employee")
+2025-06-07 15:36:33,657 - INFO - [raw sql] ()
+2025-06-07 15:36:33,659 - INFO - PRAGMA main.table_info("department")
+2025-06-07 15:36:33,660 - INFO - [raw sql] ()
+2025-06-07 15:36:33,661 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-07 15:36:33,662 - INFO - [raw sql] ()
+2025-06-07 15:36:33,665 - INFO - PRAGMA main.table_info("payroll")
+2025-06-07 15:36:33,667 - INFO - [raw sql] ()
+2025-06-07 15:36:33,669 - INFO - COMMIT
+2025-06-07 15:41:19,252 - INFO - BEGIN (implicit)
+2025-06-07 15:41:19,257 - INFO - SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id 
+FROM department
+2025-06-07 15:41:19,258 - INFO - [generated in 0.00138s] ()
+2025-06-07 15:41:19,261 - INFO - 2 departamentos encontrados.
+2025-06-07 15:41:19,269 - INFO - ROLLBACK
+2025-06-07 15:41:39,325 - INFO - BEGIN (implicit)
+2025-06-07 15:41:39,331 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee 
+WHERE employee.id = ?
+2025-06-07 15:41:39,332 - INFO - [generated in 0.00118s] (1,)
+2025-06-07 15:41:39,349 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee 
+WHERE employee.id IN (?)
+2025-06-07 15:41:39,350 - INFO - [generated in 0.00226s] (1,)
+2025-06-07 15:41:39,359 - INFO - INSERT INTO department (name, location, description, extension) VALUES (?, ?, ?, ?)
+2025-06-07 15:41:39,360 - INFO - [generated in 0.00112s] ('string2', 'string', 'string', 'string')
+2025-06-07 15:41:39,370 - INFO - UPDATE employee SET department_id=? WHERE employee.id = ?
+2025-06-07 15:41:39,372 - INFO - [generated in 0.00301s] (3, 1)
+2025-06-07 15:41:39,376 - INFO - COMMIT
+2025-06-07 15:41:39,387 - INFO - BEGIN (implicit)
+2025-06-07 15:41:39,391 - INFO - SELECT department.name, department.location, department.description, department.extension, department.id 
+FROM department 
+WHERE department.id = ?
+2025-06-07 15:41:39,393 - INFO - [generated in 0.00180s] (3,)
+2025-06-07 15:41:39,396 - INFO - Departamento criado com sucesso: description='string' location='string' id=3 name='string2' extension='string'
+2025-06-07 15:41:39,404 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee 
+WHERE ? = employee.department_id
+2025-06-07 15:41:39,406 - INFO - [generated in 0.00171s] (3,)
+2025-06-07 15:41:39,414 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee 
+WHERE ? = employee.department_id
+2025-06-07 15:41:39,416 - INFO - [generated in 0.00192s] (3,)
+2025-06-07 15:41:39,423 - INFO - ROLLBACK
+2025-06-07 15:41:45,651 - INFO - BEGIN (implicit)
+2025-06-07 15:41:45,652 - INFO - SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id 
+FROM department
+2025-06-07 15:41:45,653 - INFO - [cached since 26.4s ago] ()
+2025-06-07 15:41:45,655 - INFO - 3 departamentos encontrados.
+2025-06-07 15:41:45,658 - INFO - ROLLBACK
+2025-06-07 15:44:16,523 - INFO - BEGIN (implicit)
+2025-06-07 15:44:16,524 - INFO - PRAGMA main.table_info("benefit")
+2025-06-07 15:44:16,526 - INFO - [raw sql] ()
+2025-06-07 15:44:16,528 - INFO - PRAGMA main.table_info("employee")
+2025-06-07 15:44:16,529 - INFO - [raw sql] ()
+2025-06-07 15:44:16,530 - INFO - PRAGMA main.table_info("department")
+2025-06-07 15:44:16,531 - INFO - [raw sql] ()
+2025-06-07 15:44:16,532 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-07 15:44:16,533 - INFO - [raw sql] ()
+2025-06-07 15:44:16,534 - INFO - PRAGMA main.table_info("payroll")
+2025-06-07 15:44:16,535 - INFO - [raw sql] ()
+2025-06-07 15:44:16,536 - INFO - COMMIT
+2025-06-07 15:46:09,082 - INFO - BEGIN (implicit)
+2025-06-07 15:46:09,083 - INFO - PRAGMA main.table_info("benefit")
+2025-06-07 15:46:09,084 - INFO - [raw sql] ()
+2025-06-07 15:46:09,089 - INFO - PRAGMA main.table_info("employee")
+2025-06-07 15:46:09,091 - INFO - [raw sql] ()
+2025-06-07 15:46:09,097 - INFO - PRAGMA main.table_info("department")
+2025-06-07 15:46:09,099 - INFO - [raw sql] ()
+2025-06-07 15:46:09,101 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-07 15:46:09,102 - INFO - [raw sql] ()
+2025-06-07 15:46:09,104 - INFO - PRAGMA main.table_info("payroll")
+2025-06-07 15:46:09,104 - INFO - [raw sql] ()
+2025-06-07 15:46:09,105 - INFO - COMMIT
+2025-06-07 15:46:20,568 - INFO - BEGIN (implicit)
+2025-06-07 15:46:20,588 - INFO - SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id, employee_1.name AS employee_1_name, employee_1.cpf AS employee_1_cpf, employee_1.position AS employee_1_position, employee_1.admission_date AS employee_1_admission_date, employee_1.department_id AS employee_1_department_id, employee_1.id AS employee_1_id, employee_2.name AS employee_2_name, employee_2.cpf AS employee_2_cpf, employee_2.position AS employee_2_position, employee_2.admission_date AS employee_2_admission_date, employee_2.department_id AS employee_2_department_id, employee_2.id AS employee_2_id 
+FROM department LEFT OUTER JOIN employee AS employee_1 ON department.id = employee_1.department_id LEFT OUTER JOIN employee AS employee_2 ON department.id = employee_2.department_id
+2025-06-07 15:46:20,589 - INFO - [generated in 0.00168s] ()
+2025-06-07 15:46:20,597 - INFO - 3 departamentos encontrados.
+2025-06-07 15:46:20,607 - INFO - ROLLBACK
+2025-06-07 15:46:35,428 - INFO - BEGIN (implicit)
+2025-06-07 15:46:35,430 - INFO - SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id 
+FROM department
+ LIMIT ? OFFSET ?
+2025-06-07 15:46:35,432 - INFO - [generated in 0.00130s] (2, 0)
+2025-06-07 15:46:35,434 - INFO - 2 departamentos recuperados na página 1
+2025-06-07 15:46:35,439 - INFO - ROLLBACK
+2025-06-07 15:46:59,321 - INFO - BEGIN (implicit)
+2025-06-07 15:46:59,342 - INFO - SELECT anon_1.department_name AS anon_1_department_name, anon_1.department_location AS anon_1_department_location, anon_1.department_description AS anon_1_department_description, anon_1.department_extension AS anon_1_department_extension, anon_1.department_id AS anon_1_department_id, employee_1.name AS employee_1_name, employee_1.cpf AS employee_1_cpf, employee_1.position AS employee_1_position, employee_1.admission_date AS employee_1_admission_date, employee_1.department_id AS employee_1_department_id, employee_1.id AS employee_1_id, employee_2.name AS employee_2_name, employee_2.cpf AS employee_2_cpf, employee_2.position AS employee_2_position, employee_2.admission_date AS employee_2_admission_date, employee_2.department_id AS employee_2_department_id, employee_2.id AS employee_2_id 
+FROM (SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id 
+FROM department 
+WHERE department.id = ?
+ LIMIT ? OFFSET ?) AS anon_1 LEFT OUTER JOIN employee AS employee_1 ON anon_1.department_id = employee_1.department_id LEFT OUTER JOIN employee AS employee_2 ON anon_1.department_id = employee_2.department_id
+2025-06-07 15:46:59,344 - INFO - [generated in 0.00293s] (2, 1, 0)
+2025-06-07 15:46:59,354 - INFO - UPDATE employee SET department_id=? WHERE employee.id = ?
+2025-06-07 15:46:59,355 - INFO - [generated in 0.00077s] (None, 3)
+2025-06-07 15:46:59,360 - INFO - DELETE FROM department WHERE department.id = ?
+2025-06-07 15:46:59,363 - INFO - [generated in 0.00224s] (2,)
+2025-06-07 15:46:59,365 - INFO - COMMIT
+2025-06-07 15:46:59,372 - INFO - Departamento deletado com sucesso: ID 2
+2025-06-07 15:47:11,359 - INFO - BEGIN (implicit)
+2025-06-07 15:47:11,368 - INFO - SELECT count(*) AS count_1 
+FROM (SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id 
+FROM department) AS anon_1
+2025-06-07 15:47:11,369 - INFO - [generated in 0.00157s] ()
+2025-06-07 15:47:11,373 - INFO - Quantidade total de departamentos: 2
+2025-06-07 15:47:11,376 - INFO - ROLLBACK
+2025-06-07 15:47:22,460 - INFO - BEGIN (implicit)
+2025-06-07 15:47:22,462 - INFO - SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id, employee_1.name AS employee_1_name, employee_1.cpf AS employee_1_cpf, employee_1.position AS employee_1_position, employee_1.admission_date AS employee_1_admission_date, employee_1.department_id AS employee_1_department_id, employee_1.id AS employee_1_id, employee_2.name AS employee_2_name, employee_2.cpf AS employee_2_cpf, employee_2.position AS employee_2_position, employee_2.admission_date AS employee_2_admission_date, employee_2.department_id AS employee_2_department_id, employee_2.id AS employee_2_id 
+FROM department LEFT OUTER JOIN employee AS employee_1 ON department.id = employee_1.department_id LEFT OUTER JOIN employee AS employee_2 ON department.id = employee_2.department_id
+2025-06-07 15:47:22,463 - INFO - [cached since 61.87s ago] ()
+2025-06-07 15:47:22,466 - INFO - 2 departamentos encontrados.
+2025-06-07 15:47:22,471 - INFO - ROLLBACK
+2025-06-07 15:50:53,344 - INFO - BEGIN (implicit)
+2025-06-07 15:50:53,346 - INFO - SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id 
+FROM department
+ LIMIT ? OFFSET ?
+2025-06-07 15:50:53,347 - INFO - [cached since 257.9s ago] (2, 0)
+2025-06-07 15:50:53,349 - INFO - 2 departamentos recuperados na página 1
+2025-06-07 15:50:53,354 - INFO - ROLLBACK
+2025-06-07 15:52:31,497 - INFO - BEGIN (implicit)
+2025-06-07 15:52:31,498 - INFO - PRAGMA main.table_info("benefit")
+2025-06-07 15:52:31,499 - INFO - [raw sql] ()
+2025-06-07 15:52:31,501 - INFO - PRAGMA main.table_info("employee")
+2025-06-07 15:52:31,501 - INFO - [raw sql] ()
+2025-06-07 15:52:31,504 - INFO - PRAGMA main.table_info("department")
+2025-06-07 15:52:31,505 - INFO - [raw sql] ()
+2025-06-07 15:52:31,506 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-07 15:52:31,508 - INFO - [raw sql] ()
+2025-06-07 15:52:31,509 - INFO - PRAGMA main.table_info("payroll")
+2025-06-07 15:52:31,511 - INFO - [raw sql] ()
+2025-06-07 15:52:31,512 - INFO - COMMIT
+2025-06-07 15:53:01,719 - INFO - BEGIN (implicit)
+2025-06-07 15:53:01,743 - INFO - SELECT anon_1.department_name AS anon_1_department_name, anon_1.department_location AS anon_1_department_location, anon_1.department_description AS anon_1_department_description, anon_1.department_extension AS anon_1_department_extension, anon_1.department_id AS anon_1_department_id, employee_1.name AS employee_1_name, employee_1.cpf AS employee_1_cpf, employee_1.position AS employee_1_position, employee_1.admission_date AS employee_1_admission_date, employee_1.department_id AS employee_1_department_id, employee_1.id AS employee_1_id, employee_2.name AS employee_2_name, employee_2.cpf AS employee_2_cpf, employee_2.position AS employee_2_position, employee_2.admission_date AS employee_2_admission_date, employee_2.department_id AS employee_2_department_id, employee_2.id AS employee_2_id 
+FROM (SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id 
+FROM department
+ LIMIT ? OFFSET ?) AS anon_1 LEFT OUTER JOIN employee AS employee_1 ON anon_1.department_id = employee_1.department_id LEFT OUTER JOIN employee AS employee_2 ON anon_1.department_id = employee_2.department_id
+2025-06-07 15:53:01,745 - INFO - [generated in 0.00233s] (2, 0)
+2025-06-07 15:53:01,750 - INFO - 2 departamentos recuperados na página 1
+2025-06-07 15:53:01,757 - INFO - ROLLBACK
+2025-06-07 15:53:06,362 - INFO - BEGIN (implicit)
+2025-06-07 15:53:06,364 - INFO - SELECT anon_1.department_name AS anon_1_department_name, anon_1.department_location AS anon_1_department_location, anon_1.department_description AS anon_1_department_description, anon_1.department_extension AS anon_1_department_extension, anon_1.department_id AS anon_1_department_id, employee_1.name AS employee_1_name, employee_1.cpf AS employee_1_cpf, employee_1.position AS employee_1_position, employee_1.admission_date AS employee_1_admission_date, employee_1.department_id AS employee_1_department_id, employee_1.id AS employee_1_id, employee_2.name AS employee_2_name, employee_2.cpf AS employee_2_cpf, employee_2.position AS employee_2_position, employee_2.admission_date AS employee_2_admission_date, employee_2.department_id AS employee_2_department_id, employee_2.id AS employee_2_id 
+FROM (SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id 
+FROM department
+ LIMIT ? OFFSET ?) AS anon_1 LEFT OUTER JOIN employee AS employee_1 ON anon_1.department_id = employee_1.department_id LEFT OUTER JOIN employee AS employee_2 ON anon_1.department_id = employee_2.department_id
+2025-06-07 15:53:06,367 - INFO - [cached since 4.624s ago] (1, 0)
+2025-06-07 15:53:06,370 - INFO - 1 departamentos recuperados na página 1
+2025-06-07 15:53:06,375 - INFO - ROLLBACK
+2025-06-07 15:53:14,542 - INFO - BEGIN (implicit)
+2025-06-07 15:53:14,543 - INFO - SELECT anon_1.department_name AS anon_1_department_name, anon_1.department_location AS anon_1_department_location, anon_1.department_description AS anon_1_department_description, anon_1.department_extension AS anon_1_department_extension, anon_1.department_id AS anon_1_department_id, employee_1.name AS employee_1_name, employee_1.cpf AS employee_1_cpf, employee_1.position AS employee_1_position, employee_1.admission_date AS employee_1_admission_date, employee_1.department_id AS employee_1_department_id, employee_1.id AS employee_1_id, employee_2.name AS employee_2_name, employee_2.cpf AS employee_2_cpf, employee_2.position AS employee_2_position, employee_2.admission_date AS employee_2_admission_date, employee_2.department_id AS employee_2_department_id, employee_2.id AS employee_2_id 
+FROM (SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id 
+FROM department
+ LIMIT ? OFFSET ?) AS anon_1 LEFT OUTER JOIN employee AS employee_1 ON anon_1.department_id = employee_1.department_id LEFT OUTER JOIN employee AS employee_2 ON anon_1.department_id = employee_2.department_id
+2025-06-07 15:53:14,545 - INFO - [cached since 12.8s ago] (2, 0)
+2025-06-07 15:53:14,548 - INFO - 2 departamentos recuperados na página 1
+2025-06-07 15:53:14,551 - INFO - ROLLBACK
+2025-06-07 16:02:24,173 - INFO - BEGIN (implicit)
+2025-06-07 16:02:24,175 - INFO - PRAGMA main.table_info("benefit")
+2025-06-07 16:02:24,175 - INFO - [raw sql] ()
+2025-06-07 16:02:24,178 - INFO - PRAGMA main.table_info("employee")
+2025-06-07 16:02:24,178 - INFO - [raw sql] ()
+2025-06-07 16:02:24,179 - INFO - PRAGMA main.table_info("department")
+2025-06-07 16:02:24,180 - INFO - [raw sql] ()
+2025-06-07 16:02:24,180 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-07 16:02:24,181 - INFO - [raw sql] ()
+2025-06-07 16:02:24,183 - INFO - PRAGMA main.table_info("payroll")
+2025-06-07 16:02:24,184 - INFO - [raw sql] ()
+2025-06-07 16:02:24,188 - INFO - COMMIT
+2025-06-07 16:02:56,343 - INFO - BEGIN (implicit)
+2025-06-07 16:02:56,350 - INFO - SELECT benefit.name AS benefit_name, benefit.description AS benefit_description, benefit.amount AS benefit_amount, benefit.type AS benefit_type, benefit.active AS benefit_active, benefit.id AS benefit_id 
+FROM benefit
+2025-06-07 16:02:56,353 - INFO - [generated in 0.00322s] ()
+2025-06-07 16:02:56,363 - INFO - ROLLBACK
+2025-06-07 16:03:29,472 - INFO - BEGIN (implicit)
+2025-06-07 16:03:29,479 - INFO - INSERT INTO benefit (name, description, amount, type, active) VALUES (?, ?, ?, ?, ?)
+2025-06-07 16:03:29,480 - INFO - [generated in 0.00120s] ('Vale Refeição', 'Benefício mensal para alimentação em restaurantes', 500.0, 'Alimentação', 1)
+2025-06-07 16:03:29,485 - INFO - COMMIT
+2025-06-07 16:03:29,496 - INFO - BEGIN (implicit)
+2025-06-07 16:03:29,501 - INFO - SELECT benefit.name, benefit.description, benefit.amount, benefit.type, benefit.active, benefit.id 
+FROM benefit 
+WHERE benefit.id = ?
+2025-06-07 16:03:29,502 - INFO - [generated in 0.00136s] (1,)
+2025-06-07 16:03:29,506 - INFO - Benefício criado com sucesso: description='Benefício mensal para alimentação em restaurantes' name='Vale Refeição' id=1 type='Alimentação' amount=500.0 active=True
+2025-06-07 16:03:29,511 - INFO - ROLLBACK
+2025-06-07 16:03:39,138 - INFO - BEGIN (implicit)
+2025-06-07 16:03:39,140 - INFO - INSERT INTO benefit (name, description, amount, type, active) VALUES (?, ?, ?, ?, ?)
+2025-06-07 16:03:39,140 - INFO - [cached since 9.662s ago] ('Plano de Saúde', 'Plano médico corporativo com cobertura nacional', 350.0, 'Saúde', 1)
+2025-06-07 16:03:39,145 - INFO - COMMIT
+2025-06-07 16:03:39,151 - INFO - BEGIN (implicit)
+2025-06-07 16:03:39,153 - INFO - SELECT benefit.name, benefit.description, benefit.amount, benefit.type, benefit.active, benefit.id 
+FROM benefit 
+WHERE benefit.id = ?
+2025-06-07 16:03:39,154 - INFO - [cached since 9.653s ago] (2,)
+2025-06-07 16:03:39,157 - INFO - Benefício criado com sucesso: description='Plano médico corporativo com cobertura nacional' name='Plano de Saúde' id=2 type='Saúde' amount=350.0 active=True
+2025-06-07 16:03:39,161 - INFO - ROLLBACK
+2025-06-07 16:03:46,148 - INFO - BEGIN (implicit)
+2025-06-07 16:03:46,149 - INFO - INSERT INTO benefit (name, description, amount, type, active) VALUES (?, ?, ?, ?, ?)
+2025-06-07 16:03:46,150 - INFO - [cached since 16.67s ago] ('Auxílio Home Office', 'Ajuda de custo para colaboradores remotos', 150.0, 'Trabalho Remoto', 1)
+2025-06-07 16:03:46,154 - INFO - COMMIT
+2025-06-07 16:03:46,164 - INFO - BEGIN (implicit)
+2025-06-07 16:03:46,167 - INFO - SELECT benefit.name, benefit.description, benefit.amount, benefit.type, benefit.active, benefit.id 
+FROM benefit 
+WHERE benefit.id = ?
+2025-06-07 16:03:46,170 - INFO - [cached since 16.67s ago] (3,)
+2025-06-07 16:03:46,178 - INFO - Benefício criado com sucesso: description='Ajuda de custo para colaboradores remotos' name='Auxílio Home Office' id=3 type='Trabalho Remoto' amount=150.0 active=True
+2025-06-07 16:03:46,184 - INFO - ROLLBACK
+2025-06-07 16:03:51,260 - INFO - BEGIN (implicit)
+2025-06-07 16:03:51,261 - INFO - INSERT INTO benefit (name, description, amount, type, active) VALUES (?, ?, ?, ?, ?)
+2025-06-07 16:03:51,262 - INFO - [cached since 21.78s ago] ('Bônus de Desempenho', 'Gratificação por metas alcançadas no trimestre', 1000.0, 'Variável', 0)
+2025-06-07 16:03:51,266 - INFO - COMMIT
+2025-06-07 16:03:51,274 - INFO - BEGIN (implicit)
+2025-06-07 16:03:51,278 - INFO - SELECT benefit.name, benefit.description, benefit.amount, benefit.type, benefit.active, benefit.id 
+FROM benefit 
+WHERE benefit.id = ?
+2025-06-07 16:03:51,280 - INFO - [cached since 21.78s ago] (4,)
+2025-06-07 16:03:51,283 - INFO - Benefício criado com sucesso: description='Gratificação por metas alcançadas no trimestre' name='Bônus de Desempenho' id=4 type='Variável' amount=1000.0 active=False
+2025-06-07 16:03:51,287 - INFO - ROLLBACK
+2025-06-07 16:03:56,662 - INFO - BEGIN (implicit)
+2025-06-07 16:03:56,663 - INFO - INSERT INTO benefit (name, description, amount, type, active) VALUES (?, ?, ?, ?, ?)
+2025-06-07 16:03:56,664 - INFO - [cached since 27.19s ago] ('Seguro de Vida', 'Cobertura em caso de morte ou invalidez', 70.0, 'Segurança', 1)
+2025-06-07 16:03:56,669 - INFO - COMMIT
+2025-06-07 16:03:56,676 - INFO - BEGIN (implicit)
+2025-06-07 16:03:56,678 - INFO - SELECT benefit.name, benefit.description, benefit.amount, benefit.type, benefit.active, benefit.id 
+FROM benefit 
+WHERE benefit.id = ?
+2025-06-07 16:03:56,679 - INFO - [cached since 27.18s ago] (5,)
+2025-06-07 16:03:56,680 - INFO - Benefício criado com sucesso: description='Cobertura em caso de morte ou invalidez' name='Seguro de Vida' id=5 type='Segurança' amount=70.0 active=True
+2025-06-07 16:03:56,683 - INFO - ROLLBACK
+2025-06-07 16:04:03,659 - INFO - BEGIN (implicit)
+2025-06-07 16:04:03,661 - INFO - SELECT benefit.name AS benefit_name, benefit.description AS benefit_description, benefit.amount AS benefit_amount, benefit.type AS benefit_type, benefit.active AS benefit_active, benefit.id AS benefit_id 
+FROM benefit
+2025-06-07 16:04:03,662 - INFO - [cached since 67.31s ago] ()
+2025-06-07 16:04:03,671 - INFO - ROLLBACK
+2025-06-07 16:05:12,745 - INFO - BEGIN (implicit)
+2025-06-07 16:05:12,750 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee 
+WHERE employee.id = ?
+2025-06-07 16:05:12,752 - INFO - [generated in 0.00203s] (1,)
+2025-06-07 16:05:12,763 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee 
+WHERE employee.id IN (?)
+2025-06-07 16:05:12,764 - INFO - [generated in 0.00176s] (1,)
+2025-06-07 16:05:12,772 - INFO - INSERT INTO department (name, location, description, extension) VALUES (?, ?, ?, ?)
+2025-06-07 16:05:12,774 - INFO - [generated in 0.00149s] ('Tecnologia da Informação', 'Bloco A - 3º andar', 'Responsável pela infraestrutura de TI, desenvolvimento de sistemas e suporte técnico.', '1020')
+2025-06-07 16:05:12,782 - INFO - UPDATE employee SET department_id=? WHERE employee.id = ?
+2025-06-07 16:05:12,783 - INFO - [generated in 0.00129s] (4, 1)
+2025-06-07 16:05:12,787 - INFO - COMMIT
+2025-06-07 16:05:12,794 - INFO - BEGIN (implicit)
+2025-06-07 16:05:12,798 - INFO - SELECT department.name, department.location, department.description, department.extension, department.id 
+FROM department 
+WHERE department.id = ?
+2025-06-07 16:05:12,799 - INFO - [generated in 0.00177s] (4,)
+2025-06-07 16:05:12,802 - INFO - Departamento criado com sucesso: name='Tecnologia da Informação' extension='1020' description='Responsável pela infraestrutura de TI, desenvolvimento de sistemas e suporte técnico.' location='Bloco A - 3º andar' id=4
+2025-06-07 16:05:12,809 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee 
+WHERE ? = employee.department_id
+2025-06-07 16:05:12,810 - INFO - [generated in 0.00137s] (4,)
+2025-06-07 16:05:12,817 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee 
+WHERE ? = employee.department_id
+2025-06-07 16:05:12,818 - INFO - [generated in 0.00141s] (4,)
+2025-06-07 16:05:12,823 - INFO - ROLLBACK
+2025-06-07 16:05:36,982 - INFO - BEGIN (implicit)
+2025-06-07 16:05:36,993 - INFO - SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id, employee_1.name AS employee_1_name, employee_1.cpf AS employee_1_cpf, employee_1.position AS employee_1_position, employee_1.admission_date AS employee_1_admission_date, employee_1.department_id AS employee_1_department_id, employee_1.id AS employee_1_id, employee_2.name AS employee_2_name, employee_2.cpf AS employee_2_cpf, employee_2.position AS employee_2_position, employee_2.admission_date AS employee_2_admission_date, employee_2.department_id AS employee_2_department_id, employee_2.id AS employee_2_id 
+FROM department LEFT OUTER JOIN employee AS employee_1 ON department.id = employee_1.department_id LEFT OUTER JOIN employee AS employee_2 ON department.id = employee_2.department_id 
+WHERE lower(department.name) LIKE lower(?)
+2025-06-07 16:05:36,996 - INFO - [generated in 0.00151s] ('%Tecnologia da Informação%',)
+2025-06-07 16:05:37,001 - INFO - 1 departamentos encontrados com nome contendo 'Tecnologia da Informação'
+2025-06-07 16:05:37,005 - INFO - ROLLBACK
+2025-06-07 16:05:56,866 - INFO - BEGIN (implicit)
+2025-06-07 16:05:56,874 - INFO - SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id, employee_1.name AS employee_1_name, employee_1.cpf AS employee_1_cpf, employee_1.position AS employee_1_position, employee_1.admission_date AS employee_1_admission_date, employee_1.department_id AS employee_1_department_id, employee_1.id AS employee_1_id, employee_2.name AS employee_2_name, employee_2.cpf AS employee_2_cpf, employee_2.position AS employee_2_position, employee_2.admission_date AS employee_2_admission_date, employee_2.department_id AS employee_2_department_id, employee_2.id AS employee_2_id 
+FROM department LEFT OUTER JOIN employee AS employee_1 ON department.id = employee_1.department_id LEFT OUTER JOIN employee AS employee_2 ON department.id = employee_2.department_id 
+WHERE lower(department.description) LIKE lower(?)
+2025-06-07 16:05:56,876 - INFO - [generated in 0.00211s] ('%Responsável pela infraestrutura de TI, desenvolvimento de sistemas e suporte técnico.%',)
+2025-06-07 16:05:56,878 - INFO - 1 departamentos encontrados com descrição contendo 'Responsável pela infraestrutura de TI, desenvolvimento de sistemas e suporte técnico.'
+2025-06-07 16:05:56,881 - INFO - ROLLBACK
+2025-06-07 16:12:52,642 - INFO - BEGIN (implicit)
+2025-06-07 16:12:52,643 - INFO - PRAGMA main.table_info("benefit")
+2025-06-07 16:12:52,644 - INFO - [raw sql] ()
+2025-06-07 16:12:52,645 - INFO - PRAGMA main.table_info("employee")
+2025-06-07 16:12:52,646 - INFO - [raw sql] ()
+2025-06-07 16:12:52,647 - INFO - PRAGMA main.table_info("department")
+2025-06-07 16:12:52,648 - INFO - [raw sql] ()
+2025-06-07 16:12:52,649 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-07 16:12:52,649 - INFO - [raw sql] ()
+2025-06-07 16:12:52,650 - INFO - PRAGMA main.table_info("payroll")
+2025-06-07 16:12:52,651 - INFO - [raw sql] ()
+2025-06-07 16:12:52,658 - INFO - COMMIT
+2025-06-07 16:12:58,745 - INFO - BEGIN (implicit)
+2025-06-07 16:12:58,749 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee
+2025-06-07 16:12:58,751 - INFO - [generated in 0.00111s] ()
+2025-06-07 16:12:58,755 - INFO - ROLLBACK

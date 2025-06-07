@@ -1,5 +1,6 @@
 
-from fastapi import APIRouter, Depends, HTTPException
+from typing import List
+from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.exc import SQLAlchemyError
 from sqlmodel import Session
 from app.models.Benefit import Benefit, BenefitCreate, BenefitRead
@@ -64,7 +65,7 @@ def delete_benefit(benefit_id: int, session: Session = Depends(get_session)):
         session.commit()
         logger.info(f"Benefício deletado com sucesso: ID {benefit_id}")
         return {"message": "Benefício deletado com sucesso"}
-    except SQLAlchemyError as e:
+    except SQLAlchemyError:
         session.rollback()
         logger.exception("Erro ao deletar benefício")
         raise HTTPException(status_code=500, detail="Erro interno ao deletar benefício")
@@ -79,7 +80,7 @@ def get_all_benefits(session: Session = Depends(get_session)):
         benefits = session.query(Benefit).all()
         logger.debug(f"Benefícios recuperados com sucesso: {benefits}")
         return benefits
-    except SQLAlchemyError as e:
+    except SQLAlchemyError:
         logger.exception("Erro ao listar benefícios")
         raise HTTPException(status_code=500, detail="Erro interno ao listar benefícios")
     
@@ -97,7 +98,7 @@ def search_benefits(name: str = None, session: Session = Depends(get_session)):
         benefits = query.all()
         logger.debug(f"Benefícios encontrados: {benefits}")
         return benefits
-    except SQLAlchemyError as e:
+    except SQLAlchemyError:
         logger.exception("Erro ao pesquisar benefícios")
         raise HTTPException(status_code=500, detail="Erro interno ao pesquisar benefícios")
     
@@ -115,6 +116,25 @@ def count_benefits(session: Session = Depends(get_session)):
         logger.exception("Erro ao contar benefícios")
         raise HTTPException(status_code=500, detail="Erro interno ao contar benefícios")
     
+@router.get("/paginated", response_model=List[Benefit])
+def get_benefit_paginated(
+    page: int = Query(1, ge=1),
+    limit: int = Query(10, ge=1),
+    session=Depends(get_session)
+):
+    """
+    Retorna benefícios paginados
+    """
+    logger.debug(f"Buscando beneficios página {page} com limite {limit}")
+    try:
+        offset = (page - 1) * limit
+        benefits = session.query(Benefit).offset(offset).limit(limit).all()
+        logger.info(f"{len(benefits)} benefícios recuperados na página {page}")
+        return benefits
+    except SQLAlchemyError:
+        logger.exception("Erro ao listar benefícios paginados")
+        raise HTTPException(status_code=500, detail="Erro interno ao lisar benefícios")
+    
 @router.get("/{benefit_id}", response_model=Benefit)
 def get_benefit(benefit_id: int, session=Depends(get_session)):
     """
@@ -127,6 +147,6 @@ def get_benefit(benefit_id: int, session=Depends(get_session)):
             raise HTTPException(status_code=404, detail="Benefício não encontrado")
         logger.debug(f"Benefício recuperado com sucesso: {benefit}")
         return benefit
-    except SQLAlchemyError as e:
+    except SQLAlchemyError:
         logger.exception("Erro ao buscar benefício por ID")
         raise HTTPException(status_code=500, detail="Erro interno ao buscar benefício")

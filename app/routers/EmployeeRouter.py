@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import SQLAlchemyError
 from typing import List, Optional
@@ -120,6 +120,25 @@ def search_employees(name: Optional[str] = None, position: Optional[str] = None,
         raise HTTPException(status_code=404, detail="Funcionário não encontrado")
     
     return employees
+
+@router.get("/paginated", response_model=List[Employee])
+def get_employee_paginated(
+    page: int = Query(1, ge=1),
+    limit: int = Query(10, ge=1),
+    session=Depends(get_session)
+):
+    """
+    Retorna departamentos funcionários
+    """
+    logger.debug(f"Buscando funcionários página {page} com limite {limit}")
+    try:
+        offset = (page - 1) * limit
+        employes = session.query(Employee).offset(offset).limit(limit).all()
+        logger.info(f"{len(employes)} funcionários recuperados na página {page}")
+        return employes
+    except SQLAlchemyError:
+        logger.exception("Erro ao listar funcionários paginados")
+        raise HTTPException(status_code=500, detail="Erro interno ao listar funcionários")
 
 @router.get("/{employee_id}", response_model=EmployeeRead)
 def read_employee(employee_id: int, session: Session = Depends(get_session)):
