@@ -2993,3 +2993,66 @@ WHERE lower(department.description) LIKE lower(?)
 FROM employee
 2025-06-07 16:12:58,751 - INFO - [generated in 0.00111s] ()
 2025-06-07 16:12:58,755 - INFO - ROLLBACK
+2025-06-07 16:14:33,006 - INFO - BEGIN (implicit)
+2025-06-07 16:14:33,006 - INFO - PRAGMA main.table_info("benefit")
+2025-06-07 16:14:33,008 - INFO - [raw sql] ()
+2025-06-07 16:14:33,010 - INFO - PRAGMA main.table_info("employee")
+2025-06-07 16:14:33,011 - INFO - [raw sql] ()
+2025-06-07 16:14:33,013 - INFO - PRAGMA main.table_info("department")
+2025-06-07 16:14:33,013 - INFO - [raw sql] ()
+2025-06-07 16:14:33,014 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-07 16:14:33,016 - INFO - [raw sql] ()
+2025-06-07 16:14:33,018 - INFO - PRAGMA main.table_info("payroll")
+2025-06-07 16:14:33,018 - INFO - [raw sql] ()
+2025-06-07 16:14:33,019 - INFO - COMMIT
+2025-06-07 16:14:48,335 - INFO - BEGIN (implicit)
+2025-06-07 16:14:48,365 - INFO - SELECT anon_1.department_name AS anon_1_department_name, anon_1.department_location AS anon_1_department_location, anon_1.department_description AS anon_1_department_description, anon_1.department_extension AS anon_1_department_extension, anon_1.department_id AS anon_1_department_id, employee_1.name AS employee_1_name, employee_1.cpf AS employee_1_cpf, employee_1.position AS employee_1_position, employee_1.admission_date AS employee_1_admission_date, employee_1.department_id AS employee_1_department_id, employee_1.id AS employee_1_id, employee_2.name AS employee_2_name, employee_2.cpf AS employee_2_cpf, employee_2.position AS employee_2_position, employee_2.admission_date AS employee_2_admission_date, employee_2.department_id AS employee_2_department_id, employee_2.id AS employee_2_id 
+FROM (SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id 
+FROM department 
+WHERE department.id = ?
+ LIMIT ? OFFSET ?) AS anon_1 LEFT OUTER JOIN employee AS employee_1 ON anon_1.department_id = employee_1.department_id LEFT OUTER JOIN employee AS employee_2 ON anon_1.department_id = employee_2.department_id
+2025-06-07 16:14:48,367 - INFO - [generated in 0.00238s] (1, 1, 0)
+2025-06-07 16:14:48,383 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee 
+WHERE employee.id = ?
+2025-06-07 16:14:48,385 - INFO - [generated in 0.00167s] (0,)
+2025-06-07 16:14:48,388 - INFO - ROLLBACK
+2025-06-07 16:14:55,862 - INFO - BEGIN (implicit)
+2025-06-07 16:14:55,863 - INFO - SELECT anon_1.department_name AS anon_1_department_name, anon_1.department_location AS anon_1_department_location, anon_1.department_description AS anon_1_department_description, anon_1.department_extension AS anon_1_department_extension, anon_1.department_id AS anon_1_department_id, employee_1.name AS employee_1_name, employee_1.cpf AS employee_1_cpf, employee_1.position AS employee_1_position, employee_1.admission_date AS employee_1_admission_date, employee_1.department_id AS employee_1_department_id, employee_1.id AS employee_1_id, employee_2.name AS employee_2_name, employee_2.cpf AS employee_2_cpf, employee_2.position AS employee_2_position, employee_2.admission_date AS employee_2_admission_date, employee_2.department_id AS employee_2_department_id, employee_2.id AS employee_2_id 
+FROM (SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id 
+FROM department 
+WHERE department.id = ?
+ LIMIT ? OFFSET ?) AS anon_1 LEFT OUTER JOIN employee AS employee_1 ON anon_1.department_id = employee_1.department_id LEFT OUTER JOIN employee AS employee_2 ON anon_1.department_id = employee_2.department_id
+2025-06-07 16:14:55,865 - INFO - [cached since 7.499s ago] (1, 1, 0)
+2025-06-07 16:14:55,870 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee 
+WHERE employee.id = ?
+2025-06-07 16:14:55,872 - INFO - [cached since 7.489s ago] (1,)
+2025-06-07 16:14:55,899 - INFO - UPDATE employee SET department_id=? WHERE employee.id = ?
+2025-06-07 16:14:55,900 - INFO - [generated in 0.00136s] [(1, 1), (None, 2)]
+2025-06-07 16:14:55,914 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee 
+WHERE employee.id IN (?, ?)
+2025-06-07 16:14:55,924 - INFO - [generated in 0.00975s] (2, 3)
+2025-06-07 16:14:55,943 - INFO - UPDATE employee SET department_id=? WHERE employee.id = ?
+2025-06-07 16:14:55,953 - INFO - [generated in 0.01067s] (1, 3)
+2025-06-07 16:14:55,959 - INFO - COMMIT
+2025-06-07 16:14:55,977 - INFO - BEGIN (implicit)
+2025-06-07 16:14:56,006 - INFO - SELECT department.name, department.location, department.description, department.extension, department.id, employee_1.name AS name_1, employee_1.cpf, employee_1.position, employee_1.admission_date, employee_1.department_id, employee_1.id AS id_1, employee_2.name AS name_2, employee_2.cpf AS cpf_1, employee_2.position AS position_1, employee_2.admission_date AS admission_date_1, employee_2.department_id AS department_id_1, employee_2.id AS id_2 
+FROM department LEFT OUTER JOIN employee AS employee_1 ON department.id = employee_1.department_id LEFT OUTER JOIN employee AS employee_2 ON department.id = employee_2.department_id 
+WHERE department.id = ?
+2025-06-07 16:14:56,018 - INFO - [generated in 0.01267s] (1,)
+2025-06-07 16:14:56,045 - INFO - SELECT anon_1.department_name AS anon_1_department_name, anon_1.department_location AS anon_1_department_location, anon_1.department_description AS anon_1_department_description, anon_1.department_extension AS anon_1_department_extension, anon_1.department_id AS anon_1_department_id, employee_1.name AS employee_1_name, employee_1.cpf AS employee_1_cpf, employee_1.position AS employee_1_position, employee_1.admission_date AS employee_1_admission_date, employee_1.department_id AS employee_1_department_id, employee_1.id AS employee_1_id, employee_2.name AS employee_2_name, employee_2.cpf AS employee_2_cpf, employee_2.position AS employee_2_position, employee_2.admission_date AS employee_2_admission_date, employee_2.department_id AS employee_2_department_id, employee_2.id AS employee_2_id 
+FROM (SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id 
+FROM department 
+WHERE department.id = ?
+ LIMIT ? OFFSET ?) AS anon_1 LEFT OUTER JOIN employee AS employee_1 ON anon_1.department_id = employee_1.department_id LEFT OUTER JOIN employee AS employee_2 ON anon_1.department_id = employee_2.department_id
+2025-06-07 16:14:56,053 - INFO - [cached since 7.687s ago] (1, 1, 0)
+2025-06-07 16:14:56,061 - INFO - Departamento ID 1 atualizado com sucesso
+2025-06-07 16:14:56,070 - INFO - ROLLBACK
+2025-06-07 16:15:04,314 - INFO - BEGIN (implicit)
+2025-06-07 16:15:04,324 - INFO - SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id, employee_1.name AS employee_1_name, employee_1.cpf AS employee_1_cpf, employee_1.position AS employee_1_position, employee_1.admission_date AS employee_1_admission_date, employee_1.department_id AS employee_1_department_id, employee_1.id AS employee_1_id, employee_2.name AS employee_2_name, employee_2.cpf AS employee_2_cpf, employee_2.position AS employee_2_position, employee_2.admission_date AS employee_2_admission_date, employee_2.department_id AS employee_2_department_id, employee_2.id AS employee_2_id 
+FROM department LEFT OUTER JOIN employee AS employee_1 ON department.id = employee_1.department_id LEFT OUTER JOIN employee AS employee_2 ON department.id = employee_2.department_id
+2025-06-07 16:15:04,325 - INFO - [generated in 0.00166s] ()
+2025-06-07 16:15:04,331 - INFO - 3 departamentos encontrados.
+2025-06-07 16:15:04,338 - INFO - ROLLBACK
