@@ -606,3 +606,1246 @@ WHERE employee.id = ?
 FROM employee
 2025-05-28 20:15:17,468 - INFO - [generated in 0.00159s] ()
 2025-05-28 20:15:17,474 - INFO - ROLLBACK
+2025-06-06 09:13:04,395 - INFO - BEGIN (implicit)
+2025-06-06 09:13:04,396 - INFO - PRAGMA main.table_info("benefit")
+2025-06-06 09:13:04,396 - INFO - [raw sql] ()
+2025-06-06 09:13:04,399 - INFO - PRAGMA main.table_info("department")
+2025-06-06 09:13:04,400 - INFO - [raw sql] ()
+2025-06-06 09:13:04,401 - INFO - PRAGMA main.table_info("employee")
+2025-06-06 09:13:04,402 - INFO - [raw sql] ()
+2025-06-06 09:13:04,404 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-06 09:13:04,406 - INFO - [raw sql] ()
+2025-06-06 09:13:04,408 - INFO - PRAGMA main.table_info("payroll")
+2025-06-06 09:13:04,408 - INFO - [raw sql] ()
+2025-06-06 09:13:04,409 - INFO - COMMIT
+2025-06-06 09:34:57,886 - INFO - BEGIN (implicit)
+2025-06-06 09:34:57,887 - INFO - PRAGMA main.table_info("benefit")
+2025-06-06 09:34:57,888 - INFO - [raw sql] ()
+2025-06-06 09:34:57,891 - INFO - PRAGMA main.table_info("department")
+2025-06-06 09:34:57,892 - INFO - [raw sql] ()
+2025-06-06 09:34:57,893 - INFO - PRAGMA main.table_info("employee")
+2025-06-06 09:34:57,893 - INFO - [raw sql] ()
+2025-06-06 09:34:57,894 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-06 09:34:57,894 - INFO - [raw sql] ()
+2025-06-06 09:34:57,895 - INFO - PRAGMA main.table_info("payroll")
+2025-06-06 09:34:57,896 - INFO - [raw sql] ()
+2025-06-06 09:34:57,897 - INFO - COMMIT
+2025-06-06 10:18:29,577 - INFO - BEGIN (implicit)
+2025-06-06 10:18:29,578 - INFO - PRAGMA main.table_info("benefit")
+2025-06-06 10:18:29,578 - INFO - [raw sql] ()
+2025-06-06 10:18:29,583 - INFO - PRAGMA main.table_info("department")
+2025-06-06 10:18:29,583 - INFO - [raw sql] ()
+2025-06-06 10:18:29,584 - INFO - PRAGMA main.table_info("employee")
+2025-06-06 10:18:29,585 - INFO - [raw sql] ()
+2025-06-06 10:18:29,586 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-06 10:18:29,586 - INFO - [raw sql] ()
+2025-06-06 10:18:29,587 - INFO - PRAGMA main.table_info("payroll")
+2025-06-06 10:18:29,588 - INFO - [raw sql] ()
+2025-06-06 10:18:29,589 - INFO - COMMIT
+2025-06-06 10:19:02,914 - ERROR - Erro ao obter todos os funcionários.
+Traceback (most recent call last):
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 2437, in _determine_joins
+    self.primaryjoin = join_condition(
+                       ^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\util.py", line 123, in join_condition
+    return Join._join_condition(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\selectable.py", line 1431, in _join_condition
+    cls._joincond_trim_constraints(
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\selectable.py", line 1576, in _joincond_trim_constraints
+    raise exc.AmbiguousForeignKeysError(
+sqlalchemy.exc.AmbiguousForeignKeysError: Can't determine join between 'department' and 'employee'; tables have more than one foreign key constraint relationship between them. Please specify the 'onclause' of this join explicitly.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\fpaul\Documents\GitHub\Persistencia_TP2\app\routers\EmployeeRouter.py", line 14, in get_all_employees
+    employees = session.query(Employee).all()
+                ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\typing_extensions.py", line 3253, in wrapper
+    return arg(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlmodel\orm\session.py", line 159, in query
+    return super().query(*entities, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 2955, in query
+    return self._query_cls(entities, self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\query.py", line 276, in __init__
+    self._set_entities(entities)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\query.py", line 288, in _set_entities
+    self._raw_columns = [
+                        ^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\query.py", line 289, in <listcomp>
+    coercions.expect(
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\coercions.py", line 388, in expect
+    insp._post_inspect
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 1257, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2724, in _post_inspect
+    self._check_configure()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4255, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2418, in _post_configure_properties
+    prop.init()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\interfaces.py", line 589, in init
+    self.do_init()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1658, in do_init
+    self._setup_join_conditions()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1898, in _setup_join_conditions
+    self._join_condition = jc = JoinCondition(
+                                ^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 2324, in __init__
+    self._determine_joins()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 2481, in _determine_joins
+    raise sa_exc.AmbiguousForeignKeysError(
+sqlalchemy.exc.AmbiguousForeignKeysError: Could not determine join condition between parent/child tables on relationship Department.employees - there are multiple foreign key paths linking the tables.  Specify the 'foreign_keys' argument, providing a list of those columns which should be counted as containing a foreign key reference to the parent table.
+2025-06-06 10:19:35,737 - INFO - BEGIN (implicit)
+2025-06-06 10:19:35,739 - INFO - PRAGMA main.table_info("benefit")
+2025-06-06 10:19:35,740 - INFO - [raw sql] ()
+2025-06-06 10:19:35,743 - INFO - PRAGMA main.table_info("department")
+2025-06-06 10:19:35,745 - INFO - [raw sql] ()
+2025-06-06 10:19:35,747 - INFO - PRAGMA main.table_info("employee")
+2025-06-06 10:19:35,747 - INFO - [raw sql] ()
+2025-06-06 10:19:35,749 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-06 10:19:35,749 - INFO - [raw sql] ()
+2025-06-06 10:19:35,751 - INFO - PRAGMA main.table_info("payroll")
+2025-06-06 10:19:35,753 - INFO - [raw sql] ()
+2025-06-06 10:19:35,755 - INFO - COMMIT
+2025-06-06 10:19:41,877 - ERROR - Erro ao obter todos os funcionários.
+Traceback (most recent call last):
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 2437, in _determine_joins
+    self.primaryjoin = join_condition(
+                       ^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\util.py", line 123, in join_condition
+    return Join._join_condition(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\selectable.py", line 1431, in _join_condition
+    cls._joincond_trim_constraints(
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\selectable.py", line 1576, in _joincond_trim_constraints
+    raise exc.AmbiguousForeignKeysError(
+sqlalchemy.exc.AmbiguousForeignKeysError: Can't determine join between 'department' and 'employee'; tables have more than one foreign key constraint relationship between them. Please specify the 'onclause' of this join explicitly.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\fpaul\Documents\GitHub\Persistencia_TP2\app\routers\EmployeeRouter.py", line 14, in get_all_employees
+    employees = session.query(Employee).all()
+                ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\typing_extensions.py", line 3253, in wrapper
+    return arg(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlmodel\orm\session.py", line 159, in query
+    return super().query(*entities, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 2955, in query
+    return self._query_cls(entities, self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\query.py", line 276, in __init__
+    self._set_entities(entities)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\query.py", line 288, in _set_entities
+    self._raw_columns = [
+                        ^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\query.py", line 289, in <listcomp>
+    coercions.expect(
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\coercions.py", line 388, in expect
+    insp._post_inspect
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 1257, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2724, in _post_inspect
+    self._check_configure()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4255, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2418, in _post_configure_properties
+    prop.init()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\interfaces.py", line 589, in init
+    self.do_init()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1658, in do_init
+    self._setup_join_conditions()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1898, in _setup_join_conditions
+    self._join_condition = jc = JoinCondition(
+                                ^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 2324, in __init__
+    self._determine_joins()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 2481, in _determine_joins
+    raise sa_exc.AmbiguousForeignKeysError(
+sqlalchemy.exc.AmbiguousForeignKeysError: Could not determine join condition between parent/child tables on relationship Department.employees - there are multiple foreign key paths linking the tables.  Specify the 'foreign_keys' argument, providing a list of those columns which should be counted as containing a foreign key reference to the parent table.
+2025-06-06 10:26:03,057 - INFO - BEGIN (implicit)
+2025-06-06 10:26:03,059 - INFO - PRAGMA main.table_info("benefit")
+2025-06-06 10:26:03,063 - INFO - [raw sql] ()
+2025-06-06 10:26:03,082 - INFO - PRAGMA main.table_info("department")
+2025-06-06 10:26:03,083 - INFO - [raw sql] ()
+2025-06-06 10:26:03,084 - INFO - PRAGMA main.table_info("employee")
+2025-06-06 10:26:03,085 - INFO - [raw sql] ()
+2025-06-06 10:26:03,087 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-06 10:26:03,087 - INFO - [raw sql] ()
+2025-06-06 10:26:03,088 - INFO - PRAGMA main.table_info("payroll")
+2025-06-06 10:26:03,095 - INFO - [raw sql] ()
+2025-06-06 10:26:03,100 - INFO - COMMIT
+2025-06-06 10:26:17,471 - INFO - BEGIN (implicit)
+2025-06-06 10:26:17,481 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee
+2025-06-06 10:26:17,482 - INFO - [generated in 0.00176s] ()
+2025-06-06 10:26:17,491 - INFO - ROLLBACK
+2025-06-06 10:32:07,434 - INFO - BEGIN (implicit)
+2025-06-06 10:32:07,435 - INFO - PRAGMA main.table_info("benefit")
+2025-06-06 10:32:07,436 - INFO - [raw sql] ()
+2025-06-06 10:32:07,439 - INFO - PRAGMA main.table_info("department")
+2025-06-06 10:32:07,440 - INFO - [raw sql] ()
+2025-06-06 10:32:07,441 - INFO - PRAGMA main.table_info("employee")
+2025-06-06 10:32:07,442 - INFO - [raw sql] ()
+2025-06-06 10:32:07,443 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-06 10:32:07,444 - INFO - [raw sql] ()
+2025-06-06 10:32:07,445 - INFO - PRAGMA main.table_info("payroll")
+2025-06-06 10:32:07,446 - INFO - [raw sql] ()
+2025-06-06 10:32:07,447 - INFO - COMMIT
+2025-06-06 10:32:12,207 - ERROR - Erro ao obter todos os funcionários.
+Traceback (most recent call last):
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 2437, in _determine_joins
+    self.primaryjoin = join_condition(
+                       ^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\util.py", line 123, in join_condition
+    return Join._join_condition(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\selectable.py", line 1431, in _join_condition
+    cls._joincond_trim_constraints(
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\selectable.py", line 1576, in _joincond_trim_constraints
+    raise exc.AmbiguousForeignKeysError(
+sqlalchemy.exc.AmbiguousForeignKeysError: Can't determine join between 'department' and 'employee'; tables have more than one foreign key constraint relationship between them. Please specify the 'onclause' of this join explicitly.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\fpaul\Documents\GitHub\Persistencia_TP2\app\routers\EmployeeRouter.py", line 14, in get_all_employees
+    employees = session.query(Employee).all()
+                ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\typing_extensions.py", line 3253, in wrapper
+    return arg(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlmodel\orm\session.py", line 159, in query
+    return super().query(*entities, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 2955, in query
+    return self._query_cls(entities, self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\query.py", line 276, in __init__
+    self._set_entities(entities)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\query.py", line 288, in _set_entities
+    self._raw_columns = [
+                        ^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\query.py", line 289, in <listcomp>
+    coercions.expect(
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\coercions.py", line 388, in expect
+    insp._post_inspect
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 1257, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2724, in _post_inspect
+    self._check_configure()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4255, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2418, in _post_configure_properties
+    prop.init()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\interfaces.py", line 589, in init
+    self.do_init()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1658, in do_init
+    self._setup_join_conditions()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1898, in _setup_join_conditions
+    self._join_condition = jc = JoinCondition(
+                                ^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 2324, in __init__
+    self._determine_joins()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 2481, in _determine_joins
+    raise sa_exc.AmbiguousForeignKeysError(
+sqlalchemy.exc.AmbiguousForeignKeysError: Could not determine join condition between parent/child tables on relationship Department.employees - there are multiple foreign key paths linking the tables.  Specify the 'foreign_keys' argument, providing a list of those columns which should be counted as containing a foreign key reference to the parent table.
+2025-06-06 10:33:14,148 - INFO - BEGIN (implicit)
+2025-06-06 10:33:14,154 - ERROR - Erro ao listar departamentos
+Traceback (most recent call last):
+  File "C:\Users\fpaul\Documents\GitHub\Persistencia_TP2\app\routers\DepartmentRouter.py", line 89, in get_all_departments
+    departments = session.exec(select(Department)).all()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlmodel\orm\session.py", line 66, in exec
+    results = super().execute(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 2365, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 2251, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1416, in execute
+    return meth(
+           ^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1630, in _execute_clauseelement
+    compiled_sql, extracted_params, cache_hit = elem._compile_w_cache(
+                                                ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\elements.py", line 711, in _compile_w_cache
+    compiled_sql = self._compiler(
+                   ^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\elements.py", line 320, in _compiler
+    return dialect.statement_compiler(dialect, self, **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\compiler.py", line 1446, in __init__
+    Compiled.__init__(self, dialect, statement, **kwargs)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\compiler.py", line 886, in __init__
+    self.string = self.process(self.statement, **compile_kwargs)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\compiler.py", line 932, in process
+    return obj._compiler_dispatch(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\visitors.py", line 141, in _compiler_dispatch
+    return meth(self, **kw)  # type: ignore  # noqa: E501
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\compiler.py", line 4728, in visit_select
+    compile_state = select_stmt._compile_state_factory(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\base.py", line 686, in create_for_statement
+    return klass.create_for_statement(statement, compiler, **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\context.py", line 447, in create_for_statement
+    return cls._create_orm_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\context.py", line 1175, in _create_orm_context
+    _QueryEntity.to_compile_state(
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\context.py", line 2630, in to_compile_state
+    _MapperEntity(
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\context.py", line 2710, in __init__
+    entity._post_inspect
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 1257, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2724, in _post_inspect
+    self._check_configure()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4251, in _do_configure_registries
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[Department(department)]'. Original exception was: Could not determine join condition between parent/child tables on relationship Department.employees - there are multiple foreign key paths linking the tables.  Specify the 'foreign_keys' argument, providing a list of those columns which should be counted as containing a foreign key reference to the parent table.
+2025-06-06 10:33:14,392 - INFO - ROLLBACK
+2025-06-06 10:33:35,632 - ERROR - Erro ao obter todos os funcionários.
+Traceback (most recent call last):
+  File "C:\Users\fpaul\Documents\GitHub\Persistencia_TP2\app\routers\EmployeeRouter.py", line 14, in get_all_employees
+    employees = session.query(Employee).all()
+                ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\typing_extensions.py", line 3253, in wrapper
+    return arg(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlmodel\orm\session.py", line 159, in query
+    return super().query(*entities, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 2955, in query
+    return self._query_cls(entities, self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\query.py", line 276, in __init__
+    self._set_entities(entities)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\query.py", line 288, in _set_entities
+    self._raw_columns = [
+                        ^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\query.py", line 289, in <listcomp>
+    coercions.expect(
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\coercions.py", line 388, in expect
+    insp._post_inspect
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 1257, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2724, in _post_inspect
+    self._check_configure()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4251, in _do_configure_registries
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[Department(department)]'. Original exception was: Could not determine join condition between parent/child tables on relationship Department.employees - there are multiple foreign key paths linking the tables.  Specify the 'foreign_keys' argument, providing a list of those columns which should be counted as containing a foreign key reference to the parent table.
+2025-06-06 10:34:02,847 - INFO - BEGIN (implicit)
+2025-06-06 10:34:02,848 - INFO - PRAGMA main.table_info("benefit")
+2025-06-06 10:34:02,848 - INFO - [raw sql] ()
+2025-06-06 10:34:02,849 - INFO - PRAGMA main.table_info("department")
+2025-06-06 10:34:02,851 - INFO - [raw sql] ()
+2025-06-06 10:34:02,852 - INFO - PRAGMA main.table_info("employee")
+2025-06-06 10:34:02,853 - INFO - [raw sql] ()
+2025-06-06 10:34:02,854 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-06 10:34:02,854 - INFO - [raw sql] ()
+2025-06-06 10:34:02,855 - INFO - PRAGMA main.table_info("payroll")
+2025-06-06 10:34:02,855 - INFO - [raw sql] ()
+2025-06-06 10:34:02,856 - INFO - COMMIT
+2025-06-06 10:34:10,292 - INFO - BEGIN (implicit)
+2025-06-06 10:34:10,292 - INFO - PRAGMA main.table_info("benefit")
+2025-06-06 10:34:10,293 - INFO - [raw sql] ()
+2025-06-06 10:34:10,294 - INFO - PRAGMA main.table_info("department")
+2025-06-06 10:34:10,294 - INFO - [raw sql] ()
+2025-06-06 10:34:10,294 - INFO - PRAGMA main.table_info("employee")
+2025-06-06 10:34:10,295 - INFO - [raw sql] ()
+2025-06-06 10:34:10,296 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-06 10:34:10,296 - INFO - [raw sql] ()
+2025-06-06 10:34:10,297 - INFO - PRAGMA main.table_info("payroll")
+2025-06-06 10:34:10,298 - INFO - [raw sql] ()
+2025-06-06 10:34:10,299 - INFO - COMMIT
+2025-06-06 10:34:18,856 - INFO - BEGIN (implicit)
+2025-06-06 10:34:18,864 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee
+2025-06-06 10:34:18,865 - INFO - [generated in 0.00169s] ()
+2025-06-06 10:34:18,878 - INFO - ROLLBACK
+2025-06-06 10:34:38,208 - INFO - BEGIN (implicit)
+2025-06-06 10:34:38,213 - INFO - SELECT benefit.name AS benefit_name, benefit.description AS benefit_description, benefit.amount AS benefit_amount, benefit.type AS benefit_type, benefit.active AS benefit_active, benefit.id AS benefit_id 
+FROM benefit
+2025-06-06 10:34:38,214 - INFO - [generated in 0.00169s] ()
+2025-06-06 10:34:38,219 - INFO - ROLLBACK
+2025-06-06 10:37:08,442 - INFO - BEGIN (implicit)
+2025-06-06 10:37:08,450 - INFO - INSERT INTO department (name, location, description, extension) VALUES (?, ?, ?, ?)
+2025-06-06 10:37:08,452 - INFO - [generated in 0.00229s] ('string', 'string', 'string', 'string')
+2025-06-06 10:37:08,461 - INFO - COMMIT
+2025-06-06 10:37:08,487 - INFO - BEGIN (implicit)
+2025-06-06 10:37:08,496 - INFO - SELECT department.name, department.location, department.description, department.extension, department.id 
+FROM department 
+WHERE department.id = ?
+2025-06-06 10:37:08,501 - INFO - [generated in 0.00572s] (14,)
+2025-06-06 10:37:08,506 - INFO - Departamento criado com sucesso: name='string' extension='string' description='string' location='string' id=14
+2025-06-06 10:37:08,510 - INFO - ROLLBACK
+2025-06-06 10:37:15,703 - INFO - BEGIN (implicit)
+2025-06-06 10:37:15,705 - INFO - SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id 
+FROM department
+2025-06-06 10:37:15,706 - INFO - [generated in 0.00122s] ()
+2025-06-06 10:37:15,708 - INFO - 6 departamentos encontrados.
+2025-06-06 10:37:15,716 - INFO - ROLLBACK
+2025-06-06 10:42:31,470 - INFO - BEGIN (implicit)
+2025-06-06 10:42:31,471 - INFO - PRAGMA main.table_info("benefit")
+2025-06-06 10:42:31,472 - INFO - [raw sql] ()
+2025-06-06 10:42:31,474 - INFO - PRAGMA main.table_info("department")
+2025-06-06 10:42:31,474 - INFO - [raw sql] ()
+2025-06-06 10:42:31,475 - INFO - PRAGMA main.table_info("employee")
+2025-06-06 10:42:31,476 - INFO - [raw sql] ()
+2025-06-06 10:42:31,477 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-06 10:42:31,481 - INFO - [raw sql] ()
+2025-06-06 10:42:31,483 - INFO - PRAGMA main.table_info("payroll")
+2025-06-06 10:42:31,484 - INFO - [raw sql] ()
+2025-06-06 10:42:31,485 - INFO - COMMIT
+2025-06-06 10:42:37,974 - INFO - BEGIN (implicit)
+2025-06-06 10:42:37,982 - ERROR - Erro ao listar departamentos
+Traceback (most recent call last):
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 2437, in _determine_joins
+    self.primaryjoin = join_condition(
+                       ^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\util.py", line 123, in join_condition
+    return Join._join_condition(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\selectable.py", line 1431, in _join_condition
+    cls._joincond_trim_constraints(
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\selectable.py", line 1576, in _joincond_trim_constraints
+    raise exc.AmbiguousForeignKeysError(
+sqlalchemy.exc.AmbiguousForeignKeysError: Can't determine join between 'department' and 'employee'; tables have more than one foreign key constraint relationship between them. Please specify the 'onclause' of this join explicitly.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\fpaul\Documents\GitHub\Persistencia_TP2\app\routers\DepartmentRouter.py", line 89, in get_all_departments
+    departments = session.exec(select(Department)).all()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlmodel\orm\session.py", line 66, in exec
+    results = super().execute(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 2365, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 2251, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1416, in execute
+    return meth(
+           ^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1630, in _execute_clauseelement
+    compiled_sql, extracted_params, cache_hit = elem._compile_w_cache(
+                                                ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\elements.py", line 711, in _compile_w_cache
+    compiled_sql = self._compiler(
+                   ^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\elements.py", line 320, in _compiler
+    return dialect.statement_compiler(dialect, self, **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\compiler.py", line 1446, in __init__
+    Compiled.__init__(self, dialect, statement, **kwargs)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\compiler.py", line 886, in __init__
+    self.string = self.process(self.statement, **compile_kwargs)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\compiler.py", line 932, in process
+    return obj._compiler_dispatch(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\visitors.py", line 141, in _compiler_dispatch
+    return meth(self, **kw)  # type: ignore  # noqa: E501
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\compiler.py", line 4728, in visit_select
+    compile_state = select_stmt._compile_state_factory(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\base.py", line 686, in create_for_statement
+    return klass.create_for_statement(statement, compiler, **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\context.py", line 447, in create_for_statement
+    return cls._create_orm_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\context.py", line 1175, in _create_orm_context
+    _QueryEntity.to_compile_state(
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\context.py", line 2630, in to_compile_state
+    _MapperEntity(
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\context.py", line 2710, in __init__
+    entity._post_inspect
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 1257, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2724, in _post_inspect
+    self._check_configure()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4255, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2418, in _post_configure_properties
+    prop.init()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\interfaces.py", line 589, in init
+    self.do_init()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1658, in do_init
+    self._setup_join_conditions()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1898, in _setup_join_conditions
+    self._join_condition = jc = JoinCondition(
+                                ^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 2324, in __init__
+    self._determine_joins()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 2481, in _determine_joins
+    raise sa_exc.AmbiguousForeignKeysError(
+sqlalchemy.exc.AmbiguousForeignKeysError: Could not determine join condition between parent/child tables on relationship Department.employees - there are multiple foreign key paths linking the tables.  Specify the 'foreign_keys' argument, providing a list of those columns which should be counted as containing a foreign key reference to the parent table.
+2025-06-06 10:42:38,017 - INFO - ROLLBACK
+2025-06-06 10:43:00,673 - ERROR - Erro ao criar departamento
+Traceback (most recent call last):
+  File "C:\Users\fpaul\Documents\GitHub\Persistencia_TP2\app\routers\DepartmentRouter.py", line 16, in create_department
+    db_department = Department.from_orm(department)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\typing_extensions.py", line 3253, in wrapper
+    return arg(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlmodel\main.py", line 940, in from_orm
+    return cls.model_validate(obj, update=update)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlmodel\main.py", line 851, in model_validate
+    return sqlmodel_validate(
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlmodel\_compat.py", line 540, in sqlmodel_validate
+    m = cls()
+        ^^^^^
+  File "<string>", line 4, in __init__
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state.py", line 566, in _initialize_instance
+    manager.dispatch.init(self, args, kwargs)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\event\attr.py", line 497, in __call__
+    fn(*args, **kw)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4406, in _event_on_init
+    instrumenting_mapper._check_configure()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4251, in _do_configure_registries
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[Department(department)]'. Original exception was: Could not determine join condition between parent/child tables on relationship Department.employees - there are multiple foreign key paths linking the tables.  Specify the 'foreign_keys' argument, providing a list of those columns which should be counted as containing a foreign key reference to the parent table.
+2025-06-06 10:43:32,504 - INFO - BEGIN (implicit)
+2025-06-06 10:43:32,506 - ERROR - Erro ao listar departamentos
+Traceback (most recent call last):
+  File "C:\Users\fpaul\Documents\GitHub\Persistencia_TP2\app\routers\DepartmentRouter.py", line 89, in get_all_departments
+    departments = session.exec(select(Department)).all()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlmodel\orm\session.py", line 66, in exec
+    results = super().execute(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 2365, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 2251, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1416, in execute
+    return meth(
+           ^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1630, in _execute_clauseelement
+    compiled_sql, extracted_params, cache_hit = elem._compile_w_cache(
+                                                ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\elements.py", line 711, in _compile_w_cache
+    compiled_sql = self._compiler(
+                   ^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\elements.py", line 320, in _compiler
+    return dialect.statement_compiler(dialect, self, **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\compiler.py", line 1446, in __init__
+    Compiled.__init__(self, dialect, statement, **kwargs)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\compiler.py", line 886, in __init__
+    self.string = self.process(self.statement, **compile_kwargs)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\compiler.py", line 932, in process
+    return obj._compiler_dispatch(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\visitors.py", line 141, in _compiler_dispatch
+    return meth(self, **kw)  # type: ignore  # noqa: E501
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\compiler.py", line 4728, in visit_select
+    compile_state = select_stmt._compile_state_factory(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\base.py", line 686, in create_for_statement
+    return klass.create_for_statement(statement, compiler, **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\context.py", line 447, in create_for_statement
+    return cls._create_orm_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\context.py", line 1175, in _create_orm_context
+    _QueryEntity.to_compile_state(
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\context.py", line 2630, in to_compile_state
+    _MapperEntity(
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\context.py", line 2710, in __init__
+    entity._post_inspect
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 1257, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2724, in _post_inspect
+    self._check_configure()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4251, in _do_configure_registries
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[Department(department)]'. Original exception was: Could not determine join condition between parent/child tables on relationship Department.employees - there are multiple foreign key paths linking the tables.  Specify the 'foreign_keys' argument, providing a list of those columns which should be counted as containing a foreign key reference to the parent table.
+2025-06-06 10:43:32,511 - INFO - ROLLBACK
+2025-06-06 10:44:16,356 - INFO - BEGIN (implicit)
+2025-06-06 10:44:16,357 - INFO - PRAGMA main.table_info("benefit")
+2025-06-06 10:44:16,358 - INFO - [raw sql] ()
+2025-06-06 10:44:16,359 - INFO - PRAGMA main.table_info("department")
+2025-06-06 10:44:16,359 - INFO - [raw sql] ()
+2025-06-06 10:44:16,360 - INFO - PRAGMA main.table_info("employee")
+2025-06-06 10:44:16,362 - INFO - [raw sql] ()
+2025-06-06 10:44:16,363 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-06 10:44:16,364 - INFO - [raw sql] ()
+2025-06-06 10:44:16,365 - INFO - PRAGMA main.table_info("payroll")
+2025-06-06 10:44:16,365 - INFO - [raw sql] ()
+2025-06-06 10:44:16,366 - INFO - COMMIT
+2025-06-06 10:44:35,421 - INFO - BEGIN (implicit)
+2025-06-06 10:44:35,432 - ERROR - Erro ao listar departamentos
+Traceback (most recent call last):
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 2437, in _determine_joins
+    self.primaryjoin = join_condition(
+                       ^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\util.py", line 123, in join_condition
+    return Join._join_condition(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\selectable.py", line 1431, in _join_condition
+    cls._joincond_trim_constraints(
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\selectable.py", line 1576, in _joincond_trim_constraints
+    raise exc.AmbiguousForeignKeysError(
+sqlalchemy.exc.AmbiguousForeignKeysError: Can't determine join between 'department' and 'employee'; tables have more than one foreign key constraint relationship between them. Please specify the 'onclause' of this join explicitly.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\fpaul\Documents\GitHub\Persistencia_TP2\app\routers\DepartmentRouter.py", line 89, in get_all_departments
+    departments = session.exec(select(Department)).all()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlmodel\orm\session.py", line 66, in exec
+    results = super().execute(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 2365, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 2251, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1416, in execute
+    return meth(
+           ^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\engine\base.py", line 1630, in _execute_clauseelement
+    compiled_sql, extracted_params, cache_hit = elem._compile_w_cache(
+                                                ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\elements.py", line 711, in _compile_w_cache
+    compiled_sql = self._compiler(
+                   ^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\elements.py", line 320, in _compiler
+    return dialect.statement_compiler(dialect, self, **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\compiler.py", line 1446, in __init__
+    Compiled.__init__(self, dialect, statement, **kwargs)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\compiler.py", line 886, in __init__
+    self.string = self.process(self.statement, **compile_kwargs)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\compiler.py", line 932, in process
+    return obj._compiler_dispatch(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\visitors.py", line 141, in _compiler_dispatch
+    return meth(self, **kw)  # type: ignore  # noqa: E501
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\compiler.py", line 4728, in visit_select
+    compile_state = select_stmt._compile_state_factory(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\base.py", line 686, in create_for_statement
+    return klass.create_for_statement(statement, compiler, **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\context.py", line 447, in create_for_statement
+    return cls._create_orm_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\context.py", line 1175, in _create_orm_context
+    _QueryEntity.to_compile_state(
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\context.py", line 2630, in to_compile_state
+    _MapperEntity(
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\context.py", line 2710, in __init__
+    entity._post_inspect
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 1257, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2724, in _post_inspect
+    self._check_configure()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4255, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2418, in _post_configure_properties
+    prop.init()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\interfaces.py", line 589, in init
+    self.do_init()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1658, in do_init
+    self._setup_join_conditions()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1898, in _setup_join_conditions
+    self._join_condition = jc = JoinCondition(
+                                ^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 2324, in __init__
+    self._determine_joins()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 2481, in _determine_joins
+    raise sa_exc.AmbiguousForeignKeysError(
+sqlalchemy.exc.AmbiguousForeignKeysError: Could not determine join condition between parent/child tables on relationship Department.employees - there are multiple foreign key paths linking the tables.  Specify the 'foreign_keys' argument, providing a list of those columns which should be counted as containing a foreign key reference to the parent table.
+2025-06-06 10:44:35,481 - INFO - ROLLBACK
+2025-06-06 10:44:50,866 - ERROR - Erro ao criar departamento
+Traceback (most recent call last):
+  File "C:\Users\fpaul\Documents\GitHub\Persistencia_TP2\app\routers\DepartmentRouter.py", line 16, in create_department
+    db_department = Department.from_orm(department)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\typing_extensions.py", line 3253, in wrapper
+    return arg(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlmodel\main.py", line 940, in from_orm
+    return cls.model_validate(obj, update=update)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlmodel\main.py", line 851, in model_validate
+    return sqlmodel_validate(
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlmodel\_compat.py", line 540, in sqlmodel_validate
+    m = cls()
+        ^^^^^
+  File "<string>", line 4, in __init__
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state.py", line 566, in _initialize_instance
+    manager.dispatch.init(self, args, kwargs)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\event\attr.py", line 497, in __call__
+    fn(*args, **kw)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4406, in _event_on_init
+    instrumenting_mapper._check_configure()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4251, in _do_configure_registries
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[Department(department)]'. Original exception was: Could not determine join condition between parent/child tables on relationship Department.employees - there are multiple foreign key paths linking the tables.  Specify the 'foreign_keys' argument, providing a list of those columns which should be counted as containing a foreign key reference to the parent table.
+2025-06-06 10:52:16,482 - ERROR - Erro ao listar benefícios
+Traceback (most recent call last):
+  File "C:\Users\fpaul\Documents\GitHub\Persistencia_TP2\app\routers\BenefitRouter.py", line 95, in get_all_benefits
+    benefits = session.query(Benefit).all()
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\typing_extensions.py", line 3253, in wrapper
+    return arg(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlmodel\orm\session.py", line 159, in query
+    return super().query(*entities, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 2955, in query
+    return self._query_cls(entities, self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\query.py", line 276, in __init__
+    self._set_entities(entities)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\query.py", line 288, in _set_entities
+    self._raw_columns = [
+                        ^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\query.py", line 289, in <listcomp>
+    coercions.expect(
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\coercions.py", line 388, in expect
+    insp._post_inspect
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 1257, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2724, in _post_inspect
+    self._check_configure()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4251, in _do_configure_registries
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[Department(department)]'. Original exception was: Could not determine join condition between parent/child tables on relationship Department.employees - there are multiple foreign key paths linking the tables.  Specify the 'foreign_keys' argument, providing a list of those columns which should be counted as containing a foreign key reference to the parent table.
+2025-06-06 10:52:49,189 - INFO - BEGIN (implicit)
+2025-06-06 10:52:49,190 - INFO - PRAGMA main.table_info("benefit")
+2025-06-06 10:52:49,190 - INFO - [raw sql] ()
+2025-06-06 10:52:49,191 - INFO - PRAGMA temp.table_info("benefit")
+2025-06-06 10:52:49,192 - INFO - [raw sql] ()
+2025-06-06 10:52:49,192 - INFO - PRAGMA main.table_info("department")
+2025-06-06 10:52:49,193 - INFO - [raw sql] ()
+2025-06-06 10:52:49,193 - INFO - PRAGMA temp.table_info("department")
+2025-06-06 10:52:49,194 - INFO - [raw sql] ()
+2025-06-06 10:52:49,195 - INFO - PRAGMA main.table_info("employee")
+2025-06-06 10:52:49,195 - INFO - [raw sql] ()
+2025-06-06 10:52:49,196 - INFO - PRAGMA temp.table_info("employee")
+2025-06-06 10:52:49,196 - INFO - [raw sql] ()
+2025-06-06 10:52:49,197 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-06 10:52:49,198 - INFO - [raw sql] ()
+2025-06-06 10:52:49,199 - INFO - PRAGMA temp.table_info("employeebenefit")
+2025-06-06 10:52:49,199 - INFO - [raw sql] ()
+2025-06-06 10:52:49,200 - INFO - PRAGMA main.table_info("payroll")
+2025-06-06 10:52:49,200 - INFO - [raw sql] ()
+2025-06-06 10:52:49,201 - INFO - PRAGMA temp.table_info("payroll")
+2025-06-06 10:52:49,202 - INFO - [raw sql] ()
+2025-06-06 10:52:49,206 - INFO - 
+CREATE TABLE benefit (
+	name VARCHAR NOT NULL, 
+	description VARCHAR, 
+	amount FLOAT NOT NULL, 
+	type VARCHAR NOT NULL, 
+	active BOOLEAN NOT NULL, 
+	id INTEGER NOT NULL, 
+	PRIMARY KEY (id)
+)
+
+
+2025-06-06 10:52:49,209 - INFO - [no key 0.00211s] ()
+2025-06-06 10:52:49,214 - INFO - 
+CREATE TABLE department (
+	name VARCHAR NOT NULL, 
+	location VARCHAR NOT NULL, 
+	description VARCHAR, 
+	extension VARCHAR, 
+	id INTEGER NOT NULL, 
+	manager_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(manager_id) REFERENCES employee (id)
+)
+
+
+2025-06-06 10:52:49,215 - INFO - [no key 0.00106s] ()
+2025-06-06 10:52:49,221 - INFO - 
+CREATE TABLE employee (
+	name VARCHAR NOT NULL, 
+	cpf VARCHAR NOT NULL, 
+	position VARCHAR NOT NULL, 
+	admission_date VARCHAR NOT NULL, 
+	department_id INTEGER, 
+	id INTEGER NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(department_id) REFERENCES department (id)
+)
+
+
+2025-06-06 10:52:49,223 - INFO - [no key 0.00212s] ()
+2025-06-06 10:52:49,227 - INFO - 
+CREATE TABLE employeebenefit (
+	id INTEGER NOT NULL, 
+	employee_id INTEGER NOT NULL, 
+	benefit_id INTEGER NOT NULL, 
+	start_date VARCHAR NOT NULL, 
+	end_date VARCHAR, 
+	custom_amount FLOAT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(employee_id) REFERENCES employee (id), 
+	FOREIGN KEY(benefit_id) REFERENCES benefit (id)
+)
+
+
+2025-06-06 10:52:49,228 - INFO - [no key 0.00072s] ()
+2025-06-06 10:52:49,233 - INFO - 
+CREATE TABLE payroll (
+	id INTEGER NOT NULL, 
+	employee_id INTEGER NOT NULL, 
+	gross_salary FLOAT NOT NULL, 
+	deductions FLOAT NOT NULL, 
+	net_salary FLOAT NOT NULL, 
+	reference_month VARCHAR NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(employee_id) REFERENCES employee (id)
+)
+
+
+2025-06-06 10:52:49,235 - INFO - [no key 0.00196s] ()
+2025-06-06 10:52:49,239 - INFO - COMMIT
+2025-06-06 10:53:23,415 - ERROR - Erro ao criar departamento
+Traceback (most recent call last):
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 2437, in _determine_joins
+    self.primaryjoin = join_condition(
+                       ^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\util.py", line 123, in join_condition
+    return Join._join_condition(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\selectable.py", line 1431, in _join_condition
+    cls._joincond_trim_constraints(
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\selectable.py", line 1576, in _joincond_trim_constraints
+    raise exc.AmbiguousForeignKeysError(
+sqlalchemy.exc.AmbiguousForeignKeysError: Can't determine join between 'department' and 'employee'; tables have more than one foreign key constraint relationship between them. Please specify the 'onclause' of this join explicitly.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\fpaul\Documents\GitHub\Persistencia_TP2\app\routers\DepartmentRouter.py", line 16, in create_department
+    db_department = Department.from_orm(department)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\typing_extensions.py", line 3253, in wrapper
+    return arg(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlmodel\main.py", line 940, in from_orm
+    return cls.model_validate(obj, update=update)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlmodel\main.py", line 851, in model_validate
+    return sqlmodel_validate(
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlmodel\_compat.py", line 540, in sqlmodel_validate
+    m = cls()
+        ^^^^^
+  File "<string>", line 4, in __init__
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\state.py", line 566, in _initialize_instance
+    manager.dispatch.init(self, args, kwargs)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\event\attr.py", line 497, in __call__
+    fn(*args, **kw)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4406, in _event_on_init
+    instrumenting_mapper._check_configure()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4255, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2418, in _post_configure_properties
+    prop.init()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\interfaces.py", line 589, in init
+    self.do_init()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1658, in do_init
+    self._setup_join_conditions()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1898, in _setup_join_conditions
+    self._join_condition = jc = JoinCondition(
+                                ^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 2324, in __init__
+    self._determine_joins()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 2481, in _determine_joins
+    raise sa_exc.AmbiguousForeignKeysError(
+sqlalchemy.exc.AmbiguousForeignKeysError: Could not determine join condition between parent/child tables on relationship Department.employees - there are multiple foreign key paths linking the tables.  Specify the 'foreign_keys' argument, providing a list of those columns which should be counted as containing a foreign key reference to the parent table.
+2025-06-06 10:53:48,015 - INFO - BEGIN (implicit)
+2025-06-06 10:53:48,016 - INFO - PRAGMA main.table_info("benefit")
+2025-06-06 10:53:48,016 - INFO - [raw sql] ()
+2025-06-06 10:53:48,018 - INFO - PRAGMA main.table_info("department")
+2025-06-06 10:53:48,019 - INFO - [raw sql] ()
+2025-06-06 10:53:48,020 - INFO - PRAGMA main.table_info("employee")
+2025-06-06 10:53:48,020 - INFO - [raw sql] ()
+2025-06-06 10:53:48,021 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-06 10:53:48,021 - INFO - [raw sql] ()
+2025-06-06 10:53:48,022 - INFO - PRAGMA main.table_info("payroll")
+2025-06-06 10:53:48,022 - INFO - [raw sql] ()
+2025-06-06 10:53:48,023 - INFO - COMMIT
+2025-06-06 10:54:57,607 - INFO - BEGIN (implicit)
+2025-06-06 10:54:57,608 - INFO - PRAGMA main.table_info("benefit")
+2025-06-06 10:54:57,609 - INFO - [raw sql] ()
+2025-06-06 10:54:57,610 - INFO - PRAGMA main.table_info("department")
+2025-06-06 10:54:57,611 - INFO - [raw sql] ()
+2025-06-06 10:54:57,612 - INFO - PRAGMA main.table_info("employee")
+2025-06-06 10:54:57,612 - INFO - [raw sql] ()
+2025-06-06 10:54:57,613 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-06 10:54:57,613 - INFO - [raw sql] ()
+2025-06-06 10:54:57,614 - INFO - PRAGMA main.table_info("payroll")
+2025-06-06 10:54:57,615 - INFO - [raw sql] ()
+2025-06-06 10:54:57,616 - INFO - COMMIT
+2025-06-06 10:55:11,882 - INFO - BEGIN (implicit)
+2025-06-06 10:55:11,886 - INFO - INSERT INTO department (name, location, description, extension) VALUES (?, ?, ?, ?)
+2025-06-06 10:55:11,889 - INFO - [generated in 0.00390s] ('string', 'string', 'string', 'string')
+2025-06-06 10:55:11,896 - INFO - COMMIT
+2025-06-06 10:55:11,904 - INFO - BEGIN (implicit)
+2025-06-06 10:55:11,917 - INFO - SELECT department.name, department.location, department.description, department.extension, department.id 
+FROM department 
+WHERE department.id = ?
+2025-06-06 10:55:11,919 - INFO - [generated in 0.00135s] (1,)
+2025-06-06 10:55:11,921 - INFO - Departamento criado com sucesso: name='string' extension='string' description='string' location='string' id=1
+2025-06-06 10:55:11,927 - INFO - ROLLBACK
+2025-06-06 10:58:27,597 - INFO - BEGIN (implicit)
+2025-06-06 10:58:27,602 - INFO - INSERT INTO employee (name, cpf, position, admission_date, department_id) VALUES (?, ?, ?, ?, ?)
+2025-06-06 10:58:27,603 - INFO - [generated in 0.00181s] ('string', 'string', 'string', 'string', 0)
+2025-06-06 10:58:27,613 - INFO - COMMIT
+2025-06-06 10:58:27,622 - INFO - BEGIN (implicit)
+2025-06-06 10:58:27,630 - INFO - SELECT employee.name, employee.cpf, employee.position, employee.admission_date, employee.department_id, employee.id 
+FROM employee 
+WHERE employee.id = ?
+2025-06-06 10:58:27,631 - INFO - [generated in 0.00191s] (1,)
+2025-06-06 10:58:27,636 - INFO - Funcionário criado com sucesso: name='string' admission_date='string' id=1 cpf='string' position='string' department_id=0
+2025-06-06 10:58:27,645 - INFO - ROLLBACK
+2025-06-06 10:59:06,323 - INFO - BEGIN (implicit)
+2025-06-06 10:59:06,324 - INFO - INSERT INTO employee (name, cpf, position, admission_date, department_id) VALUES (?, ?, ?, ?, ?)
+2025-06-06 10:59:06,325 - INFO - [cached since 38.72s ago] ('string', 'string', 'string', 'string', 10)
+2025-06-06 10:59:06,330 - INFO - COMMIT
+2025-06-06 10:59:06,339 - INFO - BEGIN (implicit)
+2025-06-06 10:59:06,340 - INFO - SELECT employee.name, employee.cpf, employee.position, employee.admission_date, employee.department_id, employee.id 
+FROM employee 
+WHERE employee.id = ?
+2025-06-06 10:59:06,342 - INFO - [cached since 38.71s ago] (2,)
+2025-06-06 10:59:06,344 - INFO - Funcionário criado com sucesso: name='string' admission_date='string' id=2 cpf='string' position='string' department_id=10
+2025-06-06 10:59:06,349 - INFO - ROLLBACK
+2025-06-06 10:59:19,521 - INFO - BEGIN (implicit)
+2025-06-06 10:59:19,523 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee
+2025-06-06 10:59:19,524 - INFO - [generated in 0.00152s] ()
+2025-06-06 10:59:19,529 - INFO - ROLLBACK
+2025-06-06 10:59:44,905 - INFO - BEGIN (implicit)
+2025-06-06 10:59:44,908 - INFO - SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id 
+FROM department
+2025-06-06 10:59:44,909 - INFO - [generated in 0.00103s] ()
+2025-06-06 10:59:44,910 - INFO - 1 departamentos encontrados.
+2025-06-06 10:59:44,918 - INFO - ROLLBACK
+2025-06-07 13:27:02,311 - INFO - BEGIN (implicit)
+2025-06-07 13:27:02,320 - INFO - PRAGMA main.table_info("benefit")
+2025-06-07 13:27:02,322 - INFO - [raw sql] ()
+2025-06-07 13:27:02,334 - INFO - PRAGMA main.table_info("department")
+2025-06-07 13:27:02,342 - INFO - [raw sql] ()
+2025-06-07 13:27:02,346 - INFO - PRAGMA main.table_info("employee")
+2025-06-07 13:27:02,355 - INFO - [raw sql] ()
+2025-06-07 13:27:02,363 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-07 13:27:02,363 - INFO - [raw sql] ()
+2025-06-07 13:27:02,373 - INFO - PRAGMA main.table_info("payroll")
+2025-06-07 13:27:02,376 - INFO - [raw sql] ()
+2025-06-07 13:27:02,383 - INFO - COMMIT
+2025-06-07 13:27:46,802 - INFO - BEGIN (implicit)
+2025-06-07 13:27:46,811 - INFO - SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id 
+FROM department
+2025-06-07 13:27:46,812 - INFO - [generated in 0.00204s] ()
+2025-06-07 13:27:46,817 - INFO - 1 departamentos encontrados.
+2025-06-07 13:27:46,826 - INFO - ROLLBACK
+2025-06-07 13:28:38,435 - INFO - BEGIN (implicit)
+2025-06-07 13:28:38,441 - INFO - INSERT INTO department (name, location, description, extension) VALUES (?, ?, ?, ?)
+2025-06-07 13:28:38,442 - INFO - [generated in 0.00155s] ('Recursos Humanos', 'Prédio A - 2º Andar', 'Responsável pela gestão de pessoas e processos de recrutamento', 'RH')
+2025-06-07 13:28:38,451 - INFO - COMMIT
+2025-06-07 13:28:38,462 - INFO - BEGIN (implicit)
+2025-06-07 13:28:38,467 - INFO - SELECT department.name, department.location, department.description, department.extension, department.id 
+FROM department 
+WHERE department.id = ?
+2025-06-07 13:28:38,468 - INFO - [generated in 0.00177s] (2,)
+2025-06-07 13:28:38,472 - INFO - Departamento criado com sucesso: name='Recursos Humanos' extension='RH' description='Responsável pela gestão de pessoas e processos de recrutamento' location='Prédio A - 2º Andar' id=2
+2025-06-07 13:28:38,476 - INFO - ROLLBACK
+2025-06-07 13:28:46,266 - INFO - BEGIN (implicit)
+2025-06-07 13:28:46,267 - INFO - SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id 
+FROM department
+2025-06-07 13:28:46,269 - INFO - [cached since 59.46s ago] ()
+2025-06-07 13:28:46,270 - INFO - 2 departamentos encontrados.
+2025-06-07 13:28:46,274 - INFO - ROLLBACK
+2025-06-07 13:28:57,368 - INFO - BEGIN (implicit)
+2025-06-07 13:28:57,370 - INFO - INSERT INTO department (name, location, description, extension) VALUES (?, ?, ?, ?)
+2025-06-07 13:28:57,371 - INFO - [cached since 18.93s ago] ('Tecnologia da Informação', 'Prédio B - 4º Andar', 'Gerencia os sistemas de informação e suporte técnico', 'TI')
+2025-06-07 13:28:57,377 - INFO - COMMIT
+2025-06-07 13:28:57,384 - INFO - BEGIN (implicit)
+2025-06-07 13:28:57,386 - INFO - SELECT department.name, department.location, department.description, department.extension, department.id 
+FROM department 
+WHERE department.id = ?
+2025-06-07 13:28:57,388 - INFO - [cached since 18.92s ago] (3,)
+2025-06-07 13:28:57,391 - INFO - Departamento criado com sucesso: name='Tecnologia da Informação' extension='TI' description='Gerencia os sistemas de informação e suporte técnico' location='Prédio B - 4º Andar' id=3
+2025-06-07 13:28:57,397 - INFO - ROLLBACK
+2025-06-07 13:29:04,124 - INFO - BEGIN (implicit)
+2025-06-07 13:29:04,125 - INFO - INSERT INTO department (name, location, description, extension) VALUES (?, ?, ?, ?)
+2025-06-07 13:29:04,126 - INFO - [cached since 25.69s ago] ('Financeiro', 'Prédio C - 1º Andar', 'Responsável pelo controle financeiro e contabilidade', 'FIN')
+2025-06-07 13:29:04,131 - INFO - COMMIT
+2025-06-07 13:29:04,137 - INFO - BEGIN (implicit)
+2025-06-07 13:29:04,140 - INFO - SELECT department.name, department.location, department.description, department.extension, department.id 
+FROM department 
+WHERE department.id = ?
+2025-06-07 13:29:04,141 - INFO - [cached since 25.68s ago] (4,)
+2025-06-07 13:29:04,143 - INFO - Departamento criado com sucesso: name='Financeiro' extension='FIN' description='Responsável pelo controle financeiro e contabilidade' location='Prédio C - 1º Andar' id=4
+2025-06-07 13:29:04,147 - INFO - ROLLBACK
+2025-06-07 13:29:12,652 - INFO - BEGIN (implicit)
+2025-06-07 13:29:12,654 - INFO - INSERT INTO department (name, location, description, extension) VALUES (?, ?, ?, ?)
+2025-06-07 13:29:12,656 - INFO - [cached since 34.21s ago] ('Marketing', 'Prédio D - 3º Andar', 'Cuida da comunicação institucional e campanhas publicitárias', 'MKT')
+2025-06-07 13:29:12,659 - INFO - COMMIT
+2025-06-07 13:29:12,667 - INFO - BEGIN (implicit)
+2025-06-07 13:29:12,669 - INFO - SELECT department.name, department.location, department.description, department.extension, department.id 
+FROM department 
+WHERE department.id = ?
+2025-06-07 13:29:12,670 - INFO - [cached since 34.2s ago] (5,)
+2025-06-07 13:29:12,674 - INFO - Departamento criado com sucesso: name='Marketing' extension='MKT' description='Cuida da comunicação institucional e campanhas publicitárias' location='Prédio D - 3º Andar' id=5
+2025-06-07 13:29:12,679 - INFO - ROLLBACK
+2025-06-07 13:29:17,576 - INFO - BEGIN (implicit)
+2025-06-07 13:29:17,577 - INFO - INSERT INTO department (name, location, description, extension) VALUES (?, ?, ?, ?)
+2025-06-07 13:29:17,578 - INFO - [cached since 39.14s ago] ('Jurídico', 'Prédio A - 5º Andar', 'Assessoramento legal e gestão de contratos', 'JUR')
+2025-06-07 13:29:17,583 - INFO - COMMIT
+2025-06-07 13:29:17,588 - INFO - BEGIN (implicit)
+2025-06-07 13:29:17,590 - INFO - SELECT department.name, department.location, department.description, department.extension, department.id 
+FROM department 
+WHERE department.id = ?
+2025-06-07 13:29:17,592 - INFO - [cached since 39.13s ago] (6,)
+2025-06-07 13:29:17,596 - INFO - Departamento criado com sucesso: name='Jurídico' extension='JUR' description='Assessoramento legal e gestão de contratos' location='Prédio A - 5º Andar' id=6
+2025-06-07 13:29:17,601 - INFO - ROLLBACK
+2025-06-07 13:29:22,759 - INFO - BEGIN (implicit)
+2025-06-07 13:29:22,761 - INFO - SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id 
+FROM department
+2025-06-07 13:29:22,762 - INFO - [cached since 95.95s ago] ()
+2025-06-07 13:29:22,765 - INFO - 6 departamentos encontrados.
+2025-06-07 13:29:22,773 - INFO - ROLLBACK
+2025-06-07 13:30:32,923 - INFO - BEGIN (implicit)
+2025-06-07 13:30:32,923 - INFO - PRAGMA main.table_info("benefit")
+2025-06-07 13:30:32,924 - INFO - [raw sql] ()
+2025-06-07 13:30:32,926 - INFO - PRAGMA main.table_info("department")
+2025-06-07 13:30:32,928 - INFO - [raw sql] ()
+2025-06-07 13:30:32,931 - INFO - PRAGMA main.table_info("employee")
+2025-06-07 13:30:32,933 - INFO - [raw sql] ()
+2025-06-07 13:30:32,934 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-07 13:30:32,934 - INFO - [raw sql] ()
+2025-06-07 13:30:32,935 - INFO - PRAGMA main.table_info("payroll")
+2025-06-07 13:30:32,936 - INFO - [raw sql] ()
+2025-06-07 13:30:32,937 - INFO - COMMIT
+2025-06-07 13:30:45,759 - INFO - BEGIN (implicit)
+2025-06-07 13:30:45,778 - INFO - SELECT count(*) AS count_1 
+FROM (SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id 
+FROM department) AS anon_1
+2025-06-07 13:30:45,780 - INFO - [generated in 0.00261s] ()
+2025-06-07 13:30:45,784 - INFO - Quantidade total de departamentos: 6
+2025-06-07 13:30:45,787 - INFO - ROLLBACK
+2025-06-07 13:30:55,687 - INFO - BEGIN (implicit)
+2025-06-07 13:30:55,689 - INFO - SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id 
+FROM department
+2025-06-07 13:30:55,690 - INFO - [generated in 0.00069s] ()
+2025-06-07 13:30:55,692 - INFO - 6 departamentos encontrados.
+2025-06-07 13:30:55,696 - INFO - ROLLBACK
+2025-06-07 13:31:56,886 - INFO - BEGIN (implicit)
+2025-06-07 13:31:56,887 - INFO - PRAGMA main.table_info("benefit")
+2025-06-07 13:31:56,887 - INFO - [raw sql] ()
+2025-06-07 13:31:56,888 - INFO - PRAGMA main.table_info("department")
+2025-06-07 13:31:56,888 - INFO - [raw sql] ()
+2025-06-07 13:31:56,889 - INFO - PRAGMA main.table_info("employee")
+2025-06-07 13:31:56,889 - INFO - [raw sql] ()
+2025-06-07 13:31:56,889 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-07 13:31:56,889 - INFO - [raw sql] ()
+2025-06-07 13:31:56,891 - INFO - PRAGMA main.table_info("payroll")
+2025-06-07 13:31:56,891 - INFO - [raw sql] ()
+2025-06-07 13:31:56,892 - INFO - COMMIT
+2025-06-07 13:37:12,070 - INFO - BEGIN (implicit)
+2025-06-07 13:37:12,079 - INFO - SELECT benefit.name AS benefit_name, benefit.description AS benefit_description, benefit.amount AS benefit_amount, benefit.type AS benefit_type, benefit.active AS benefit_active, benefit.id AS benefit_id 
+FROM benefit
+2025-06-07 13:37:12,081 - INFO - [generated in 0.00220s] ()
+2025-06-07 13:37:12,087 - INFO - ROLLBACK
+2025-06-07 13:37:54,711 - INFO - BEGIN (implicit)
+2025-06-07 13:37:54,714 - INFO - INSERT INTO benefit (name, description, amount, type, active) VALUES (?, ?, ?, ?, ?)
+2025-06-07 13:37:54,714 - INFO - [generated in 0.00071s] ('Vale Refeição', 'Benefício mensal para alimentação em restaurantes', 500.0, 'Alimentação', 1)
+2025-06-07 13:37:54,722 - INFO - COMMIT
+2025-06-07 13:37:54,730 - INFO - BEGIN (implicit)
+2025-06-07 13:37:54,737 - INFO - SELECT benefit.name, benefit.description, benefit.amount, benefit.type, benefit.active, benefit.id 
+FROM benefit 
+WHERE benefit.id = ?
+2025-06-07 13:37:54,738 - INFO - [generated in 0.00175s] (1,)
+2025-06-07 13:37:54,742 - INFO - Benefício criado com sucesso: description='Benefício mensal para alimentação em restaurantes' name='Vale Refeição' active=True amount=500.0 type='Alimentação' id=1
+2025-06-07 13:37:54,747 - INFO - ROLLBACK
+2025-06-07 13:37:59,384 - INFO - BEGIN (implicit)
+2025-06-07 13:37:59,386 - INFO - INSERT INTO benefit (name, description, amount, type, active) VALUES (?, ?, ?, ?, ?)
+2025-06-07 13:37:59,387 - INFO - [cached since 4.674s ago] ('Plano de Saúde', 'Plano médico corporativo com cobertura nacional', 350.0, 'Saúde', 1)
+2025-06-07 13:37:59,392 - INFO - COMMIT
+2025-06-07 13:37:59,398 - INFO - BEGIN (implicit)
+2025-06-07 13:37:59,401 - INFO - SELECT benefit.name, benefit.description, benefit.amount, benefit.type, benefit.active, benefit.id 
+FROM benefit 
+WHERE benefit.id = ?
+2025-06-07 13:37:59,402 - INFO - [cached since 4.666s ago] (2,)
+2025-06-07 13:37:59,406 - INFO - Benefício criado com sucesso: description='Plano médico corporativo com cobertura nacional' name='Plano de Saúde' active=True amount=350.0 type='Saúde' id=2
+2025-06-07 13:37:59,411 - INFO - ROLLBACK
+2025-06-07 13:38:04,607 - INFO - BEGIN (implicit)
+2025-06-07 13:38:04,609 - INFO - INSERT INTO benefit (name, description, amount, type, active) VALUES (?, ?, ?, ?, ?)
+2025-06-07 13:38:04,610 - INFO - [cached since 9.897s ago] ('Auxílio Home Office', 'Ajuda de custo para colaboradores remotos', 150.0, 'Trabalho Remoto', 1)
+2025-06-07 13:38:04,618 - INFO - COMMIT
+2025-06-07 13:38:04,627 - INFO - BEGIN (implicit)
+2025-06-07 13:38:04,629 - INFO - SELECT benefit.name, benefit.description, benefit.amount, benefit.type, benefit.active, benefit.id 
+FROM benefit 
+WHERE benefit.id = ?
+2025-06-07 13:38:04,631 - INFO - [cached since 9.894s ago] (3,)
+2025-06-07 13:38:04,634 - INFO - Benefício criado com sucesso: description='Ajuda de custo para colaboradores remotos' name='Auxílio Home Office' active=True amount=150.0 type='Trabalho Remoto' id=3
+2025-06-07 13:38:04,639 - INFO - ROLLBACK
+2025-06-07 13:38:09,390 - INFO - BEGIN (implicit)
+2025-06-07 13:38:09,392 - INFO - INSERT INTO benefit (name, description, amount, type, active) VALUES (?, ?, ?, ?, ?)
+2025-06-07 13:38:09,393 - INFO - [cached since 14.68s ago] ('Bônus de Desempenho', 'Gratificação por metas alcançadas no trimestre', 1000.0, 'Variável', 0)
+2025-06-07 13:38:09,397 - INFO - COMMIT
+2025-06-07 13:38:09,409 - INFO - BEGIN (implicit)
+2025-06-07 13:38:09,410 - INFO - SELECT benefit.name, benefit.description, benefit.amount, benefit.type, benefit.active, benefit.id 
+FROM benefit 
+WHERE benefit.id = ?
+2025-06-07 13:38:09,411 - INFO - [cached since 14.68s ago] (4,)
+2025-06-07 13:38:09,413 - INFO - Benefício criado com sucesso: description='Gratificação por metas alcançadas no trimestre' name='Bônus de Desempenho' active=False amount=1000.0 type='Variável' id=4
+2025-06-07 13:38:09,416 - INFO - ROLLBACK
+2025-06-07 13:38:17,974 - INFO - BEGIN (implicit)
+2025-06-07 13:38:17,976 - INFO - SELECT benefit.name AS benefit_name, benefit.description AS benefit_description, benefit.amount AS benefit_amount, benefit.type AS benefit_type, benefit.active AS benefit_active, benefit.id AS benefit_id 
+FROM benefit
+2025-06-07 13:38:17,978 - INFO - [cached since 65.9s ago] ()
+2025-06-07 13:38:17,985 - INFO - ROLLBACK
+2025-06-07 13:39:05,022 - INFO - BEGIN (implicit)
+2025-06-07 13:39:05,023 - INFO - PRAGMA main.table_info("benefit")
+2025-06-07 13:39:05,024 - INFO - [raw sql] ()
+2025-06-07 13:39:05,027 - INFO - PRAGMA main.table_info("department")
+2025-06-07 13:39:05,028 - INFO - [raw sql] ()
+2025-06-07 13:39:05,031 - INFO - PRAGMA main.table_info("employee")
+2025-06-07 13:39:05,031 - INFO - [raw sql] ()
+2025-06-07 13:39:05,033 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-07 13:39:05,034 - INFO - [raw sql] ()
+2025-06-07 13:39:05,035 - INFO - PRAGMA main.table_info("payroll")
+2025-06-07 13:39:05,035 - INFO - [raw sql] ()
+2025-06-07 13:39:05,036 - INFO - COMMIT
+2025-06-07 13:39:09,058 - INFO - BEGIN (implicit)
+2025-06-07 13:39:09,065 - INFO - SELECT count(*) AS count_1 
+FROM (SELECT benefit.name AS benefit_name, benefit.description AS benefit_description, benefit.amount AS benefit_amount, benefit.type AS benefit_type, benefit.active AS benefit_active, benefit.id AS benefit_id 
+FROM benefit) AS anon_1
+2025-06-07 13:39:09,066 - INFO - [generated in 0.00136s] ()
+2025-06-07 13:39:09,069 - INFO - Quantidade total de benefícios: 4
+2025-06-07 13:39:09,070 - INFO - ROLLBACK
+2025-06-07 13:40:12,149 - INFO - BEGIN (implicit)
+2025-06-07 13:40:12,150 - INFO - PRAGMA main.table_info("benefit")
+2025-06-07 13:40:12,150 - INFO - [raw sql] ()
+2025-06-07 13:40:12,152 - INFO - PRAGMA main.table_info("department")
+2025-06-07 13:40:12,152 - INFO - [raw sql] ()
+2025-06-07 13:40:12,154 - INFO - PRAGMA main.table_info("employee")
+2025-06-07 13:40:12,154 - INFO - [raw sql] ()
+2025-06-07 13:40:12,156 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-07 13:40:12,156 - INFO - [raw sql] ()
+2025-06-07 13:40:12,159 - INFO - PRAGMA main.table_info("payroll")
+2025-06-07 13:40:12,159 - INFO - [raw sql] ()
+2025-06-07 13:40:12,160 - INFO - COMMIT

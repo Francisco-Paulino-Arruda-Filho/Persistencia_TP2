@@ -40,10 +40,6 @@ def get_employee(employee_id: int, session: Session) -> Employee:
         raise HTTPException(status_code=404, detail="Funcionário não encontrado")
     return employee
 
-@router.get("/{employee_id}", response_model=EmployeeRead)
-def read_employee(employee_id: int, session: Session = Depends(get_session)):
-    return get_employee(employee_id, session)
-
 @router.put("/{employee_id}", response_model=EmployeeRead)
 def update_employee(employee_id: int, update: EmployeeUpdate, session: Session = Depends(get_session)):
     db_employee = get_employee(employee_id, session)
@@ -80,6 +76,20 @@ def search_employee_by_name(name: str, session: Session = Depends(get_session)):
         raise HTTPException(status_code=404, detail="Funcionário não encontrado")
     return employees
 
+@router.get("/count")
+def count_employees(session: Session = Depends(get_session)):
+    """
+    Retorna a quantidade total de funcionários cadastrados.
+    """
+    try:
+        total = session.query(Employee).count()
+        logger.info(f"Quantidade total de funcionários: {total}")
+        return {"quantidade": total}
+    except SQLAlchemyError:
+        logger.exception("Erro ao contar funcionários")
+        raise HTTPException(status_code=500, detail="Erro ao contar funcionários")
+
+
 @router.get("/department/{department_id}", response_model=List[EmployeeRead])
 def get_employees_by_department(department_id: int, session: Session = Depends(get_session)):
     employees = session.query(Employee).filter(Employee.department_id == department_id).all()
@@ -110,3 +120,11 @@ def search_employees(name: Optional[str] = None, position: Optional[str] = None,
         raise HTTPException(status_code=404, detail="Funcionário não encontrado")
     
     return employees
+
+@router.get("/{employee_id}", response_model=EmployeeRead)
+def read_employee(employee_id: int, session: Session = Depends(get_session)):
+    employee = session.query(Employee).filter(Employee.id == employee_id).first()
+    if not employee:
+        logger.warning(f"Funcionário com ID {employee_id} não encontrado.")
+        raise HTTPException(status_code=404, detail="Funcionário não encontrado")
+    return employee

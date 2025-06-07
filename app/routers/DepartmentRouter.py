@@ -97,3 +97,16 @@ def read_department_by_name(department_name: str, session=Depends(get_session)):
         logger.exception("Erro ao buscar departamento por nome")
         raise HTTPException(status_code=500, detail="Erro interno ao buscar departamento por nome")
     
+@router.get("/count", summary="Quantidade de departamentos")
+def count_departments(session=Depends(get_session)):
+    """
+    Retorna a quantidade total de departamentos cadastrados.
+    """
+    logger.debug("Solicitação para contar departamentos")
+    try:
+        quantidade = session.query(Department).count()
+        logger.info(f"Quantidade total de departamentos: {quantidade}")
+        return {"quantidade": quantidade}
+    except SQLAlchemyError:
+        logger.exception("Erro ao contar departamentos")
+        raise HTTPException(status_code=500, detail="Erro interno ao contar departamentos")

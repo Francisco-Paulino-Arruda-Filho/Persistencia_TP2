@@ -28,22 +28,6 @@ def create_benefit(benefit: BenefitCreate, session: Session = Depends(get_sessio
         session.rollback()
         logger.exception("Erro ao criar benefício")
         raise HTTPException(status_code=500, detail="Erro interno ao criar benefício")
-
-@router.get("/{benefit_id}", response_model=Benefit)
-def get_benefit(benefit_id: int, session=Depends(get_session)):
-    """
-    Obtém um benefício pelo ID.
-    """
-    try:
-        benefit = session.query(Benefit).filter(Benefit.id == benefit_id).first()
-        if not benefit:
-            logger.warning(f"Benefício com ID {benefit_id} não encontrado.")
-            raise HTTPException(status_code=404, detail="Benefício não encontrado")
-        logger.debug(f"Benefício recuperado com sucesso: {benefit}")
-        return benefit
-    except SQLAlchemyError as e:
-        logger.exception("Erro ao buscar benefício por ID")
-        raise HTTPException(status_code=500, detail="Erro interno ao buscar benefício")
     
 @router.put("/{benefit_id}", response_model=BenefitRead)
 def update_benefit(benefit_id: int, benefit: BenefitCreate, session: Session = Depends(get_session)):
@@ -117,3 +101,32 @@ def search_benefits(name: str = None, session: Session = Depends(get_session)):
         logger.exception("Erro ao pesquisar benefícios")
         raise HTTPException(status_code=500, detail="Erro interno ao pesquisar benefícios")
     
+@router.get("/count", summary="Quantidade de benefícios")
+def count_benefits(session: Session = Depends(get_session)):
+    """
+    Retorna a quantidade total de benefícios cadastrados.
+    """
+    logger.debug("Solicitação para contar benefícios")
+    try:
+        quantidade = session.query(Benefit).count()
+        logger.info(f"Quantidade total de benefícios: {quantidade}")
+        return {"quantidade": quantidade}
+    except SQLAlchemyError:
+        logger.exception("Erro ao contar benefícios")
+        raise HTTPException(status_code=500, detail="Erro interno ao contar benefícios")
+    
+@router.get("/{benefit_id}", response_model=Benefit)
+def get_benefit(benefit_id: int, session=Depends(get_session)):
+    """
+    Obtém um benefício pelo ID.
+    """
+    try:
+        benefit = session.query(Benefit).filter(Benefit.id == benefit_id).first()
+        if not benefit:
+            logger.warning(f"Benefício com ID {benefit_id} não encontrado.")
+            raise HTTPException(status_code=404, detail="Benefício não encontrado")
+        logger.debug(f"Benefício recuperado com sucesso: {benefit}")
+        return benefit
+    except SQLAlchemyError as e:
+        logger.exception("Erro ao buscar benefício por ID")
+        raise HTTPException(status_code=500, detail="Erro interno ao buscar benefício")
