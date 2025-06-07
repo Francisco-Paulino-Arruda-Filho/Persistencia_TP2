@@ -2,7 +2,7 @@
 from typing import List
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.exc import SQLAlchemyError
-from sqlmodel import Session
+from sqlmodel import Session, select
 from app.models.Benefit import Benefit, BenefitCreate, BenefitRead
 from ..core.db import get_session
 from ..logs.logger import logger
@@ -134,6 +134,153 @@ def get_benefit_paginated(
     except SQLAlchemyError:
         logger.exception("Erro ao listar benefícios paginados")
         raise HTTPException(status_code=500, detail="Erro interno ao lisar benefícios")
+    
+# Endpoint para buscar benefícios por ID exato
+@router.get("/by-id/{benefit_id}", response_model=BenefitRead)
+def get_benefit_by_id(
+    benefit_id: int, 
+    session: Session = Depends(get_session)
+):
+    """
+    Busca um benefício específico pelo ID exato
+    """
+    try:
+        benefit = session.get(Benefit, benefit_id)
+        if not benefit:
+            logger.warning(f"Benefício com ID {benefit_id} não encontrado")
+            raise HTTPException(status_code=404, detail="Benefício não encontrado")
+        return benefit
+    except SQLAlchemyError:
+        logger.exception(f"Erro ao buscar benefício por ID {benefit_id}")
+        raise HTTPException(status_code=500, detail="Erro interno ao buscar benefício")
+
+# Endpoint para buscar benefícios por nome (busca parcial case-insensitive)
+@router.get("/by-name/{name}", response_model=List[BenefitRead])
+def get_benefits_by_name(
+    name: str,
+    session: Session = Depends(get_session)
+):
+    """
+    Busca benefícios por nome (busca parcial case-insensitive)
+    """
+    try:
+        benefits = session.exec(
+            select(Benefit).where(Benefit.name.ilike(f"%{name}%"))
+        ).all()
+        if not benefits:
+            raise HTTPException(status_code=404, detail="Nenhum benefício encontrado")
+        return benefits
+    except SQLAlchemyError:
+        logger.exception(f"Erro ao buscar benefícios por nome: {name}")
+        raise HTTPException(status_code=500, detail="Erro interno ao buscar benefícios")
+
+# Endpoint para buscar benefícios por tipo exato
+@router.get("/by-type/{type}", response_model=List[BenefitRead])
+def get_benefits_by_type(
+    type: str,
+    session: Session = Depends(get_session)
+):
+    """
+    Busca benefícios por tipo exato
+    """
+    try:
+        benefits = session.exec(
+            select(Benefit).where(Benefit.type == type)
+        ).all()
+        if not benefits:
+            raise HTTPException(status_code=404, detail="Nenhum benefício encontrado")
+        return benefits
+    except SQLAlchemyError:
+        logger.exception(f"Erro ao buscar benefícios por tipo: {type}")
+        raise HTTPException(status_code=500, detail="Erro interno ao buscar benefícios")
+
+# Endpoint para buscar benefícios por valor exato
+@router.get("/by-amount/{amount}", response_model=List[BenefitRead])
+def get_benefits_by_amount(
+    amount: float,
+    session: Session = Depends(get_session)
+):
+    """
+    Busca benefícios por valor exato
+    """
+    try:
+        benefits = session.exec(
+            select(Benefit).where(Benefit.amount == amount)
+        ).all()
+        if not benefits:
+            raise HTTPException(status_code=404, detail="Nenhum benefício encontrado")
+        return benefits
+    except SQLAlchemyError:
+        logger.exception(f"Erro ao buscar benefícios por valor: {amount}")
+        raise HTTPException(status_code=500, detail="Erro interno ao buscar benefícios")
+
+# Endpoint para buscar benefícios por status (ativo/inativo)
+@router.get("/by-active/{active}", response_model=List[BenefitRead])
+def get_benefits_by_active_status(
+    active: bool,
+    session: Session = Depends(get_session)
+):
+    """
+    Busca benefícios por status ativo/inativo
+    """
+    try:
+        benefits = session.exec(
+            select(Benefit).where(Benefit.active == active)
+        ).all()
+        if not benefits:
+            status = "ativos" if active else "inativos"
+            raise HTTPException(status_code=404, detail=f"Nenhum benefício {status} encontrado")
+        return benefits
+    except SQLAlchemyError:
+        logger.exception(f"Erro ao buscar benefícios por status: {active}")
+        raise HTTPException(status_code=500, detail="Erro interno ao buscar benefícios")
+
+# Endpoint para buscar benefícios por descrição (busca parcial)
+@router.get("/by-description/{description}", response_model=List[BenefitRead])
+def get_benefits_by_description(
+    description: str,
+    session: Session = Depends(get_session)
+):
+    """
+    Busca benefícios por descrição (busca parcial case-insensitive)
+    """
+    try:
+        benefits = session.exec(
+            select(Benefit).where(Benefit.description.ilike(f"%{description}%"))
+        ).all()
+        if not benefits:
+            raise HTTPException(status_code=404, detail="Nenhum benefício encontrado")
+        return benefits
+    except SQLAlchemyError:
+        logger.exception(f"Erro ao buscar benefícios por descrição: {description}")
+        raise HTTPException(status_code=500, detail="Erro interno ao buscar benefícios")
+
+# Endpoint para buscar benefícios por faixa de valor
+@router.get("/by-amount-range/", response_model=List[BenefitRead])
+def get_benefits_by_amount_range(
+    min_amount: float = Query(...),
+    max_amount: float = Query(...),
+    session: Session = Depends(get_session)
+):
+    """
+    Busca benefícios por faixa de valor (inclusivo)
+    """
+    try:
+        benefits = session.exec(
+            select(Benefit).where(
+                Benefit.amount >= min_amount,
+                Benefit.amount <= max_amount
+            )
+        ).all()
+        if not benefits:
+            raise HTTPException(
+                status_code=404,
+                detail=f"Nenhum benefício encontrado entre {min_amount} e {max_amount}"
+            )
+        return benefits
+    except SQLAlchemyError:
+        logger.exception("Erro ao buscar benefícios por faixa de valor")
+        raise HTTPException(status_code=500, detail="Erro interno ao buscar benefícios")
     
 @router.get("/{benefit_id}", response_model=Benefit)
 def get_benefit(benefit_id: int, session=Depends(get_session)):
