@@ -89,6 +89,13 @@ def count_employees(session: Session = Depends(get_session)):
         logger.exception("Erro ao contar funcionários")
         raise HTTPException(status_code=500, detail="Erro ao contar funcionários")
 
+@router.get("/department/admission_date", response_model=List[EmployeeRead])
+def get_employee_by_admission_date(admission_date: str, session: Session = Depends(get_session)):
+    date = session.query(Employee).filter(Employee.admission_date.ilike(f"%{admission_date}%")).all()
+    if not date:
+        logger.warning(f"Nenhum funcionário encontrado com admitido em '{admission_date}'")
+        raise HTTPException(status_code=404, detail="Funcionário não encontrado")
+    return date
 
 @router.get("/department/{department_id}", response_model=List[EmployeeRead])
 def get_employees_by_department(department_id: int, session: Session = Depends(get_session)):

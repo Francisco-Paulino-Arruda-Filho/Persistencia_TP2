@@ -83,7 +83,7 @@ Este projeto consiste em uma **API RESTful** para gerenciamento de um **Sistema 
 
    Crie um arquivo `.env` com o seguinte conteúdo:
    ```env
-   DATABASE_URL=sqlite:///./db.sqlite3
+   DATABASE_URL=sqlite:///./rh.db
    ```
 
 3. **Execute as migrações Alembic**:
@@ -93,7 +93,7 @@ Este projeto consiste em uma **API RESTful** para gerenciamento de um **Sistema 
 
 4. **Inicie o servidor**:
    ```bash
-   uvicorn main:app --reload
+   uvicorn app.main:app --reload
    ```
 
 ---

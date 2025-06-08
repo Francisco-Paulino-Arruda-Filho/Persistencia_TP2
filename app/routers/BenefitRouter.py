@@ -2,7 +2,7 @@
 from typing import List
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.exc import SQLAlchemyError
-from sqlmodel import Session, select
+from sqlmodel import Session, func, select
 from app.models.Benefit import Benefit, BenefitCreate, BenefitRead
 from ..core.db import get_session
 from ..logs.logger import logger
@@ -255,6 +255,27 @@ def get_benefits_by_description(
         logger.exception(f"Erro ao buscar benefícios por descrição: {description}")
         raise HTTPException(status_code=500, detail="Erro interno ao buscar benefícios")
 
+@router.get("/sorted-by-amount", response_model=List[BenefitRead])
+def get_benefits_sorted_by_amount(
+    order: str = Query("asc", regex="^(asc|desc)$"),
+    session: Session = Depends(get_session)
+):
+    """
+    Retorna os benefícios ordenados pelo valor (amount) em ordem crescente ou decrescente.
+    """
+    logger.debug(f"Solicitação para listar benefícios ordenados por amount em ordem: {order}")
+    try:
+        query = select(Benefit).order_by(
+            Benefit.amount.asc() if order == "asc" else Benefit.amount.desc()
+        )
+        benefits = session.exec(query).all()
+        logger.info(f"{len(benefits)} benefícios ordenados por amount retornados")
+        return benefits
+    except SQLAlchemyError:
+        logger.exception("Erro ao ordenar benefícios por amount")
+        raise HTTPException(status_code=500, detail="Erro interno ao ordenar benefícios")
+
+
 # Endpoint para buscar benefícios por faixa de valor
 @router.get("/by-amount-range/", response_model=List[BenefitRead])
 def get_benefits_by_amount_range(
@@ -281,6 +302,21 @@ def get_benefits_by_amount_range(
     except SQLAlchemyError:
         logger.exception("Erro ao buscar benefícios por faixa de valor")
         raise HTTPException(status_code=500, detail="Erro interno ao buscar benefícios")
+    
+@router.get("/benefits/count-by-type")
+def count_benefits_by_type(session: Session = Depends(get_session)):
+    statement = (
+        select(
+            Benefit.type,
+            func.count(Benefit.id).label("count")
+        )
+        .group_by(Benefit.type)
+    )
+    
+    results = session.exec(statement).all()
+    
+    return [{"type": r[0], "count": r[1]} for r in results]
+
     
 @router.get("/{benefit_id}", response_model=Benefit)
 def get_benefit(benefit_id: int, session=Depends(get_session)):

@@ -330,3 +330,49 @@ def count_departments(session=Depends(get_session)):
     except SQLAlchemyError:
         logger.exception("Erro ao contar departamentos")
         raise HTTPException(status_code=500, detail="Erro interno ao contar departamentos")
+
+@router.get("/partial", response_model=List[DepartmentRead])
+def get_departments_partial_name(
+    name: str,
+    session=Depends(get_session)
+):
+    """
+    Busca departamentos por nome parcial (case-insensitive)
+    """
+    try:
+        departments = session.query(Department).options(
+            joinedload(Department.manager),
+            joinedload(Department.employees)
+        ).filter(Department.name.ilike(f"%{name}%")).all()
+        
+        if not departments:
+            logger.warning(f"Nenhum departamento encontrado com nome contendo: {name}")
+            raise HTTPException(status_code=404, detail="Nenhum departamento encontrado")
+        
+        logger.info(f"{len(departments)} departamentos encontrados com nome contendo '{name}'")
+        return departments
+    except SQLAlchemyError:
+        logger.exception(f"Erro ao buscar departamentos por nome parcial: {name}")
+        raise HTTPException(status_code=500, detail="Erro interno ao buscar departamentos")
+
+@router.get("/{department_id}", response_model=DepartmentRead)
+def get_department_by_id(department_id: int, session=Depends(get_session)):
+    """
+    Busca um departamento pelo ID com todas as relações carregadas
+    """
+    logger.debug(f"Buscando departamento com ID {department_id}")
+    try:
+        department = session.query(Department).options(
+            joinedload(Department.manager),
+            joinedload(Department.employees)
+        ).filter(Department.id == department_id).first()
+        
+        if not department:
+            logger.warning(f"Departamento com ID {department_id} não encontrado")
+            raise HTTPException(status_code=404, detail="Departamento não encontrado")
+        
+        logger.info(f"Departamento encontrado por ID: {department_id}")
+        return department
+    except SQLAlchemyError:
+        logger.exception(f"Erro ao buscar departamento por ID: {department_id}")
+        raise HTTPException(status_code=500, detail="Erro interno ao buscar departamento")
