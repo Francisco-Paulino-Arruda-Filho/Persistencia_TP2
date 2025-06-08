@@ -3842,3 +3842,91 @@ FROM benefit
 WHERE benefit.active = 0
 2025-06-08 10:31:52,946 - INFO - [generated in 0.00100s] ()
 2025-06-08 10:31:52,952 - INFO - ROLLBACK
+2025-06-08 10:33:52,730 - INFO - BEGIN (implicit)
+2025-06-08 10:33:52,732 - INFO - PRAGMA main.table_info("benefit")
+2025-06-08 10:33:52,733 - INFO - [raw sql] ()
+2025-06-08 10:33:52,737 - INFO - PRAGMA main.table_info("employee")
+2025-06-08 10:33:52,738 - INFO - [raw sql] ()
+2025-06-08 10:33:52,739 - INFO - PRAGMA main.table_info("department")
+2025-06-08 10:33:52,741 - INFO - [raw sql] ()
+2025-06-08 10:33:52,744 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-08 10:33:52,745 - INFO - [raw sql] ()
+2025-06-08 10:33:52,747 - INFO - PRAGMA main.table_info("payroll")
+2025-06-08 10:33:52,748 - INFO - [raw sql] ()
+2025-06-08 10:33:52,749 - INFO - COMMIT
+2025-06-08 10:35:03,407 - INFO - BEGIN (implicit)
+2025-06-08 10:35:03,415 - INFO - INSERT INTO benefit (name, description, amount, type, active) VALUES (?, ?, ?, ?, ?)
+2025-06-08 10:35:03,416 - INFO - [generated in 0.00198s] ('string', 'string', 0.0, 'string', 1)
+2025-06-08 10:35:03,425 - INFO - COMMIT
+2025-06-08 10:35:03,433 - INFO - BEGIN (implicit)
+2025-06-08 10:35:03,441 - INFO - SELECT benefit.name, benefit.description, benefit.amount, benefit.type, benefit.active, benefit.id 
+FROM benefit 
+WHERE benefit.id = ?
+2025-06-08 10:35:03,443 - INFO - [generated in 0.00223s] (6,)
+2025-06-08 10:35:03,450 - INFO - Benefício criado com sucesso: description='string' name='string' active=True amount=0.0 type='string' id=6
+2025-06-08 10:35:03,457 - INFO - ROLLBACK
+2025-06-08 10:35:16,653 - INFO - BEGIN (implicit)
+2025-06-08 10:35:16,655 - INFO - SELECT benefit.name AS benefit_name, benefit.description AS benefit_description, benefit.amount AS benefit_amount, benefit.type AS benefit_type, benefit.active AS benefit_active, benefit.id AS benefit_id 
+FROM benefit
+2025-06-08 10:35:16,656 - INFO - [generated in 0.00071s] ()
+2025-06-08 10:35:16,660 - INFO - ROLLBACK
+2025-06-08 10:36:05,791 - INFO - BEGIN (implicit)
+2025-06-08 10:36:05,798 - INFO - SELECT benefit.name AS benefit_name, benefit.description AS benefit_description, benefit.amount AS benefit_amount, benefit.type AS benefit_type, benefit.active AS benefit_active, benefit.id AS benefit_id 
+FROM benefit 
+WHERE benefit.id = ?
+ LIMIT ? OFFSET ?
+2025-06-08 10:36:05,800 - INFO - [generated in 0.00230s] (6, 1, 0)
+2025-06-08 10:36:05,807 - INFO - UPDATE benefit SET type=? WHERE benefit.id = ?
+2025-06-08 10:36:05,807 - INFO - [generated in 0.00070s] ('Transporte', 6)
+2025-06-08 10:36:05,812 - INFO - COMMIT
+2025-06-08 10:36:05,823 - INFO - BEGIN (implicit)
+2025-06-08 10:36:05,826 - INFO - SELECT benefit.name, benefit.description, benefit.amount, benefit.type, benefit.active, benefit.id 
+FROM benefit 
+WHERE benefit.id = ?
+2025-06-08 10:36:05,828 - INFO - [cached since 62.39s ago] (6,)
+2025-06-08 10:36:05,833 - INFO - Benefício atualizado com sucesso: description='string' name='string' active=True amount=0.0 type='Transporte' id=6
+2025-06-08 10:36:05,839 - INFO - ROLLBACK
+2025-06-08 10:36:17,432 - INFO - BEGIN (implicit)
+2025-06-08 10:36:17,438 - INFO - SELECT benefit.name, benefit.description, benefit.amount, benefit.type, benefit.active, benefit.id 
+FROM benefit 
+WHERE benefit.type = ?
+2025-06-08 10:36:17,439 - INFO - [generated in 0.00168s] ('Transporte',)
+2025-06-08 10:36:17,444 - INFO - ROLLBACK
+2025-06-08 10:36:36,945 - INFO - BEGIN (implicit)
+2025-06-08 10:36:36,947 - INFO - SELECT benefit.name AS benefit_name, benefit.description AS benefit_description, benefit.amount AS benefit_amount, benefit.type AS benefit_type, benefit.active AS benefit_active, benefit.id AS benefit_id 
+FROM benefit
+2025-06-08 10:36:36,948 - INFO - [cached since 80.29s ago] ()
+2025-06-08 10:36:36,957 - INFO - ROLLBACK
+2025-06-08 10:37:23,577 - INFO - BEGIN (implicit)
+2025-06-08 10:37:23,578 - INFO - SELECT benefit.name AS benefit_name, benefit.description AS benefit_description, benefit.amount AS benefit_amount, benefit.type AS benefit_type, benefit.active AS benefit_active, benefit.id AS benefit_id 
+FROM benefit 
+WHERE benefit.id = ?
+ LIMIT ? OFFSET ?
+2025-06-08 10:37:23,579 - INFO - [cached since 77.78s ago] (6, 1, 0)
+2025-06-08 10:37:23,583 - INFO - UPDATE benefit SET name=?, description=?, amount=? WHERE benefit.id = ?
+2025-06-08 10:37:23,584 - INFO - [generated in 0.00130s] ('Vale Transporte Urbano', 'Benefício para deslocamento em transporte público urbano', 220.0, 6)
+2025-06-08 10:37:23,590 - INFO - COMMIT
+2025-06-08 10:37:23,599 - INFO - BEGIN (implicit)
+2025-06-08 10:37:23,601 - INFO - SELECT benefit.name, benefit.description, benefit.amount, benefit.type, benefit.active, benefit.id 
+FROM benefit 
+WHERE benefit.id = ?
+2025-06-08 10:37:23,602 - INFO - [cached since 140.2s ago] (6,)
+2025-06-08 10:37:23,605 - INFO - Benefício atualizado com sucesso: description='Benefício para deslocamento em transporte público urbano' name='Vale Transporte Urbano' active=True amount=220.0 type='Transporte' id=6
+2025-06-08 10:37:23,609 - INFO - ROLLBACK
+2025-06-08 10:37:45,781 - INFO - BEGIN (implicit)
+2025-06-08 10:37:45,782 - INFO - INSERT INTO benefit (name, description, amount, type, active) VALUES (?, ?, ?, ?, ?)
+2025-06-08 10:37:45,784 - INFO - [cached since 162.4s ago] ('Cartão Combustível', 'Cartão mensal para custear despesas com combustível', 300.0, 'Transporte', 1)
+2025-06-08 10:37:45,788 - INFO - COMMIT
+2025-06-08 10:37:45,794 - INFO - BEGIN (implicit)
+2025-06-08 10:37:45,797 - INFO - SELECT benefit.name, benefit.description, benefit.amount, benefit.type, benefit.active, benefit.id 
+FROM benefit 
+WHERE benefit.id = ?
+2025-06-08 10:37:45,798 - INFO - [cached since 162.4s ago] (7,)
+2025-06-08 10:37:45,800 - INFO - Benefício criado com sucesso: description='Cartão mensal para custear despesas com combustível' name='Cartão Combustível' active=True amount=300.0 type='Transporte' id=7
+2025-06-08 10:37:45,804 - INFO - ROLLBACK
+2025-06-08 10:37:57,163 - INFO - BEGIN (implicit)
+2025-06-08 10:37:57,165 - INFO - SELECT benefit.name, benefit.description, benefit.amount, benefit.type, benefit.active, benefit.id 
+FROM benefit 
+WHERE benefit.type = ?
+2025-06-08 10:37:57,166 - INFO - [cached since 99.73s ago] ('Transporte',)
+2025-06-08 10:37:57,171 - INFO - ROLLBACK
