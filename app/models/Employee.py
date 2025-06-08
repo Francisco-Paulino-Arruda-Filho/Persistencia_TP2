@@ -33,5 +33,5 @@ class EmployeeUpdate(SQLModel):
     name: Optional[str] = None
     cpf: Optional[str] = None
     position: Optional[str] = None
-    admission_date: Optional[str] = None  # você pode usar datetime.date se preferir
+    admission_date: Optional[str] = None
     department_id: Optional[int] = None
