@@ -11,34 +11,39 @@ router = APIRouter(prefix="/departments", tags=["Departamentos"])
 
 @router.post("/", response_model=DepartmentRead)
 def create_department(department: DepartmentCreate, session=Depends(get_session)):
-    """
-    Cria um novo departamento.
-    """
     logger.debug(f"Tentando criar departamento: {department}")
     try:
-        # Cria o objeto básico do departamento
+        # 1. Cria o objeto básico do departamento (sem relações)
         db_department = Department(
             name=department.name,
             location=department.location,
             description=department.description,
             extension=department.extension
         )
+        session.add(db_department)
+        session.flush()  # Gera o ID do departamento sem commit
         
-        # Se houver manager_id, associe o manager
+        # 2. Se houver manager_id, associe o manager
         if department.manager_id:
             manager = session.get(Employee, department.manager_id)
             if not manager:
+                session.rollback()
                 raise HTTPException(status_code=404, detail="Manager não encontrado")
-            db_department.manager = manager
+            db_department.manager_id = department.manager_id
+            # Se necessário, atualize o departamento do gerente
+            manager.department_id = db_department.id
         
-        # Se houver employee_ids, associe os employees
+        # 3. Se houver employee_ids, associe os employees
         if department.employee_ids:
             employees = session.query(Employee).filter(Employee.id.in_(department.employee_ids)).all()
             if len(employees) != len(department.employee_ids):
+                session.rollback()
                 raise HTTPException(status_code=404, detail="Alguns funcionários não foram encontrados")
-            db_department.employees = employees
+            
+            for employee in employees:
+                employee.department_id = db_department.id
         
-        session.add(db_department)
+        # 4. Faça o commit final
         session.commit()
         session.refresh(db_department)
         logger.info(f"Departamento criado com sucesso: {db_department}")
@@ -275,14 +280,11 @@ def get_departments_by_manager(
     manager_id: int,
     session=Depends(get_session)
 ):
-    """
-    Busca departamentos gerenciados por um funcionário específico
-    """
     try:
         departments = session.query(Department).options(
             joinedload(Department.manager),
             joinedload(Department.employees)
-        ).filter(Department.manager_id == manager_id).all()
+        ).filter(Department.manager_id == manager_id).all()  # Use manager_id aqui
         
         if not departments:
             logger.warning(f"Nenhum departamento encontrado gerenciado pelo funcionário ID: {manager_id}")

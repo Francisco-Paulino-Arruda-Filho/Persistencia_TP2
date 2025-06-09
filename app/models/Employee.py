@@ -6,7 +6,6 @@ if TYPE_CHECKING:
     from app.models.EmployeeBenefit import EmployeeBenefit
     from app.models.Payroll import Payroll
 
-    
 class EmployeeBase(SQLModel):
     name: str
     cpf: str
@@ -17,8 +16,20 @@ class EmployeeBase(SQLModel):
 class Employee(EmployeeBase, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
 
-    department: Optional["Department"] = Relationship(back_populates="employees")
-    managed_department: Optional["Department"] = Relationship(back_populates="manager", sa_relationship_kwargs={"uselist": False})
+    # Especificar explicitamente a chave estrangeira para o departamento
+    department: Optional["Department"] = Relationship(
+        back_populates="employees",
+        sa_relationship_kwargs={"foreign_keys": "Employee.department_id"}
+    )
+    
+    # Especificar explicitamente a chave estrangeira para o departamento gerenciado
+    managed_department: Optional["Department"] = Relationship(
+        back_populates="manager",
+        sa_relationship_kwargs={
+            "uselist": False,
+            "foreign_keys": "Department.manager_id"
+        }
+    )
 
     payrolls: List["Payroll"] = Relationship(back_populates="employee")
     benefits: List["EmployeeBenefit"] = Relationship(back_populates="employee")

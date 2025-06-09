@@ -1,4 +1,3 @@
-# models/Department.py
 from typing import List, Optional, TYPE_CHECKING
 from sqlmodel import SQLModel, Field, Relationship
 
@@ -15,8 +14,22 @@ class DepartmentBase(SQLModel):
 
 class Department(DepartmentBase, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
-    manager: Optional["Employee"] = Relationship(back_populates="managed_department", sa_relationship_kwargs={"uselist": False})
-    employees: List["Employee"] = Relationship(back_populates="department")
+    manager_id: Optional[int] = Field(default=None, foreign_key="employee.id")
+    
+    # Especificar explicitamente a chave estrangeira para o gerente
+    manager: Optional["Employee"] = Relationship(
+        back_populates="managed_department",
+        sa_relationship_kwargs={
+            "uselist": False,
+            "foreign_keys": "Department.manager_id"
+        }
+    )
+    
+    # Especificar explicitamente a chave estrangeira para os funcionários
+    employees: List["Employee"] = Relationship(
+        back_populates="department",
+        sa_relationship_kwargs={"foreign_keys": "Employee.department_id"}
+    )
 
 class DepartmentCreate(DepartmentBase):
     manager_id: Optional[int] = None
@@ -33,4 +46,4 @@ class DepartmentUpdate(SQLModel):
     description: Optional[str] = None
     extension: Optional[str] = None
     manager_id: Optional[int] = Field(default=None, nullable=True)  
-    employee_ids: Optional[List[int]] = None  
+    employee_ids: Optional[List[int]] = None
