@@ -6,18 +6,18 @@ from sqlmodel import Session, select
 from app.core.db import get_session
 from app.logs.logger import logger
 from app.models import Employee
-from app.models.Payroll import PayrollCreate, PayrollRead, Payroll
+from app.models.Payroll import PayrollCreate, PayrollRead, Payroll, PayrollUpdate
 
 router = APIRouter(prefix="/pay_rolls", tags=["Folhas de Pagamento"])
 
 @router.post("/", response_model=PayrollRead)
 def create_payroll(
     payroll: PayrollCreate,
-    session: Session = Depends(get_session)
+    session = Depends(get_session)
 ):
     logger.debug(f"Solicitação para criar nova folha de pagamento: {payroll}")
     try:
-        employee = session.get(Employee, payroll.employee_id)
+        employee = session.query(Employee).filter(Employee.id == payroll.employee_id).first()
         if not employee:
             logger.warning(f"Funcionário com ID {payroll.employee_id} não encontrada")
             raise HTTPException(status_code=404, detail="Funcionário não encontrado")
@@ -50,13 +50,13 @@ def get_all_payrolls(
 @router.put("/{payroll_id}", response_model=PayrollRead)
 def update_payroll(
     payroll_id: int,
-    payroll: PayrollCreate,
+    payroll: PayrollUpdate,
     session = Depends(get_session)
 ):
     logger.debug(f"Solicitação para atualizar folha de pagamento: {payroll_id}")
 
     db_payroll = session.query(Payroll).filter(Payroll.id == payroll_id).first()
-    if not payroll:
+    if not db_payroll:
         logger.warning(f"Folha de pagamento com ID {payroll_id} não encontrada")
         raise HTTPException(status_code=404, detail="Folha de pagamento não encontrada")
 

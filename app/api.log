@@ -973,3 +973,465 @@ FROM payroll
 2025-06-08 14:22:59,501 - INFO - [cached since 31.02s ago] (2, 0)
 2025-06-08 14:22:59,501 - INFO - 2 Folhas de pagamentos recuperadas na página 1
 2025-06-08 14:22:59,502 - INFO - ROLLBACK
+2025-06-08 14:25:33,756 - INFO - BEGIN (implicit)
+2025-06-08 14:25:33,756 - INFO - PRAGMA main.table_info("benefit")
+2025-06-08 14:25:33,756 - INFO - [raw sql] ()
+2025-06-08 14:25:33,756 - INFO - PRAGMA main.table_info("employee")
+2025-06-08 14:25:33,756 - INFO - [raw sql] ()
+2025-06-08 14:25:33,757 - INFO - PRAGMA main.table_info("department")
+2025-06-08 14:25:33,757 - INFO - [raw sql] ()
+2025-06-08 14:25:33,757 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-08 14:25:33,757 - INFO - [raw sql] ()
+2025-06-08 14:25:33,757 - INFO - PRAGMA main.table_info("payroll")
+2025-06-08 14:25:33,757 - INFO - [raw sql] ()
+2025-06-08 14:25:33,757 - INFO - COMMIT
+2025-06-08 14:38:31,331 - INFO - BEGIN (implicit)
+2025-06-08 14:38:31,331 - INFO - PRAGMA main.table_info("benefit")
+2025-06-08 14:38:31,331 - INFO - [raw sql] ()
+2025-06-08 14:38:31,332 - INFO - PRAGMA main.table_info("employee")
+2025-06-08 14:38:31,332 - INFO - [raw sql] ()
+2025-06-08 14:38:31,332 - INFO - PRAGMA main.table_info("department")
+2025-06-08 14:38:31,332 - INFO - [raw sql] ()
+2025-06-08 14:38:31,332 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-08 14:38:31,332 - INFO - [raw sql] ()
+2025-06-08 14:38:31,332 - INFO - PRAGMA main.table_info("payroll")
+2025-06-08 14:38:31,332 - INFO - [raw sql] ()
+2025-06-08 14:38:31,332 - INFO - COMMIT
+2025-06-08 14:39:19,640 - INFO - BEGIN (implicit)
+2025-06-08 14:39:19,640 - INFO - PRAGMA main.table_info("benefit")
+2025-06-08 14:39:19,640 - INFO - [raw sql] ()
+2025-06-08 14:39:19,641 - INFO - PRAGMA main.table_info("employee")
+2025-06-08 14:39:19,641 - INFO - [raw sql] ()
+2025-06-08 14:39:19,641 - INFO - PRAGMA main.table_info("department")
+2025-06-08 14:39:19,641 - INFO - [raw sql] ()
+2025-06-08 14:39:19,641 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-08 14:39:19,641 - INFO - [raw sql] ()
+2025-06-08 14:39:19,641 - INFO - PRAGMA main.table_info("payroll")
+2025-06-08 14:39:19,641 - INFO - [raw sql] ()
+2025-06-08 14:39:19,641 - INFO - COMMIT
+2025-06-08 22:51:23,402 - INFO - BEGIN (implicit)
+2025-06-08 22:51:23,402 - INFO - PRAGMA main.table_info("benefit")
+2025-06-08 22:51:23,402 - INFO - [raw sql] ()
+2025-06-08 22:51:23,402 - INFO - PRAGMA main.table_info("employee")
+2025-06-08 22:51:23,402 - INFO - [raw sql] ()
+2025-06-08 22:51:23,403 - INFO - PRAGMA main.table_info("department")
+2025-06-08 22:51:23,403 - INFO - [raw sql] ()
+2025-06-08 22:51:23,403 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-08 22:51:23,403 - INFO - [raw sql] ()
+2025-06-08 22:51:23,403 - INFO - PRAGMA main.table_info("payroll")
+2025-06-08 22:51:23,403 - INFO - [raw sql] ()
+2025-06-08 22:51:23,403 - INFO - COMMIT
+2025-06-08 22:51:41,637 - INFO - BEGIN (implicit)
+2025-06-08 22:51:41,638 - INFO - SELECT benefit.name AS benefit_name, benefit.description AS benefit_description, benefit.amount AS benefit_amount, benefit.type AS benefit_type, benefit.active AS benefit_active, benefit.id AS benefit_id 
+FROM benefit
+2025-06-08 22:51:41,638 - INFO - [generated in 0.00014s] ()
+2025-06-08 22:51:41,639 - INFO - ROLLBACK
+2025-06-08 22:51:54,501 - INFO - BEGIN (implicit)
+2025-06-08 22:51:54,502 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee
+2025-06-08 22:51:54,502 - INFO - [generated in 0.00015s] ()
+2025-06-08 22:51:54,503 - INFO - ROLLBACK
+2025-06-08 22:52:20,289 - INFO - BEGIN (implicit)
+2025-06-08 22:52:20,289 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee
+2025-06-08 22:52:20,289 - INFO - [cached since 25.79s ago] ()
+2025-06-08 22:52:20,290 - INFO - ROLLBACK
+2025-06-08 22:52:26,484 - INFO - BEGIN (implicit)
+2025-06-08 22:52:26,484 - INFO - SELECT benefit.name AS benefit_name, benefit.description AS benefit_description, benefit.amount AS benefit_amount, benefit.type AS benefit_type, benefit.active AS benefit_active, benefit.id AS benefit_id 
+FROM benefit
+2025-06-08 22:52:26,484 - INFO - [cached since 44.85s ago] ()
+2025-06-08 22:52:26,485 - INFO - ROLLBACK
+2025-06-08 22:52:35,471 - INFO - BEGIN (implicit)
+2025-06-08 22:52:35,473 - INFO - INSERT INTO benefit (name, description, amount, type, active) VALUES (?, ?, ?, ?, ?)
+2025-06-08 22:52:35,473 - INFO - [generated in 0.00014s] ('string', 'string', 0.0, 'string', 1)
+2025-06-08 22:52:35,473 - INFO - COMMIT
+2025-06-08 22:52:35,480 - INFO - BEGIN (implicit)
+2025-06-08 22:52:35,481 - INFO - SELECT benefit.name, benefit.description, benefit.amount, benefit.type, benefit.active, benefit.id 
+FROM benefit 
+WHERE benefit.id = ?
+2025-06-08 22:52:35,481 - INFO - [generated in 0.00014s] (1,)
+2025-06-08 22:52:35,481 - INFO - Benefício criado com sucesso: type='string' amount=0.0 active=True description='string' name='string' id=1
+2025-06-08 22:52:35,482 - INFO - ROLLBACK
+2025-06-08 22:52:38,302 - INFO - BEGIN (implicit)
+2025-06-08 22:52:38,303 - INFO - SELECT benefit.name AS benefit_name, benefit.description AS benefit_description, benefit.amount AS benefit_amount, benefit.type AS benefit_type, benefit.active AS benefit_active, benefit.id AS benefit_id 
+FROM benefit
+2025-06-08 22:52:38,303 - INFO - [cached since 56.66s ago] ()
+2025-06-08 22:52:38,304 - INFO - ROLLBACK
+2025-06-08 22:52:46,277 - INFO - BEGIN (implicit)
+2025-06-08 22:52:46,277 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee
+2025-06-08 22:52:46,277 - INFO - [cached since 51.78s ago] ()
+2025-06-08 22:52:46,278 - INFO - ROLLBACK
+2025-06-08 22:52:58,217 - INFO - BEGIN (implicit)
+2025-06-08 22:52:58,218 - INFO - SELECT employeebenefit.start_date, employeebenefit.end_date, employeebenefit.custom_amount, employeebenefit.employee_id, employeebenefit.benefit_id, employeebenefit.id 
+FROM employeebenefit
+2025-06-08 22:52:58,218 - INFO - [generated in 0.00014s] ()
+2025-06-08 22:52:58,218 - INFO - Benefícios dos Funcionários listados com sucesso: []
+2025-06-08 22:52:58,219 - INFO - ROLLBACK
+2025-06-08 22:55:45,552 - INFO - BEGIN (implicit)
+2025-06-08 22:55:45,552 - INFO - PRAGMA main.table_info("benefit")
+2025-06-08 22:55:45,552 - INFO - [raw sql] ()
+2025-06-08 22:55:45,552 - INFO - PRAGMA main.table_info("employee")
+2025-06-08 22:55:45,552 - INFO - [raw sql] ()
+2025-06-08 22:55:45,552 - INFO - PRAGMA main.table_info("department")
+2025-06-08 22:55:45,552 - INFO - [raw sql] ()
+2025-06-08 22:55:45,552 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-08 22:55:45,552 - INFO - [raw sql] ()
+2025-06-08 22:55:45,552 - INFO - PRAGMA main.table_info("payroll")
+2025-06-08 22:55:45,553 - INFO - [raw sql] ()
+2025-06-08 22:55:45,553 - INFO - COMMIT
+2025-06-08 22:55:48,683 - INFO - BEGIN (implicit)
+2025-06-08 22:55:48,684 - INFO - SELECT employeebenefit.start_date AS employeebenefit_start_date, employeebenefit.end_date AS employeebenefit_end_date, employeebenefit.custom_amount AS employeebenefit_custom_amount, employeebenefit.employee_id AS employeebenefit_employee_id, employeebenefit.benefit_id AS employeebenefit_benefit_id, employeebenefit.id AS employeebenefit_id 
+FROM employeebenefit 
+WHERE employeebenefit.id IS NULL
+ LIMIT ? OFFSET ?
+2025-06-08 22:55:48,684 - INFO - [generated in 0.00014s] (1, 0)
+2025-06-08 22:55:48,685 - WARNING - Benefício dos Funcionário com ID None não encontrado
+2025-06-08 22:55:48,685 - INFO - ROLLBACK
+2025-06-08 22:57:23,524 - INFO - BEGIN (implicit)
+2025-06-08 22:57:23,525 - INFO - PRAGMA main.table_info("benefit")
+2025-06-08 22:57:23,525 - INFO - [raw sql] ()
+2025-06-08 22:57:23,525 - INFO - PRAGMA main.table_info("employee")
+2025-06-08 22:57:23,525 - INFO - [raw sql] ()
+2025-06-08 22:57:23,525 - INFO - PRAGMA main.table_info("department")
+2025-06-08 22:57:23,525 - INFO - [raw sql] ()
+2025-06-08 22:57:23,525 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-08 22:57:23,525 - INFO - [raw sql] ()
+2025-06-08 22:57:23,525 - INFO - PRAGMA main.table_info("payroll")
+2025-06-08 22:57:23,525 - INFO - [raw sql] ()
+2025-06-08 22:57:23,525 - INFO - COMMIT
+2025-06-08 22:57:24,073 - INFO - BEGIN (implicit)
+2025-06-08 22:57:24,075 - INFO - SELECT employeebenefit.start_date AS employeebenefit_start_date, employeebenefit.end_date AS employeebenefit_end_date, employeebenefit.custom_amount AS employeebenefit_custom_amount, employeebenefit.employee_id AS employeebenefit_employee_id, employeebenefit.benefit_id AS employeebenefit_benefit_id, employeebenefit.id AS employeebenefit_id 
+FROM employeebenefit 
+WHERE employeebenefit.id IS NULL
+ LIMIT ? OFFSET ?
+2025-06-08 22:57:24,075 - INFO - [generated in 0.00019s] (1, 0)
+2025-06-08 22:57:24,077 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee 
+WHERE employee.id = ?
+ LIMIT ? OFFSET ?
+2025-06-08 22:57:24,077 - INFO - [generated in 0.00015s] (1, 1, 0)
+2025-06-08 22:57:24,078 - INFO - SELECT benefit.name AS benefit_name, benefit.description AS benefit_description, benefit.amount AS benefit_amount, benefit.type AS benefit_type, benefit.active AS benefit_active, benefit.id AS benefit_id 
+FROM benefit 
+WHERE benefit.id = ?
+ LIMIT ? OFFSET ?
+2025-06-08 22:57:24,078 - INFO - [generated in 0.00010s] (1, 1, 0)
+2025-06-08 22:57:24,080 - INFO - INSERT INTO employeebenefit (start_date, end_date, custom_amount, employee_id, benefit_id) VALUES (?, ?, ?, ?, ?)
+2025-06-08 22:57:24,080 - INFO - [generated in 0.00013s] ('string', 'string', 0.0, 1, 1)
+2025-06-08 22:57:24,080 - INFO - COMMIT
+2025-06-08 22:57:24,088 - INFO - BEGIN (implicit)
+2025-06-08 22:57:24,089 - INFO - SELECT employeebenefit.start_date, employeebenefit.end_date, employeebenefit.custom_amount, employeebenefit.employee_id, employeebenefit.benefit_id, employeebenefit.id 
+FROM employeebenefit 
+WHERE employeebenefit.id = ?
+2025-06-08 22:57:24,089 - INFO - [generated in 0.00020s] (1,)
+2025-06-08 22:57:24,090 - INFO - Benefício dos Funcionários criada com sucesso: end_date='string' custom_amount=0.0 benefit_id=1 start_date='string' employee_id=1 id=1
+2025-06-08 22:57:24,090 - INFO - ROLLBACK
+2025-06-08 22:57:32,040 - INFO - BEGIN (implicit)
+2025-06-08 22:57:32,041 - INFO - SELECT employeebenefit.start_date, employeebenefit.end_date, employeebenefit.custom_amount, employeebenefit.employee_id, employeebenefit.benefit_id, employeebenefit.id 
+FROM employeebenefit
+2025-06-08 22:57:32,041 - INFO - [generated in 0.00014s] ()
+2025-06-08 22:57:32,041 - INFO - Benefícios dos Funcionários listados com sucesso: [EmployeeBenefit(end_date='string', custom_amount=0.0, benefit_id=1, start_date='string', employee_id=1, id=1)]
+2025-06-08 22:57:32,042 - INFO - ROLLBACK
+2025-06-08 22:57:45,569 - INFO - BEGIN (implicit)
+2025-06-08 22:57:45,570 - INFO - SELECT employeebenefit.start_date AS employeebenefit_start_date, employeebenefit.end_date AS employeebenefit_end_date, employeebenefit.custom_amount AS employeebenefit_custom_amount, employeebenefit.employee_id AS employeebenefit_employee_id, employeebenefit.benefit_id AS employeebenefit_benefit_id, employeebenefit.id AS employeebenefit_id 
+FROM employeebenefit 
+WHERE employeebenefit.id = ?
+ LIMIT ? OFFSET ?
+2025-06-08 22:57:45,570 - INFO - [generated in 0.00012s] (0, 1, 0)
+2025-06-08 22:57:45,571 - INFO - SELECT employeebenefit.start_date AS employeebenefit_start_date, employeebenefit.end_date AS employeebenefit_end_date, employeebenefit.custom_amount AS employeebenefit_custom_amount, employeebenefit.employee_id AS employeebenefit_employee_id, employeebenefit.benefit_id AS employeebenefit_benefit_id, employeebenefit.id AS employeebenefit_id 
+FROM employeebenefit 
+WHERE employeebenefit.id = ?
+ LIMIT ? OFFSET ?
+2025-06-08 22:57:45,571 - INFO - [cached since 0.001472s ago] (0, 1, 0)
+2025-06-08 22:57:45,571 - WARNING - Benefício dos Funcionário com ID None não encontrado
+2025-06-08 22:57:45,572 - INFO - ROLLBACK
+2025-06-08 22:57:49,897 - INFO - BEGIN (implicit)
+2025-06-08 22:57:49,897 - INFO - SELECT employeebenefit.start_date AS employeebenefit_start_date, employeebenefit.end_date AS employeebenefit_end_date, employeebenefit.custom_amount AS employeebenefit_custom_amount, employeebenefit.employee_id AS employeebenefit_employee_id, employeebenefit.benefit_id AS employeebenefit_benefit_id, employeebenefit.id AS employeebenefit_id 
+FROM employeebenefit 
+WHERE employeebenefit.id = ?
+ LIMIT ? OFFSET ?
+2025-06-08 22:57:49,897 - INFO - [cached since 4.327s ago] (1, 1, 0)
+2025-06-08 22:57:49,897 - INFO - SELECT employeebenefit.start_date AS employeebenefit_start_date, employeebenefit.end_date AS employeebenefit_end_date, employeebenefit.custom_amount AS employeebenefit_custom_amount, employeebenefit.employee_id AS employeebenefit_employee_id, employeebenefit.benefit_id AS employeebenefit_benefit_id, employeebenefit.id AS employeebenefit_id 
+FROM employeebenefit 
+WHERE employeebenefit.id = ?
+ LIMIT ? OFFSET ?
+2025-06-08 22:57:49,898 - INFO - [cached since 4.328s ago] (1, 1, 0)
+2025-06-08 22:57:49,898 - INFO - ROLLBACK
+2025-06-08 22:58:32,452 - INFO - BEGIN (implicit)
+2025-06-08 22:58:32,452 - INFO - PRAGMA main.table_info("benefit")
+2025-06-08 22:58:32,452 - INFO - [raw sql] ()
+2025-06-08 22:58:32,453 - INFO - PRAGMA main.table_info("employee")
+2025-06-08 22:58:32,453 - INFO - [raw sql] ()
+2025-06-08 22:58:32,453 - INFO - PRAGMA main.table_info("department")
+2025-06-08 22:58:32,453 - INFO - [raw sql] ()
+2025-06-08 22:58:32,453 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-08 22:58:32,453 - INFO - [raw sql] ()
+2025-06-08 22:58:32,453 - INFO - PRAGMA main.table_info("payroll")
+2025-06-08 22:58:32,453 - INFO - [raw sql] ()
+2025-06-08 22:58:32,453 - INFO - COMMIT
+2025-06-08 22:58:33,235 - INFO - BEGIN (implicit)
+2025-06-08 22:58:33,237 - INFO - SELECT employeebenefit.start_date AS employeebenefit_start_date, employeebenefit.end_date AS employeebenefit_end_date, employeebenefit.custom_amount AS employeebenefit_custom_amount, employeebenefit.employee_id AS employeebenefit_employee_id, employeebenefit.benefit_id AS employeebenefit_benefit_id, employeebenefit.id AS employeebenefit_id 
+FROM employeebenefit 
+WHERE employeebenefit.id = ?
+ LIMIT ? OFFSET ?
+2025-06-08 22:58:33,237 - INFO - [generated in 0.00022s] (1, 1, 0)
+2025-06-08 22:58:33,237 - INFO - SELECT employeebenefit.start_date AS employeebenefit_start_date, employeebenefit.end_date AS employeebenefit_end_date, employeebenefit.custom_amount AS employeebenefit_custom_amount, employeebenefit.employee_id AS employeebenefit_employee_id, employeebenefit.benefit_id AS employeebenefit_benefit_id, employeebenefit.id AS employeebenefit_id 
+FROM employeebenefit 
+WHERE employeebenefit.id = ?
+ LIMIT ? OFFSET ?
+2025-06-08 22:58:33,237 - INFO - [cached since 0.0008735s ago] (1, 1, 0)
+2025-06-08 22:58:33,238 - INFO - ROLLBACK
+2025-06-08 22:58:38,519 - INFO - BEGIN (implicit)
+2025-06-08 22:58:38,520 - INFO - SELECT employeebenefit.start_date, employeebenefit.end_date, employeebenefit.custom_amount, employeebenefit.employee_id, employeebenefit.benefit_id, employeebenefit.id 
+FROM employeebenefit
+2025-06-08 22:58:38,520 - INFO - [generated in 0.00012s] ()
+2025-06-08 22:58:38,520 - INFO - Benefícios dos Funcionários listados com sucesso: [EmployeeBenefit(end_date='string', custom_amount=0.0, benefit_id=1, start_date='string', employee_id=1, id=1)]
+2025-06-08 22:58:38,521 - INFO - ROLLBACK
+2025-06-08 22:58:47,295 - INFO - BEGIN (implicit)
+2025-06-08 22:58:47,295 - INFO - SELECT employeebenefit.start_date AS employeebenefit_start_date, employeebenefit.end_date AS employeebenefit_end_date, employeebenefit.custom_amount AS employeebenefit_custom_amount, employeebenefit.employee_id AS employeebenefit_employee_id, employeebenefit.benefit_id AS employeebenefit_benefit_id, employeebenefit.id AS employeebenefit_id 
+FROM employeebenefit 
+WHERE employeebenefit.id = ?
+ LIMIT ? OFFSET ?
+2025-06-08 22:58:47,295 - INFO - [cached since 14.06s ago] (1, 1, 0)
+2025-06-08 22:58:47,295 - INFO - SELECT employeebenefit.start_date AS employeebenefit_start_date, employeebenefit.end_date AS employeebenefit_end_date, employeebenefit.custom_amount AS employeebenefit_custom_amount, employeebenefit.employee_id AS employeebenefit_employee_id, employeebenefit.benefit_id AS employeebenefit_benefit_id, employeebenefit.id AS employeebenefit_id 
+FROM employeebenefit 
+WHERE employeebenefit.id = ?
+ LIMIT ? OFFSET ?
+2025-06-08 22:58:47,295 - INFO - [cached since 14.06s ago] (1, 1, 0)
+2025-06-08 22:58:47,296 - INFO - ROLLBACK
+2025-06-08 23:00:31,323 - INFO - BEGIN (implicit)
+2025-06-08 23:00:31,323 - INFO - SELECT employeebenefit.start_date AS employeebenefit_start_date, employeebenefit.end_date AS employeebenefit_end_date, employeebenefit.custom_amount AS employeebenefit_custom_amount, employeebenefit.employee_id AS employeebenefit_employee_id, employeebenefit.benefit_id AS employeebenefit_benefit_id, employeebenefit.id AS employeebenefit_id 
+FROM employeebenefit 
+WHERE employeebenefit.id = ?
+ LIMIT ? OFFSET ?
+2025-06-08 23:00:31,326 - INFO - [cached since 118.1s ago] (1, 1, 0)
+2025-06-08 23:00:31,326 - INFO - SELECT employeebenefit.start_date AS employeebenefit_start_date, employeebenefit.end_date AS employeebenefit_end_date, employeebenefit.custom_amount AS employeebenefit_custom_amount, employeebenefit.employee_id AS employeebenefit_employee_id, employeebenefit.benefit_id AS employeebenefit_benefit_id, employeebenefit.id AS employeebenefit_id 
+FROM employeebenefit 
+WHERE employeebenefit.id = ?
+ LIMIT ? OFFSET ?
+2025-06-08 23:00:31,327 - INFO - [cached since 118.1s ago] (1, 1, 0)
+2025-06-08 23:00:31,328 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee 
+WHERE employee.id = ?
+ LIMIT ? OFFSET ?
+2025-06-08 23:00:31,328 - INFO - [generated in 0.00021s] (0, 1, 0)
+2025-06-08 23:00:31,328 - WARNING - Funcionário com ID 0 não encontrada
+2025-06-08 23:00:31,329 - INFO - ROLLBACK
+2025-06-08 23:00:44,386 - INFO - BEGIN (implicit)
+2025-06-08 23:00:44,386 - INFO - SELECT employeebenefit.start_date AS employeebenefit_start_date, employeebenefit.end_date AS employeebenefit_end_date, employeebenefit.custom_amount AS employeebenefit_custom_amount, employeebenefit.employee_id AS employeebenefit_employee_id, employeebenefit.benefit_id AS employeebenefit_benefit_id, employeebenefit.id AS employeebenefit_id 
+FROM employeebenefit 
+WHERE employeebenefit.id = ?
+ LIMIT ? OFFSET ?
+2025-06-08 23:00:44,386 - INFO - [cached since 131.1s ago] (1, 1, 0)
+2025-06-08 23:00:44,386 - INFO - SELECT employeebenefit.start_date AS employeebenefit_start_date, employeebenefit.end_date AS employeebenefit_end_date, employeebenefit.custom_amount AS employeebenefit_custom_amount, employeebenefit.employee_id AS employeebenefit_employee_id, employeebenefit.benefit_id AS employeebenefit_benefit_id, employeebenefit.id AS employeebenefit_id 
+FROM employeebenefit 
+WHERE employeebenefit.id = ?
+ LIMIT ? OFFSET ?
+2025-06-08 23:00:44,386 - INFO - [cached since 131.1s ago] (1, 1, 0)
+2025-06-08 23:00:44,387 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee 
+WHERE employee.id = ?
+ LIMIT ? OFFSET ?
+2025-06-08 23:00:44,387 - INFO - [cached since 13.06s ago] (1, 1, 0)
+2025-06-08 23:00:44,388 - INFO - SELECT benefit.name AS benefit_name, benefit.description AS benefit_description, benefit.amount AS benefit_amount, benefit.type AS benefit_type, benefit.active AS benefit_active, benefit.id AS benefit_id 
+FROM benefit 
+WHERE benefit.id = ?
+ LIMIT ? OFFSET ?
+2025-06-08 23:00:44,388 - INFO - [generated in 0.00011s] (1, 1, 0)
+2025-06-08 23:00:44,390 - INFO - UPDATE employeebenefit SET start_date=? WHERE employeebenefit.id = ?
+2025-06-08 23:00:44,390 - INFO - [generated in 0.00013s] ('aaaaaaaaaaaaaaaa', 1)
+2025-06-08 23:00:44,390 - INFO - COMMIT
+2025-06-08 23:00:44,397 - INFO - BEGIN (implicit)
+2025-06-08 23:00:44,398 - INFO - SELECT employeebenefit.start_date, employeebenefit.end_date, employeebenefit.custom_amount, employeebenefit.employee_id, employeebenefit.benefit_id, employeebenefit.id 
+FROM employeebenefit 
+WHERE employeebenefit.id = ?
+2025-06-08 23:00:44,398 - INFO - [generated in 0.00011s] (1,)
+2025-06-08 23:00:44,398 - INFO - FBenefício dos Funcionários atualizado com sucesso: 1
+2025-06-08 23:00:44,398 - INFO - ROLLBACK
+2025-06-08 23:00:48,622 - INFO - BEGIN (implicit)
+2025-06-08 23:00:48,622 - INFO - SELECT employeebenefit.start_date, employeebenefit.end_date, employeebenefit.custom_amount, employeebenefit.employee_id, employeebenefit.benefit_id, employeebenefit.id 
+FROM employeebenefit
+2025-06-08 23:00:48,622 - INFO - [cached since 130.1s ago] ()
+2025-06-08 23:00:48,622 - INFO - Benefícios dos Funcionários listados com sucesso: [EmployeeBenefit(end_date='string', custom_amount=0.0, benefit_id=1, start_date='aaaaaaaaaaaaaaaa', employee_id=1, id=1)]
+2025-06-08 23:00:48,623 - INFO - ROLLBACK
+2025-06-08 23:00:55,579 - INFO - BEGIN (implicit)
+2025-06-08 23:00:55,582 - INFO - SELECT count(*) AS count_1 
+FROM (SELECT employeebenefit.start_date AS employeebenefit_start_date, employeebenefit.end_date AS employeebenefit_end_date, employeebenefit.custom_amount AS employeebenefit_custom_amount, employeebenefit.employee_id AS employeebenefit_employee_id, employeebenefit.benefit_id AS employeebenefit_benefit_id, employeebenefit.id AS employeebenefit_id 
+FROM employeebenefit) AS anon_1
+2025-06-08 23:00:55,582 - INFO - [generated in 0.00019s] ()
+2025-06-08 23:00:55,583 - INFO - Quantidade total de Benefícios dos Funcionários: 1
+2025-06-08 23:00:55,583 - INFO - ROLLBACK
+2025-06-08 23:01:14,991 - INFO - BEGIN (implicit)
+2025-06-08 23:01:14,992 - INFO - SELECT employeebenefit.start_date AS employeebenefit_start_date, employeebenefit.end_date AS employeebenefit_end_date, employeebenefit.custom_amount AS employeebenefit_custom_amount, employeebenefit.employee_id AS employeebenefit_employee_id, employeebenefit.benefit_id AS employeebenefit_benefit_id, employeebenefit.id AS employeebenefit_id 
+FROM employeebenefit 
+WHERE employeebenefit.id IS NULL
+ LIMIT ? OFFSET ?
+2025-06-08 23:01:14,992 - INFO - [generated in 0.00017s] (1, 0)
+2025-06-08 23:01:14,992 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee 
+WHERE employee.id = ?
+ LIMIT ? OFFSET ?
+2025-06-08 23:01:14,993 - INFO - [cached since 43.66s ago] (1, 1, 0)
+2025-06-08 23:01:14,993 - INFO - SELECT benefit.name AS benefit_name, benefit.description AS benefit_description, benefit.amount AS benefit_amount, benefit.type AS benefit_type, benefit.active AS benefit_active, benefit.id AS benefit_id 
+FROM benefit 
+WHERE benefit.id = ?
+ LIMIT ? OFFSET ?
+2025-06-08 23:01:14,993 - INFO - [cached since 30.6s ago] (1, 1, 0)
+2025-06-08 23:01:14,995 - INFO - INSERT INTO employeebenefit (start_date, end_date, custom_amount, employee_id, benefit_id) VALUES (?, ?, ?, ?, ?)
+2025-06-08 23:01:14,995 - INFO - [generated in 0.00029s] ('string', 'vvvvvvvvvvvvvvvvvvvvv', 0.0, 1, 1)
+2025-06-08 23:01:14,995 - INFO - COMMIT
+2025-06-08 23:01:15,002 - INFO - BEGIN (implicit)
+2025-06-08 23:01:15,003 - INFO - SELECT employeebenefit.start_date, employeebenefit.end_date, employeebenefit.custom_amount, employeebenefit.employee_id, employeebenefit.benefit_id, employeebenefit.id 
+FROM employeebenefit 
+WHERE employeebenefit.id = ?
+2025-06-08 23:01:15,003 - INFO - [cached since 30.61s ago] (2,)
+2025-06-08 23:01:15,003 - INFO - Benefício dos Funcionários criada com sucesso: end_date='vvvvvvvvvvvvvvvvvvvvv' custom_amount=0.0 benefit_id=1 start_date='string' employee_id=1 id=2
+2025-06-08 23:01:15,003 - INFO - ROLLBACK
+2025-06-08 23:01:20,638 - INFO - BEGIN (implicit)
+2025-06-08 23:01:20,638 - INFO - SELECT count(*) AS count_1 
+FROM (SELECT employeebenefit.start_date AS employeebenefit_start_date, employeebenefit.end_date AS employeebenefit_end_date, employeebenefit.custom_amount AS employeebenefit_custom_amount, employeebenefit.employee_id AS employeebenefit_employee_id, employeebenefit.benefit_id AS employeebenefit_benefit_id, employeebenefit.id AS employeebenefit_id 
+FROM employeebenefit) AS anon_1
+2025-06-08 23:01:20,638 - INFO - [cached since 25.06s ago] ()
+2025-06-08 23:01:20,639 - INFO - Quantidade total de Benefícios dos Funcionários: 2
+2025-06-08 23:01:20,639 - INFO - ROLLBACK
+2025-06-08 23:01:28,238 - INFO - BEGIN (implicit)
+2025-06-08 23:01:28,238 - INFO - SELECT employeebenefit.start_date AS employeebenefit_start_date, employeebenefit.end_date AS employeebenefit_end_date, employeebenefit.custom_amount AS employeebenefit_custom_amount, employeebenefit.employee_id AS employeebenefit_employee_id, employeebenefit.benefit_id AS employeebenefit_benefit_id, employeebenefit.id AS employeebenefit_id 
+FROM employeebenefit
+ LIMIT ? OFFSET ?
+2025-06-08 23:01:28,238 - INFO - [generated in 0.00014s] (10, 0)
+2025-06-08 23:01:28,239 - INFO - 2 Benefícios dos Funcionários recuperados na página 1
+2025-06-08 23:01:28,239 - INFO - ROLLBACK
+2025-06-08 23:01:31,761 - INFO - BEGIN (implicit)
+2025-06-08 23:01:31,761 - INFO - SELECT employeebenefit.start_date AS employeebenefit_start_date, employeebenefit.end_date AS employeebenefit_end_date, employeebenefit.custom_amount AS employeebenefit_custom_amount, employeebenefit.employee_id AS employeebenefit_employee_id, employeebenefit.benefit_id AS employeebenefit_benefit_id, employeebenefit.id AS employeebenefit_id 
+FROM employeebenefit
+ LIMIT ? OFFSET ?
+2025-06-08 23:01:31,761 - INFO - [cached since 3.523s ago] (1, 0)
+2025-06-08 23:01:31,762 - INFO - 1 Benefícios dos Funcionários recuperados na página 1
+2025-06-08 23:01:31,762 - INFO - ROLLBACK
+2025-06-08 23:01:37,098 - INFO - BEGIN (implicit)
+2025-06-08 23:01:37,098 - INFO - SELECT employeebenefit.start_date AS employeebenefit_start_date, employeebenefit.end_date AS employeebenefit_end_date, employeebenefit.custom_amount AS employeebenefit_custom_amount, employeebenefit.employee_id AS employeebenefit_employee_id, employeebenefit.benefit_id AS employeebenefit_benefit_id, employeebenefit.id AS employeebenefit_id 
+FROM employeebenefit 
+WHERE employeebenefit.id = ?
+ LIMIT ? OFFSET ?
+2025-06-08 23:01:37,098 - INFO - [cached since 183.9s ago] (2, 1, 0)
+2025-06-08 23:01:37,099 - INFO - SELECT employeebenefit.start_date AS employeebenefit_start_date, employeebenefit.end_date AS employeebenefit_end_date, employeebenefit.custom_amount AS employeebenefit_custom_amount, employeebenefit.employee_id AS employeebenefit_employee_id, employeebenefit.benefit_id AS employeebenefit_benefit_id, employeebenefit.id AS employeebenefit_id 
+FROM employeebenefit 
+WHERE employeebenefit.id = ?
+ LIMIT ? OFFSET ?
+2025-06-08 23:01:37,099 - INFO - [cached since 183.9s ago] (2, 1, 0)
+2025-06-08 23:01:37,099 - INFO - ROLLBACK
+2025-06-08 23:01:39,541 - INFO - BEGIN (implicit)
+2025-06-08 23:01:39,541 - INFO - SELECT employeebenefit.start_date AS employeebenefit_start_date, employeebenefit.end_date AS employeebenefit_end_date, employeebenefit.custom_amount AS employeebenefit_custom_amount, employeebenefit.employee_id AS employeebenefit_employee_id, employeebenefit.benefit_id AS employeebenefit_benefit_id, employeebenefit.id AS employeebenefit_id 
+FROM employeebenefit 
+WHERE employeebenefit.id = ?
+ LIMIT ? OFFSET ?
+2025-06-08 23:01:39,541 - INFO - [cached since 186.3s ago] (2, 1, 0)
+2025-06-08 23:01:39,541 - INFO - SELECT employeebenefit.start_date AS employeebenefit_start_date, employeebenefit.end_date AS employeebenefit_end_date, employeebenefit.custom_amount AS employeebenefit_custom_amount, employeebenefit.employee_id AS employeebenefit_employee_id, employeebenefit.benefit_id AS employeebenefit_benefit_id, employeebenefit.id AS employeebenefit_id 
+FROM employeebenefit 
+WHERE employeebenefit.id = ?
+ LIMIT ? OFFSET ?
+2025-06-08 23:01:39,541 - INFO - [cached since 186.3s ago] (2, 1, 0)
+2025-06-08 23:01:39,542 - INFO - ROLLBACK
+2025-06-08 23:06:23,282 - INFO - BEGIN (implicit)
+2025-06-08 23:06:23,283 - INFO - PRAGMA main.table_info("benefit")
+2025-06-08 23:06:23,283 - INFO - [raw sql] ()
+2025-06-08 23:06:23,283 - INFO - PRAGMA main.table_info("employee")
+2025-06-08 23:06:23,283 - INFO - [raw sql] ()
+2025-06-08 23:06:23,283 - INFO - PRAGMA main.table_info("department")
+2025-06-08 23:06:23,283 - INFO - [raw sql] ()
+2025-06-08 23:06:23,283 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-08 23:06:23,283 - INFO - [raw sql] ()
+2025-06-08 23:06:23,283 - INFO - PRAGMA main.table_info("payroll")
+2025-06-08 23:06:23,283 - INFO - [raw sql] ()
+2025-06-08 23:06:23,284 - INFO - COMMIT
+2025-06-08 23:06:26,250 - INFO - BEGIN (implicit)
+2025-06-08 23:06:26,251 - INFO - SELECT employeebenefit.start_date AS employeebenefit_start_date, employeebenefit.end_date AS employeebenefit_end_date, employeebenefit.custom_amount AS employeebenefit_custom_amount, employeebenefit.employee_id AS employeebenefit_employee_id, employeebenefit.benefit_id AS employeebenefit_benefit_id, employeebenefit.id AS employeebenefit_id 
+FROM employeebenefit 
+WHERE employeebenefit.id = ?
+ LIMIT ? OFFSET ?
+2025-06-08 23:06:26,252 - INFO - [generated in 0.00015s] (2, 1, 0)
+2025-06-08 23:06:26,252 - INFO - ROLLBACK
+2025-06-08 23:06:27,482 - INFO - BEGIN (implicit)
+2025-06-08 23:06:27,482 - INFO - SELECT employeebenefit.start_date AS employeebenefit_start_date, employeebenefit.end_date AS employeebenefit_end_date, employeebenefit.custom_amount AS employeebenefit_custom_amount, employeebenefit.employee_id AS employeebenefit_employee_id, employeebenefit.benefit_id AS employeebenefit_benefit_id, employeebenefit.id AS employeebenefit_id 
+FROM employeebenefit 
+WHERE employeebenefit.id = ?
+ LIMIT ? OFFSET ?
+2025-06-08 23:06:27,482 - INFO - [cached since 1.231s ago] (2, 1, 0)
+2025-06-08 23:06:27,483 - INFO - ROLLBACK
+2025-06-08 23:06:27,650 - INFO - BEGIN (implicit)
+2025-06-08 23:06:27,650 - INFO - SELECT employeebenefit.start_date AS employeebenefit_start_date, employeebenefit.end_date AS employeebenefit_end_date, employeebenefit.custom_amount AS employeebenefit_custom_amount, employeebenefit.employee_id AS employeebenefit_employee_id, employeebenefit.benefit_id AS employeebenefit_benefit_id, employeebenefit.id AS employeebenefit_id 
+FROM employeebenefit 
+WHERE employeebenefit.id = ?
+ LIMIT ? OFFSET ?
+2025-06-08 23:06:27,650 - INFO - [cached since 1.399s ago] (2, 1, 0)
+2025-06-08 23:06:27,650 - INFO - ROLLBACK
+2025-06-08 23:09:30,155 - INFO - BEGIN (implicit)
+2025-06-08 23:09:30,155 - INFO - PRAGMA main.table_info("benefit")
+2025-06-08 23:09:30,155 - INFO - [raw sql] ()
+2025-06-08 23:09:30,155 - INFO - PRAGMA main.table_info("employee")
+2025-06-08 23:09:30,155 - INFO - [raw sql] ()
+2025-06-08 23:09:30,155 - INFO - PRAGMA main.table_info("department")
+2025-06-08 23:09:30,155 - INFO - [raw sql] ()
+2025-06-08 23:09:30,155 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-08 23:09:30,155 - INFO - [raw sql] ()
+2025-06-08 23:09:30,156 - INFO - PRAGMA main.table_info("payroll")
+2025-06-08 23:09:30,156 - INFO - [raw sql] ()
+2025-06-08 23:09:30,156 - INFO - COMMIT
+2025-06-08 23:09:31,861 - INFO - BEGIN (implicit)
+2025-06-08 23:09:31,863 - INFO - SELECT employeebenefit.start_date AS employeebenefit_start_date, employeebenefit.end_date AS employeebenefit_end_date, employeebenefit.custom_amount AS employeebenefit_custom_amount, employeebenefit.employee_id AS employeebenefit_employee_id, employeebenefit.benefit_id AS employeebenefit_benefit_id, employeebenefit.id AS employeebenefit_id 
+FROM employeebenefit 
+WHERE employeebenefit.id = ?
+ LIMIT ? OFFSET ?
+2025-06-08 23:09:31,863 - INFO - [generated in 0.00013s] (2, 1, 0)
+2025-06-08 23:09:31,863 - INFO - SELECT employeebenefit.start_date AS employeebenefit_start_date, employeebenefit.end_date AS employeebenefit_end_date, employeebenefit.custom_amount AS employeebenefit_custom_amount, employeebenefit.employee_id AS employeebenefit_employee_id, employeebenefit.benefit_id AS employeebenefit_benefit_id, employeebenefit.id AS employeebenefit_id 
+FROM employeebenefit 
+WHERE employeebenefit.id = ?
+ LIMIT ? OFFSET ?
+2025-06-08 23:09:31,863 - INFO - [cached since 0.0007413s ago] (2, 1, 0)
+2025-06-08 23:09:31,864 - INFO - DELETE FROM employeebenefit WHERE employeebenefit.id = ?
+2025-06-08 23:09:31,864 - INFO - [generated in 0.00010s] (2,)
+2025-06-08 23:09:31,865 - INFO - COMMIT
+2025-06-08 23:09:31,871 - INFO - Benefício do Funcionário deletado com sucesso: 2
+2025-06-08 23:09:37,732 - INFO - BEGIN (implicit)
+2025-06-08 23:09:37,733 - INFO - SELECT employeebenefit.start_date, employeebenefit.end_date, employeebenefit.custom_amount, employeebenefit.employee_id, employeebenefit.benefit_id, employeebenefit.id 
+FROM employeebenefit
+2025-06-08 23:09:37,734 - INFO - [generated in 0.00013s] ()
+2025-06-08 23:09:37,734 - INFO - Benefícios dos Funcionários listados com sucesso: [EmployeeBenefit(custom_amount=0.0, end_date='string', benefit_id=1, start_date='aaaaaaaaaaaaaaaa', employee_id=1, id=1)]
+2025-06-08 23:09:37,735 - INFO - ROLLBACK
+2025-06-08 23:10:00,351 - INFO - BEGIN (implicit)
+2025-06-08 23:10:00,351 - INFO - SELECT employeebenefit.start_date AS employeebenefit_start_date, employeebenefit.end_date AS employeebenefit_end_date, employeebenefit.custom_amount AS employeebenefit_custom_amount, employeebenefit.employee_id AS employeebenefit_employee_id, employeebenefit.benefit_id AS employeebenefit_benefit_id, employeebenefit.id AS employeebenefit_id 
+FROM employeebenefit 
+WHERE employeebenefit.id = ?
+ LIMIT ? OFFSET ?
+2025-06-08 23:10:00,351 - INFO - [cached since 28.49s ago] (1, 1, 0)
+2025-06-08 23:10:00,352 - INFO - SELECT employeebenefit.start_date AS employeebenefit_start_date, employeebenefit.end_date AS employeebenefit_end_date, employeebenefit.custom_amount AS employeebenefit_custom_amount, employeebenefit.employee_id AS employeebenefit_employee_id, employeebenefit.benefit_id AS employeebenefit_benefit_id, employeebenefit.id AS employeebenefit_id 
+FROM employeebenefit 
+WHERE employeebenefit.id = ?
+ LIMIT ? OFFSET ?
+2025-06-08 23:10:00,352 - INFO - [cached since 28.49s ago] (1, 1, 0)
+2025-06-08 23:10:00,353 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee 
+WHERE employee.id = ?
+ LIMIT ? OFFSET ?
+2025-06-08 23:10:00,353 - INFO - [generated in 0.00011s] (1, 1, 0)
+2025-06-08 23:10:00,354 - INFO - SELECT benefit.name AS benefit_name, benefit.description AS benefit_description, benefit.amount AS benefit_amount, benefit.type AS benefit_type, benefit.active AS benefit_active, benefit.id AS benefit_id 
+FROM benefit 
+WHERE benefit.id = ?
+ LIMIT ? OFFSET ?
+2025-06-08 23:10:00,354 - INFO - [generated in 0.00014s] (1, 1, 0)
+2025-06-08 23:10:00,355 - INFO - UPDATE employeebenefit SET end_date=? WHERE employeebenefit.id = ?
+2025-06-08 23:10:00,355 - INFO - [generated in 0.00013s] ('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', 1)
+2025-06-08 23:10:00,355 - INFO - COMMIT
+2025-06-08 23:10:00,364 - INFO - BEGIN (implicit)
+2025-06-08 23:10:00,364 - INFO - SELECT employeebenefit.start_date, employeebenefit.end_date, employeebenefit.custom_amount, employeebenefit.employee_id, employeebenefit.benefit_id, employeebenefit.id 
+FROM employeebenefit 
+WHERE employeebenefit.id = ?
+2025-06-08 23:10:00,364 - INFO - [generated in 0.00011s] (1,)
+2025-06-08 23:10:00,365 - INFO - FBenefício dos Funcionários atualizado com sucesso: 1
+2025-06-08 23:10:00,365 - INFO - ROLLBACK
+2025-06-08 23:10:06,942 - INFO - BEGIN (implicit)
+2025-06-08 23:10:06,942 - INFO - SELECT employeebenefit.start_date, employeebenefit.end_date, employeebenefit.custom_amount, employeebenefit.employee_id, employeebenefit.benefit_id, employeebenefit.id 
+FROM employeebenefit
+2025-06-08 23:10:06,942 - INFO - [cached since 29.21s ago] ()
+2025-06-08 23:10:06,942 - INFO - Benefícios dos Funcionários listados com sucesso: [EmployeeBenefit(custom_amount=0.0, end_date='xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', benefit_id=1, start_date='aaaaaaaaaaaaaaaa', employee_id=1, id=1)]
+2025-06-08 23:10:06,943 - INFO - ROLLBACK
