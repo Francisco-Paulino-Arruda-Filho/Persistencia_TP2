@@ -1,5 +1,5 @@
 
-from typing import List
+from typing import List, Optional
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.exc import SQLAlchemyError
 from sqlmodel import Session, func, select
@@ -316,6 +316,72 @@ def count_benefits_by_type(session: Session = Depends(get_session)):
     results = session.exec(statement).all()
     
     return [{"type": r[0], "count": r[1]} for r in results]
+
+@router.get("/filtered", response_model=List[BenefitRead])
+def filter_benefits(
+    name: Optional[str] = Query(None),
+    description: Optional[str] = Query(None),
+    min_amount: Optional[float] = Query(None, ge=0),
+    max_amount: Optional[float] = Query(None, ge=0),
+    type: Optional[str] = Query(None),
+    active: Optional[bool] = Query(None),
+    session: Session = Depends(get_session)
+):
+    """
+    Filtra benefícios por múltiplos atributos com suporte a intervalo de valores.
+    
+    Parâmetros:
+    - name: Busca parcial no nome (case-insensitive)
+    - description: Busca parcial na descrição (case-insensitive)
+    - min_amount: Valor mínimo do benefício (inclusive)
+    - max_amount: Valor máximo do benefício (inclusive)
+    - type: Tipo exato do benefício
+    - active: Status ativo/inativo
+    
+    Exemplos:
+    - /benefits/filtered?name=saude&min_amount=100&max_amount=500
+    - /benefits/filtered?type=plano&active=true
+    """
+    logger.debug("Filtrando benefícios com parâmetros: "
+                 f"name={name}, description={description}, "
+                 f"min_amount={min_amount}, max_amount={max_amount}, "
+                 f"type={type}, active={active}")
+    
+    try:
+        query = select(Benefit)
+        
+        # Filtros
+        if name:
+            query = query.where(Benefit.name.ilike(f"%{name}%"))
+        if description:
+            query = query.where(Benefit.description.ilike(f"%{description}%"))
+        if min_amount is not None:
+            query = query.where(Benefit.amount >= min_amount)
+        if max_amount is not None:
+            query = query.where(Benefit.amount <= max_amount)
+        if type:
+            query = query.where(Benefit.type == type)
+        if active is not None:
+            query = query.where(Benefit.active == active)
+        
+        benefits = session.exec(query).all()
+        
+        if not benefits:
+            logger.info("Nenhum benefício encontrado com os filtros especificados")
+            raise HTTPException(
+                status_code=404,
+                detail="Nenhum benefício encontrado com os critérios de filtro"
+            )
+        
+        logger.info(f"{len(benefits)} benefícios encontrados com os filtros")
+        return benefits
+    
+    except SQLAlchemyError as e:
+        logger.exception(f"Erro ao filtrar benefícios: {str(e)}")
+        raise HTTPException(
+            status_code=500,
+            detail="Erro interno ao filtrar benefícios"
+        )
 
     
 @router.get("/{benefit_id}", response_model=Benefit)

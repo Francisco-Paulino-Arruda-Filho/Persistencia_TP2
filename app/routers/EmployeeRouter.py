@@ -147,6 +147,78 @@ def get_employee_paginated(
         logger.exception("Erro ao listar funcionários paginados")
         raise HTTPException(status_code=500, detail="Erro interno ao listar funcionários")
 
+@router.get("/filtered", response_model=List[EmployeeRead])
+def filter_employees(
+    name: Optional[str] = Query(None, description="Busca parcial no nome (case-insensitive)"),
+    position: Optional[str] = Query(None, description="Busca parcial no cargo (case-insensitive)"),
+    cpf: Optional[str] = Query(None, description="CPF completo ou parcial"),
+    min_admission_date: Optional[str] = Query(None, description="Data mínima de admissão (AAAA-MM-DD)"),
+    max_admission_date: Optional[str] = Query(None, description="Data máxima de admissão (AAAA-MM-DD)"),
+    department_id: Optional[int] = Query(None, description="ID do departamento"),
+    session: Session = Depends(get_session)
+):
+    """
+    Filtra funcionários por múltiplos atributos com suporte a intervalo de datas.
+    
+    Parâmetros:
+    - name: Busca parcial no nome
+    - position: Busca parcial no cargo
+    - cpf: Busca parcial no CPF
+    - min_admission_date: Data mínima de admissão (inclusive)
+    - max_admission_date: Data máxima de admissão (inclusive)
+    - department_id: ID exato do departamento
+    
+    Exemplos:
+    - /employees/filtered?name=maria&position=gerente
+    - /employees/filtered?min_admission_date=2020-01-01&max_admission_date=2022-12-31
+    - /employees/filtered?department_id=5
+    """
+    try:
+        logger.debug(f"Filtrando funcionários com parâmetros: name={name}, position={position}, "
+                     f"cpf={cpf}, min_admission_date={min_admission_date}, "
+                     f"max_admission_date={max_admission_date}, department_id={department_id}")
+        
+        query = session.query(Employee)
+        
+        # Aplicar filtros
+        if name:
+            query = query.filter(Employee.name.ilike(f"%{name}%"))
+        if position:
+            query = query.filter(Employee.position.ilike(f"%{position}%"))
+        if cpf:
+            query = query.filter(Employee.cpf.ilike(f"%{cpf}%"))
+        if min_admission_date:
+            query = query.filter(Employee.admission_date >= min_admission_date)
+        if max_admission_date:
+            query = query.filter(Employee.admission_date <= max_admission_date)
+        if department_id is not None:
+            query = query.filter(Employee.department_id == department_id)
+        
+        employees = query.all()
+        
+        if not employees:
+            logger.info("Nenhum funcionário encontrado com os filtros especificados")
+            raise HTTPException(
+                status_code=404,
+                detail="Nenhum funcionário encontrado com os critérios de filtro"
+            )
+        
+        logger.info(f"{len(employees)} funcionários encontrados com os filtros")
+        return employees
+    
+    except ValueError as ve:
+        logger.error(f"Erro de formato de data: {str(ve)}")
+        raise HTTPException(
+            status_code=400,
+            detail="Formato de data inválido. Use AAAA-MM-DD"
+        )
+    except SQLAlchemyError as e:
+        logger.exception(f"Erro ao filtrar funcionários: {str(e)}")
+        raise HTTPException(
+            status_code=500,
+            detail="Erro interno ao filtrar funcionários"
+        )
+
 @router.get("/{employee_id}", response_model=EmployeeRead)
 def read_employee(employee_id: int, session: Session = Depends(get_session)):
     employee = session.query(Employee).filter(Employee.id == employee_id).first()

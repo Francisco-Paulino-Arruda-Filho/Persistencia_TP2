@@ -355,6 +355,44 @@ def get_departments_partial_name(
         logger.exception(f"Erro ao buscar departamentos por nome parcial: {name}")
         raise HTTPException(status_code=500, detail="Erro interno ao buscar departamentos")
 
+@router.get("/by-employees/", response_model=List[DepartmentRead])
+def get_departments_by_employees(
+    employee_ids: List[int] = Query(..., description="Lista de IDs de funcionários para filtrar departamentos"),
+    session=Depends(get_session)
+):
+    """
+    Busca departamentos que contenham pelo menos um dos funcionários especificados.
+    """
+    logger.debug(f"Buscando departamentos com funcionários: {employee_ids}")
+    try:
+        # Verifica se todos os IDs de funcionários existem
+        employees = session.query(Employee).filter(Employee.id.in_(employee_ids)).all()
+        found_ids = {e.id for e in employees}
+        missing_ids = set(employee_ids) - found_ids
+        
+        if missing_ids:
+            logger.warning(f"Alguns funcionários não foram encontrados: {missing_ids}")
+            raise HTTPException(
+                status_code=404,
+                detail=f"Funcionários não encontrados: {list(missing_ids)}"
+            )
+        
+        # Busca departamentos que contenham pelo menos um dos funcionários
+        departments = session.query(Department).options(
+            joinedload(Department.manager),
+            joinedload(Department.employees)
+        ).join(Department.employees).filter(Employee.id.in_(employee_ids)).distinct().all()
+        
+        if not departments:
+            logger.warning(f"Nenhum departamento encontrado com os funcionários: {employee_ids}")
+            raise HTTPException(status_code=404, detail="Nenhum departamento encontrado")
+        
+        logger.info(f"{len(departments)} departamentos encontrados com os funcionários especificados")
+        return departments
+    except SQLAlchemyError as e:
+        logger.exception(f"Erro ao buscar departamentos por funcionários: {str(e)}")
+        raise HTTPException(status_code=500, detail="Erro interno ao buscar departamentos")
+
 @router.get("/{department_id}", response_model=DepartmentRead)
 def get_department_by_id(department_id: int, session=Depends(get_session)):
     """

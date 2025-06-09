@@ -3930,3 +3930,450 @@ FROM benefit
 WHERE benefit.type = ?
 2025-06-08 10:37:57,166 - INFO - [cached since 99.73s ago] ('Transporte',)
 2025-06-08 10:37:57,171 - INFO - ROLLBACK
+2025-06-08 12:36:14,175 - INFO - BEGIN (implicit)
+2025-06-08 12:36:14,223 - INFO - PRAGMA main.table_info("benefit")
+2025-06-08 12:36:14,260 - INFO - [raw sql] ()
+2025-06-08 12:36:14,268 - INFO - PRAGMA main.table_info("employee")
+2025-06-08 12:36:14,300 - INFO - [raw sql] ()
+2025-06-08 12:36:14,307 - INFO - PRAGMA main.table_info("department")
+2025-06-08 12:36:14,308 - INFO - [raw sql] ()
+2025-06-08 12:36:14,312 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-08 12:36:14,314 - INFO - [raw sql] ()
+2025-06-08 12:36:14,317 - INFO - PRAGMA main.table_info("payroll")
+2025-06-08 12:36:14,323 - INFO - [raw sql] ()
+2025-06-08 12:36:14,333 - INFO - COMMIT
+2025-06-08 12:36:31,053 - INFO - BEGIN (implicit)
+2025-06-08 12:36:31,057 - INFO - SELECT benefit.name AS benefit_name, benefit.description AS benefit_description, benefit.amount AS benefit_amount, benefit.type AS benefit_type, benefit.active AS benefit_active, benefit.id AS benefit_id 
+FROM benefit
+2025-06-08 12:36:31,058 - INFO - [generated in 0.00100s] ()
+2025-06-08 12:36:31,065 - INFO - ROLLBACK
+2025-06-08 12:37:42,273 - INFO - BEGIN (implicit)
+2025-06-08 12:37:42,334 - INFO - SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id, employee_1.name AS employee_1_name, employee_1.cpf AS employee_1_cpf, employee_1.position AS employee_1_position, employee_1.admission_date AS employee_1_admission_date, employee_1.department_id AS employee_1_department_id, employee_1.id AS employee_1_id, employee_2.name AS employee_2_name, employee_2.cpf AS employee_2_cpf, employee_2.position AS employee_2_position, employee_2.admission_date AS employee_2_admission_date, employee_2.department_id AS employee_2_department_id, employee_2.id AS employee_2_id 
+FROM department LEFT OUTER JOIN employee AS employee_1 ON department.id = employee_1.department_id LEFT OUTER JOIN employee AS employee_2 ON department.id = employee_2.department_id
+2025-06-08 12:37:42,336 - INFO - [generated in 0.00414s] ()
+2025-06-08 12:37:42,362 - INFO - 3 departamentos encontrados.
+2025-06-08 12:37:42,374 - INFO - ROLLBACK
+2025-06-08 12:38:09,701 - INFO - BEGIN (implicit)
+2025-06-08 12:38:09,714 - INFO - SELECT benefit.name, benefit.description, benefit.amount, benefit.type, benefit.active, benefit.id 
+FROM benefit 
+WHERE benefit.type = ?
+2025-06-08 12:38:09,715 - INFO - [generated in 0.00174s] ('Transporte',)
+2025-06-08 12:38:09,726 - INFO - ROLLBACK
+2025-06-08 12:38:40,295 - INFO - BEGIN (implicit)
+2025-06-08 12:38:40,301 - INFO - SELECT benefit.name, benefit.description, benefit.amount, benefit.type, benefit.active, benefit.id 
+FROM benefit 
+WHERE lower(benefit.name) LIKE lower(?)
+2025-06-08 12:38:40,302 - INFO - [generated in 0.00175s] ('%Vale Refeição%',)
+2025-06-08 12:38:40,314 - INFO - ROLLBACK
+2025-06-08 12:38:48,826 - INFO - BEGIN (implicit)
+2025-06-08 12:38:48,830 - INFO - SELECT benefit.name, benefit.description, benefit.amount, benefit.type, benefit.active, benefit.id 
+FROM benefit 
+WHERE lower(benefit.name) LIKE lower(?)
+2025-06-08 12:38:48,831 - INFO - [cached since 8.531s ago] ('%Vale%',)
+2025-06-08 12:38:48,838 - INFO - ROLLBACK
+2025-06-08 12:38:57,648 - INFO - BEGIN (implicit)
+2025-06-08 12:38:57,655 - INFO - SELECT benefit.name AS benefit_name, benefit.description AS benefit_description, benefit.amount AS benefit_amount, benefit.type AS benefit_type, benefit.active AS benefit_active, benefit.id AS benefit_id 
+FROM benefit 
+WHERE benefit.id = ?
+2025-06-08 12:38:57,657 - INFO - [generated in 0.00196s] (2,)
+2025-06-08 12:38:57,667 - INFO - ROLLBACK
+2025-06-08 12:39:10,910 - INFO - BEGIN (implicit)
+2025-06-08 12:39:10,915 - INFO - SELECT benefit.name AS benefit_name, benefit.description AS benefit_description, benefit.amount AS benefit_amount, benefit.type AS benefit_type, benefit.active AS benefit_active, benefit.id AS benefit_id 
+FROM benefit
+ LIMIT ? OFFSET ?
+2025-06-08 12:39:10,917 - INFO - [generated in 0.00165s] (3, 3)
+2025-06-08 12:39:10,921 - INFO - 3 benefícios recuperados na página 2
+2025-06-08 12:39:10,948 - INFO - ROLLBACK
+2025-06-08 12:39:29,882 - INFO - BEGIN (implicit)
+2025-06-08 12:39:29,886 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee
+2025-06-08 12:39:29,887 - INFO - [generated in 0.00114s] ()
+2025-06-08 12:39:29,900 - INFO - ROLLBACK
+2025-06-08 12:40:00,432 - INFO - BEGIN (implicit)
+2025-06-08 12:40:00,435 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee
+ LIMIT ? OFFSET ?
+2025-06-08 12:40:00,437 - INFO - [generated in 0.00165s] (3, 6)
+2025-06-08 12:40:00,439 - INFO - 3 funcionários recuperados na página 3
+2025-06-08 12:40:00,444 - INFO - ROLLBACK
+2025-06-08 12:40:42,896 - INFO - BEGIN (implicit)
+2025-06-08 12:40:42,903 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee 
+WHERE employee.id = ?
+ LIMIT ? OFFSET ?
+2025-06-08 12:40:42,904 - INFO - [generated in 0.00164s] (1, 1, 0)
+2025-06-08 12:40:42,910 - INFO - ROLLBACK
+2025-06-08 12:40:53,466 - INFO - BEGIN (implicit)
+2025-06-08 12:40:53,470 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee 
+WHERE lower(employee.name) LIKE lower(?)
+2025-06-08 12:40:53,472 - INFO - [generated in 0.00224s] ('%Silva%',)
+2025-06-08 12:40:53,481 - INFO - ROLLBACK
+2025-06-09 09:40:05,215 - INFO - BEGIN (implicit)
+2025-06-09 09:40:05,219 - INFO - PRAGMA main.table_info("benefit")
+2025-06-09 09:40:05,221 - INFO - [raw sql] ()
+2025-06-09 09:40:05,224 - INFO - PRAGMA main.table_info("employee")
+2025-06-09 09:40:05,226 - INFO - [raw sql] ()
+2025-06-09 09:40:05,232 - INFO - PRAGMA main.table_info("department")
+2025-06-09 09:40:05,234 - INFO - [raw sql] ()
+2025-06-09 09:40:05,235 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-09 09:40:05,237 - INFO - [raw sql] ()
+2025-06-09 09:40:05,240 - INFO - PRAGMA main.table_info("payroll")
+2025-06-09 09:40:05,241 - INFO - [raw sql] ()
+2025-06-09 09:40:05,242 - INFO - COMMIT
+2025-06-09 09:41:08,797 - INFO - BEGIN (implicit)
+2025-06-09 09:41:08,835 - INFO - SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id, employee_1.name AS employee_1_name, employee_1.cpf AS employee_1_cpf, employee_1.position AS employee_1_position, employee_1.admission_date AS employee_1_admission_date, employee_1.department_id AS employee_1_department_id, employee_1.id AS employee_1_id, employee_2.name AS employee_2_name, employee_2.cpf AS employee_2_cpf, employee_2.position AS employee_2_position, employee_2.admission_date AS employee_2_admission_date, employee_2.department_id AS employee_2_department_id, employee_2.id AS employee_2_id 
+FROM department LEFT OUTER JOIN employee AS employee_1 ON department.id = employee_1.department_id LEFT OUTER JOIN employee AS employee_2 ON department.id = employee_2.department_id
+2025-06-09 09:41:08,838 - INFO - [generated in 0.00345s] ()
+2025-06-09 09:41:08,854 - INFO - 3 departamentos encontrados.
+2025-06-09 09:41:08,867 - INFO - ROLLBACK
+2025-06-09 09:41:20,090 - INFO - BEGIN (implicit)
+2025-06-09 09:41:20,111 - INFO - SELECT anon_1.department_name AS anon_1_department_name, anon_1.department_location AS anon_1_department_location, anon_1.department_description AS anon_1_department_description, anon_1.department_extension AS anon_1_department_extension, anon_1.department_id AS anon_1_department_id, employee_1.name AS employee_1_name, employee_1.cpf AS employee_1_cpf, employee_1.position AS employee_1_position, employee_1.admission_date AS employee_1_admission_date, employee_1.department_id AS employee_1_department_id, employee_1.id AS employee_1_id, employee_2.name AS employee_2_name, employee_2.cpf AS employee_2_cpf, employee_2.position AS employee_2_position, employee_2.admission_date AS employee_2_admission_date, employee_2.department_id AS employee_2_department_id, employee_2.id AS employee_2_id 
+FROM (SELECT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id 
+FROM department 
+WHERE department.id = ?
+ LIMIT ? OFFSET ?) AS anon_1 LEFT OUTER JOIN employee AS employee_1 ON anon_1.department_id = employee_1.department_id LEFT OUTER JOIN employee AS employee_2 ON anon_1.department_id = employee_2.department_id
+2025-06-09 09:41:20,117 - INFO - [generated in 0.00663s] (1, 1, 0)
+2025-06-09 09:41:20,122 - INFO - Departamento encontrado por ID: 1
+2025-06-09 09:41:20,127 - INFO - ROLLBACK
+2025-06-09 09:42:02,393 - INFO - BEGIN (implicit)
+2025-06-09 09:42:02,410 - INFO - SELECT count(*) AS count_1 
+FROM (SELECT payroll.gross_salary AS payroll_gross_salary, payroll.deductions AS payroll_deductions, payroll.net_salary AS payroll_net_salary, payroll.reference_month AS payroll_reference_month, payroll.id AS payroll_id, payroll.employee_id AS payroll_employee_id 
+FROM payroll) AS anon_1
+2025-06-09 09:42:02,413 - INFO - [generated in 0.00276s] ()
+2025-06-09 09:42:02,417 - INFO - Quantidade total de Folhas de Pagamentos: 0
+2025-06-09 09:42:02,419 - INFO - ROLLBACK
+2025-06-09 15:43:36,337 - INFO - BEGIN (implicit)
+2025-06-09 15:43:36,338 - INFO - PRAGMA main.table_info("benefit")
+2025-06-09 15:43:36,339 - INFO - [raw sql] ()
+2025-06-09 15:43:36,341 - INFO - PRAGMA main.table_info("employee")
+2025-06-09 15:43:36,342 - INFO - [raw sql] ()
+2025-06-09 15:43:36,343 - INFO - PRAGMA main.table_info("department")
+2025-06-09 15:43:36,344 - INFO - [raw sql] ()
+2025-06-09 15:43:36,344 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-09 15:43:36,344 - INFO - [raw sql] ()
+2025-06-09 15:43:36,345 - INFO - PRAGMA main.table_info("payroll")
+2025-06-09 15:43:36,346 - INFO - [raw sql] ()
+2025-06-09 15:43:36,348 - INFO - COMMIT
+2025-06-09 15:47:54,414 - INFO - BEGIN (implicit)
+2025-06-09 15:47:54,451 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee 
+WHERE employee.department_id = ?
+2025-06-09 15:47:54,455 - INFO - [generated in 0.00753s] (1,)
+2025-06-09 15:47:54,490 - INFO - ROLLBACK
+2025-06-09 15:48:02,160 - INFO - BEGIN (implicit)
+2025-06-09 15:48:02,162 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee 
+WHERE employee.department_id = ?
+2025-06-09 15:48:02,164 - INFO - [cached since 7.717s ago] (2,)
+2025-06-09 15:48:02,169 - INFO - ROLLBACK
+2025-06-09 15:48:08,368 - INFO - BEGIN (implicit)
+2025-06-09 15:48:08,370 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee 
+WHERE employee.department_id = ?
+2025-06-09 15:48:08,371 - INFO - [cached since 13.92s ago] (3,)
+2025-06-09 15:48:08,375 - INFO - ROLLBACK
+2025-06-09 15:52:43,214 - INFO - BEGIN (implicit)
+2025-06-09 15:52:43,215 - INFO - PRAGMA main.table_info("benefit")
+2025-06-09 15:52:43,216 - INFO - [raw sql] ()
+2025-06-09 15:52:43,219 - INFO - PRAGMA main.table_info("employee")
+2025-06-09 15:52:43,219 - INFO - [raw sql] ()
+2025-06-09 15:52:43,221 - INFO - PRAGMA main.table_info("department")
+2025-06-09 15:52:43,279 - INFO - [raw sql] ()
+2025-06-09 15:52:43,282 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-09 15:52:43,283 - INFO - [raw sql] ()
+2025-06-09 15:52:43,284 - INFO - PRAGMA main.table_info("payroll")
+2025-06-09 15:52:43,285 - INFO - [raw sql] ()
+2025-06-09 15:52:43,287 - INFO - COMMIT
+2025-06-09 16:00:02,532 - INFO - BEGIN (implicit)
+2025-06-09 16:00:02,533 - INFO - PRAGMA main.table_info("benefit")
+2025-06-09 16:00:02,534 - INFO - [raw sql] ()
+2025-06-09 16:00:02,538 - INFO - PRAGMA main.table_info("employee")
+2025-06-09 16:00:02,539 - INFO - [raw sql] ()
+2025-06-09 16:00:02,541 - INFO - PRAGMA main.table_info("department")
+2025-06-09 16:00:02,541 - INFO - [raw sql] ()
+2025-06-09 16:00:02,542 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-09 16:00:02,542 - INFO - [raw sql] ()
+2025-06-09 16:00:02,543 - INFO - PRAGMA main.table_info("payroll")
+2025-06-09 16:00:02,543 - INFO - [raw sql] ()
+2025-06-09 16:00:02,544 - INFO - COMMIT
+2025-06-09 16:00:16,743 - ERROR - Erro ao buscar departamentos por gerente: 1
+Traceback (most recent call last):
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 2437, in _determine_joins
+    self.primaryjoin = join_condition(
+                       ^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\util.py", line 123, in join_condition
+    return Join._join_condition(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\selectable.py", line 1431, in _join_condition
+    cls._joincond_trim_constraints(
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\selectable.py", line 1576, in _joincond_trim_constraints
+    raise exc.AmbiguousForeignKeysError(
+sqlalchemy.exc.AmbiguousForeignKeysError: Can't determine join between 'employee' and 'department'; tables have more than one foreign key constraint relationship between them. Please specify the 'onclause' of this join explicitly.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\fpaul\Documents\GitHub\Persistencia_TP2\app\routers\DepartmentRouter.py", line 279, in get_departments_by_manager
+    departments = session.query(Department).options(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\typing_extensions.py", line 3253, in wrapper
+    return arg(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlmodel\orm\session.py", line 159, in query
+    return super().query(*entities, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 2955, in query
+    return self._query_cls(entities, self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\query.py", line 276, in __init__
+    self._set_entities(entities)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\query.py", line 288, in _set_entities
+    self._raw_columns = [
+                        ^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\query.py", line 289, in <listcomp>
+    coercions.expect(
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\coercions.py", line 388, in expect
+    insp._post_inspect
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 1257, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2724, in _post_inspect
+    self._check_configure()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4255, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2418, in _post_configure_properties
+    prop.init()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\interfaces.py", line 589, in init
+    self.do_init()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1658, in do_init
+    self._setup_join_conditions()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1898, in _setup_join_conditions
+    self._join_condition = jc = JoinCondition(
+                                ^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 2324, in __init__
+    self._determine_joins()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 2481, in _determine_joins
+    raise sa_exc.AmbiguousForeignKeysError(
+sqlalchemy.exc.AmbiguousForeignKeysError: Could not determine join condition between parent/child tables on relationship Employee.department - there are multiple foreign key paths linking the tables.  Specify the 'foreign_keys' argument, providing a list of those columns which should be counted as containing a foreign key reference to the parent table.
+2025-06-09 16:00:36,836 - ERROR - Erro ao listar departamentos
+Traceback (most recent call last):
+  File "C:\Users\fpaul\Documents\GitHub\Persistencia_TP2\app\routers\DepartmentRouter.py", line 150, in get_all_departments
+    departments = session.query(Department).options(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\typing_extensions.py", line 3253, in wrapper
+    return arg(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlmodel\orm\session.py", line 159, in query
+    return super().query(*entities, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 2955, in query
+    return self._query_cls(entities, self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\query.py", line 276, in __init__
+    self._set_entities(entities)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\query.py", line 288, in _set_entities
+    self._raw_columns = [
+                        ^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\query.py", line 289, in <listcomp>
+    coercions.expect(
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\coercions.py", line 388, in expect
+    insp._post_inspect
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 1257, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2724, in _post_inspect
+    self._check_configure()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4251, in _do_configure_registries
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[Employee(employee)]'. Original exception was: Could not determine join condition between parent/child tables on relationship Employee.department - there are multiple foreign key paths linking the tables.  Specify the 'foreign_keys' argument, providing a list of those columns which should be counted as containing a foreign key reference to the parent table.
+2025-06-09 16:00:47,935 - INFO - BEGIN (implicit)
+2025-06-09 16:00:47,936 - INFO - PRAGMA main.table_info("benefit")
+2025-06-09 16:00:47,936 - INFO - [raw sql] ()
+2025-06-09 16:00:47,938 - INFO - PRAGMA main.table_info("employee")
+2025-06-09 16:00:47,938 - INFO - [raw sql] ()
+2025-06-09 16:00:47,939 - INFO - PRAGMA main.table_info("department")
+2025-06-09 16:00:47,939 - INFO - [raw sql] ()
+2025-06-09 16:00:47,940 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-09 16:00:47,941 - INFO - [raw sql] ()
+2025-06-09 16:00:47,945 - INFO - PRAGMA main.table_info("payroll")
+2025-06-09 16:00:47,945 - INFO - [raw sql] ()
+2025-06-09 16:00:47,947 - INFO - COMMIT
+2025-06-09 16:04:27,896 - INFO - BEGIN (implicit)
+2025-06-09 16:04:27,896 - INFO - PRAGMA main.table_info("benefit")
+2025-06-09 16:04:27,897 - INFO - [raw sql] ()
+2025-06-09 16:04:27,898 - INFO - PRAGMA main.table_info("employee")
+2025-06-09 16:04:27,898 - INFO - [raw sql] ()
+2025-06-09 16:04:27,899 - INFO - PRAGMA main.table_info("department")
+2025-06-09 16:04:27,900 - INFO - [raw sql] ()
+2025-06-09 16:04:27,902 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-09 16:04:27,903 - INFO - [raw sql] ()
+2025-06-09 16:04:27,907 - INFO - PRAGMA main.table_info("payroll")
+2025-06-09 16:04:27,909 - INFO - [raw sql] ()
+2025-06-09 16:04:27,913 - INFO - COMMIT
+2025-06-09 16:13:29,439 - INFO - BEGIN (implicit)
+2025-06-09 16:13:29,440 - INFO - PRAGMA main.table_info("benefit")
+2025-06-09 16:13:29,441 - INFO - [raw sql] ()
+2025-06-09 16:13:29,446 - INFO - PRAGMA main.table_info("employee")
+2025-06-09 16:13:29,447 - INFO - [raw sql] ()
+2025-06-09 16:13:29,448 - INFO - PRAGMA main.table_info("department")
+2025-06-09 16:13:29,448 - INFO - [raw sql] ()
+2025-06-09 16:13:29,454 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-09 16:13:29,454 - INFO - [raw sql] ()
+2025-06-09 16:13:29,455 - INFO - PRAGMA main.table_info("payroll")
+2025-06-09 16:13:29,456 - INFO - [raw sql] ()
+2025-06-09 16:13:29,457 - INFO - COMMIT
+2025-06-09 16:14:00,466 - ERROR - Erro ao obter todos os funcionários.
+Traceback (most recent call last):
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 2437, in _determine_joins
+    self.primaryjoin = join_condition(
+                       ^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\util.py", line 123, in join_condition
+    return Join._join_condition(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\selectable.py", line 1431, in _join_condition
+    cls._joincond_trim_constraints(
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\selectable.py", line 1576, in _joincond_trim_constraints
+    raise exc.AmbiguousForeignKeysError(
+sqlalchemy.exc.AmbiguousForeignKeysError: Can't determine join between 'employee' and 'department'; tables have more than one foreign key constraint relationship between them. Please specify the 'onclause' of this join explicitly.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\fpaul\Documents\GitHub\Persistencia_TP2\app\routers\EmployeeRouter.py", line 14, in get_all_employees
+    employees = session.query(Employee).all()
+                ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\typing_extensions.py", line 3253, in wrapper
+    return arg(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlmodel\orm\session.py", line 159, in query
+    return super().query(*entities, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\session.py", line 2955, in query
+    return self._query_cls(entities, self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\query.py", line 276, in __init__
+    self._set_entities(entities)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\query.py", line 288, in _set_entities
+    self._raw_columns = [
+                        ^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\query.py", line 289, in <listcomp>
+    coercions.expect(
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\sql\coercions.py", line 388, in expect
+    insp._post_inspect
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 1257, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2724, in _post_inspect
+    self._check_configure()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4255, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2418, in _post_configure_properties
+    prop.init()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\interfaces.py", line 589, in init
+    self.do_init()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1658, in do_init
+    self._setup_join_conditions()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1898, in _setup_join_conditions
+    self._join_condition = jc = JoinCondition(
+                                ^^^^^^^^^^^^^^
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 2324, in __init__
+    self._determine_joins()
+  File "C:\Users\fpaul\AppData\Local\Programs\Python\Python311\Lib\site-packages\sqlalchemy\orm\relationships.py", line 2481, in _determine_joins
+    raise sa_exc.AmbiguousForeignKeysError(
+sqlalchemy.exc.AmbiguousForeignKeysError: Could not determine join condition between parent/child tables on relationship Employee.department - there are multiple foreign key paths linking the tables.  Specify the 'foreign_keys' argument, providing a list of those columns which should be counted as containing a foreign key reference to the parent table.
+2025-06-09 16:14:26,381 - INFO - BEGIN (implicit)
+2025-06-09 16:14:26,382 - INFO - PRAGMA main.table_info("benefit")
+2025-06-09 16:14:26,382 - INFO - [raw sql] ()
+2025-06-09 16:14:26,383 - INFO - PRAGMA main.table_info("employee")
+2025-06-09 16:14:26,384 - INFO - [raw sql] ()
+2025-06-09 16:14:26,384 - INFO - PRAGMA main.table_info("department")
+2025-06-09 16:14:26,385 - INFO - [raw sql] ()
+2025-06-09 16:14:26,385 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-09 16:14:26,386 - INFO - [raw sql] ()
+2025-06-09 16:14:26,389 - INFO - PRAGMA main.table_info("payroll")
+2025-06-09 16:14:26,392 - INFO - [raw sql] ()
+2025-06-09 16:14:26,394 - INFO - COMMIT
+2025-06-09 16:14:31,914 - INFO - BEGIN (implicit)
+2025-06-09 16:14:31,918 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee
+2025-06-09 16:14:31,919 - INFO - [generated in 0.00112s] ()
+2025-06-09 16:14:31,931 - INFO - ROLLBACK
+2025-06-09 16:22:39,815 - INFO - BEGIN (implicit)
+2025-06-09 16:22:39,817 - INFO - PRAGMA main.table_info("benefit")
+2025-06-09 16:22:39,818 - INFO - [raw sql] ()
+2025-06-09 16:22:39,822 - INFO - PRAGMA main.table_info("employee")
+2025-06-09 16:22:39,823 - INFO - [raw sql] ()
+2025-06-09 16:22:39,827 - INFO - PRAGMA main.table_info("department")
+2025-06-09 16:22:39,829 - INFO - [raw sql] ()
+2025-06-09 16:22:39,832 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-09 16:22:39,833 - INFO - [raw sql] ()
+2025-06-09 16:22:39,835 - INFO - PRAGMA main.table_info("payroll")
+2025-06-09 16:22:39,837 - INFO - [raw sql] ()
+2025-06-09 16:22:39,839 - INFO - COMMIT
+2025-06-09 16:23:06,381 - INFO - BEGIN (implicit)
+2025-06-09 16:23:06,392 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee 
+WHERE employee.id IN (?)
+2025-06-09 16:23:06,394 - INFO - [generated in 0.00248s] (1,)
+2025-06-09 16:23:06,422 - INFO - SELECT anon_1.department_name AS anon_1_department_name, anon_1.department_location AS anon_1_department_location, anon_1.department_description AS anon_1_department_description, anon_1.department_extension AS anon_1_department_extension, anon_1.department_id AS anon_1_department_id, employee_1.name AS employee_1_name, employee_1.cpf AS employee_1_cpf, employee_1.position AS employee_1_position, employee_1.admission_date AS employee_1_admission_date, employee_1.department_id AS employee_1_department_id, employee_1.id AS employee_1_id, employee_2.name AS employee_2_name, employee_2.cpf AS employee_2_cpf, employee_2.position AS employee_2_position, employee_2.admission_date AS employee_2_admission_date, employee_2.department_id AS employee_2_department_id, employee_2.id AS employee_2_id 
+FROM (SELECT DISTINCT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id 
+FROM department JOIN employee ON department.id = employee.department_id 
+WHERE employee.id IN (?)) AS anon_1 LEFT OUTER JOIN employee AS employee_1 ON anon_1.department_id = employee_1.department_id LEFT OUTER JOIN employee AS employee_2 ON anon_1.department_id = employee_2.department_id
+2025-06-09 16:23:06,423 - INFO - [generated in 0.00207s] (1,)
+2025-06-09 16:23:06,430 - WARNING - Nenhum departamento encontrado com os funcionários: [1]
+2025-06-09 16:23:06,434 - INFO - ROLLBACK
+2025-06-09 16:23:12,473 - INFO - BEGIN (implicit)
+2025-06-09 16:23:12,475 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee 
+WHERE employee.id IN (?)
+2025-06-09 16:23:12,476 - INFO - [cached since 6.085s ago] (2,)
+2025-06-09 16:23:12,482 - INFO - SELECT anon_1.department_name AS anon_1_department_name, anon_1.department_location AS anon_1_department_location, anon_1.department_description AS anon_1_department_description, anon_1.department_extension AS anon_1_department_extension, anon_1.department_id AS anon_1_department_id, employee_1.name AS employee_1_name, employee_1.cpf AS employee_1_cpf, employee_1.position AS employee_1_position, employee_1.admission_date AS employee_1_admission_date, employee_1.department_id AS employee_1_department_id, employee_1.id AS employee_1_id, employee_2.name AS employee_2_name, employee_2.cpf AS employee_2_cpf, employee_2.position AS employee_2_position, employee_2.admission_date AS employee_2_admission_date, employee_2.department_id AS employee_2_department_id, employee_2.id AS employee_2_id 
+FROM (SELECT DISTINCT department.name AS department_name, department.location AS department_location, department.description AS department_description, department.extension AS department_extension, department.id AS department_id 
+FROM department JOIN employee ON department.id = employee.department_id 
+WHERE employee.id IN (?)) AS anon_1 LEFT OUTER JOIN employee AS employee_1 ON anon_1.department_id = employee_1.department_id LEFT OUTER JOIN employee AS employee_2 ON anon_1.department_id = employee_2.department_id
+2025-06-09 16:23:12,484 - INFO - [cached since 6.062s ago] (2,)
+2025-06-09 16:23:12,491 - INFO - 1 departamentos encontrados com os funcionários especificados
+2025-06-09 16:23:12,495 - INFO - ROLLBACK
+2025-06-09 16:26:03,606 - INFO - BEGIN (implicit)
+2025-06-09 16:26:03,608 - INFO - SELECT employee.name AS employee_name, employee.cpf AS employee_cpf, employee.position AS employee_position, employee.admission_date AS employee_admission_date, employee.department_id AS employee_department_id, employee.id AS employee_id 
+FROM employee 
+WHERE employee.department_id = ?
+2025-06-09 16:26:03,609 - INFO - [generated in 0.00083s] (2,)
+2025-06-09 16:26:03,611 - INFO - ROLLBACK
+2025-06-09 16:30:20,687 - INFO - BEGIN (implicit)
+2025-06-09 16:30:20,688 - INFO - PRAGMA main.table_info("benefit")
+2025-06-09 16:30:20,688 - INFO - [raw sql] ()
+2025-06-09 16:30:20,689 - INFO - PRAGMA main.table_info("employee")
+2025-06-09 16:30:20,691 - INFO - [raw sql] ()
+2025-06-09 16:30:20,692 - INFO - PRAGMA main.table_info("department")
+2025-06-09 16:30:20,692 - INFO - [raw sql] ()
+2025-06-09 16:30:20,693 - INFO - PRAGMA main.table_info("employeebenefit")
+2025-06-09 16:30:20,694 - INFO - [raw sql] ()
+2025-06-09 16:30:20,695 - INFO - PRAGMA main.table_info("payroll")
+2025-06-09 16:30:20,696 - INFO - [raw sql] ()
+2025-06-09 16:30:20,697 - INFO - COMMIT
+2025-06-09 16:36:02,755 - INFO - BEGIN (implicit)
+2025-06-09 16:36:02,770 - INFO - SELECT benefit.name AS benefit_name, benefit.description AS benefit_description, benefit.amount AS benefit_amount, benefit.type AS benefit_type, benefit.active AS benefit_active, benefit.id AS benefit_id 
+FROM benefit
+2025-06-09 16:36:02,772 - INFO - [generated in 0.00188s] ()
+2025-06-09 16:36:02,791 - INFO - ROLLBACK
+2025-06-09 16:36:48,361 - INFO - BEGIN (implicit)
+2025-06-09 16:36:48,368 - INFO - SELECT benefit.name, benefit.description, benefit.amount, benefit.type, benefit.active, benefit.id 
+FROM benefit 
+WHERE benefit.amount >= ? AND benefit.amount <= ? AND benefit.type = ?
+2025-06-09 16:36:48,369 - INFO - [generated in 0.00140s] (250.0, 350.0, 'Transporte')
+2025-06-09 16:36:48,375 - INFO - 1 benefícios encontrados com os filtros
+2025-06-09 16:36:48,381 - INFO - ROLLBACK
