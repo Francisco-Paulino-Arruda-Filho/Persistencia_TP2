@@ -86,12 +86,62 @@ Este projeto consiste em uma **API RESTful** para gerenciamento de um **Sistema 
    DATABASE_URL=sqlite:///./rh.db
    ```
 
-3. **Execute as migrações Alembic**:
+3. **Crie um arquivo alembic.ini na raiz do repositório**
+   ```
+   [alembic]
+   script_location = %(here)s/alembic
+   prepend_sys_path = .
+   path_separator = os
+   sqlalchemy.url = sqlalchemy.url = postgresql+psycopg2://user:SENHA@localhost:5432/rh
+
+   [post_write_hooks]
+
+   [loggers]
+   keys = root,sqlalchemy,alembic
+
+   [handlers]
+   keys = console
+
+   [formatters]
+   keys = generic
+
+   [logger_root]
+   level = WARNING
+   handlers = console
+   qualname =
+
+   [logger_sqlalchemy]
+   level = WARNING
+   handlers =
+   qualname = sqlalchemy.engine
+
+   [logger_alembic]
+   level = INFO
+   handlers =
+   qualname = alembic
+
+   [handler_console]
+   class = StreamHandler
+   args = (sys.stderr,)
+   level = NOTSET
+   formatter = generic
+
+   [formatter_generic]
+   format = %(levelname)-5.5s [%(name)s] %(message)s
+   datefmt = %H:%M:%S
+   ```
+
+4. **Execute o comando**
+   ```bash
+   alembic revision --autogenerate -m "Migracao inicial"
+   ```
+
+5. **Execute as migrações Alembic**:
    ```bash
    alembic upgrade head
    ```
 
-4. **Inicie o servidor**:
+6. **Inicie o servidor**:
    ```bash
    uvicorn app.main:app --reload
    ```
