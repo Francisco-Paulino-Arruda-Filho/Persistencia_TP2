@@ -3,11 +3,13 @@ from typing import List
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
-from sqlmodel import select
+from sqlmodel import select, and_
 
 from app.core.db import get_session
 from app.logs.logger import logger
 from app.models import EmployeeBenefit, Employee, Benefit
+from app.models.Benefit import BenefitRead
+from app.models.Employee import EmployeeRead
 from app.models.EmployeeBenefit import EmployeeBenefitRead, EmployeeBenefitCreate, EmployeeBenefitUpdate
 
 router = APIRouter(prefix="/employee-benefits", tags=["Benefícios dos Funcionários"])
@@ -115,6 +117,59 @@ def get_employee_benefits_paginated(
     except SQLAlchemyError:
         logger.exception(f"Erro ao recuperar Benefícios dos Funcionários")
         raise HTTPException(status_code=500, detail="Erro interno ao recuperar Benefícios dos Funcionários")
+
+@router.get("/filtered/{employee_id}", response_model=List[BenefitRead])
+def get_activate_benefits_by_employee_id(
+    employee_id: int,
+    session = Depends(get_session)
+):
+    logger.debug(f"Solicitação para recuperar Benefícios do Funcionário com ID: {employee_id}")
+    try:
+        employees_benefits = session.query(EmployeeBenefit).filter(EmployeeBenefit.employee_id == employee_id).all()
+        if not employees_benefits:
+            logger.warning(f"Benefícios dos Funcionário não encontrados")
+            raise HTTPException(status_code=404, detail="Benefícios dos Funcionários não encontrados")
+
+        benefit_ids = [eb.benefit_id for eb in employees_benefits]
+        benefits = session.query(Benefit).filter(
+            Benefit.id.in_(benefit_ids),
+            Benefit.active == True
+        ).all()
+
+        if not benefits:
+            logger.warning(f"Benefícios não encontrados ou inativos")
+            raise HTTPException(status_code=404, detail="Benefícios não encontrados ou inativos")
+
+        return benefits
+    except SQLAlchemyError:
+        session.rollback()
+        logger.exception(f"Erro ao recuperar Benefícios")
+        raise HTTPException(status_code=500, detail="Erro interno ao recuperar Benefícios")
+
+@router.get("/filtered/by-benefit/{benefit_id}", response_model=List[EmployeeRead])
+def get_employees_by_benefit_id(
+    benefit_id: int,
+    session = Depends(get_session)
+):
+    logger.debug(f"Solicitação para recuperar Funcionários do Benefício com ID: {benefit_id}")
+    try:
+        employees_benefits = session.query(EmployeeBenefit).filter(EmployeeBenefit.benefit_id == benefit_id).all()
+        if not employees_benefits:
+            logger.warning(f"Benefícios dos Funcionário não encontrados")
+            raise HTTPException(status_code=404, detail="Benefícios dos Funcionários não encontrados")
+
+        employees_ids = [eb.employee_id for eb in employees_benefits]
+        employees = session.query(Employee).filter(Employee.id.in_(employees_ids)).all()
+
+        if not employees:
+            logger.warning(f"Funcionários não encontrados")
+            raise HTTPException(status_code=404, detail="Funcionários não encontrados")
+
+        return employees
+    except SQLAlchemyError:
+        session.rollback()
+        logger.exception(f"Erro ao recuperar Funcionários")
+        raise HTTPException(status_code=500, detail="Erro interno ao recuperar Funcionários")
 
 @router.get("/{employee_benefit_id}", response_model=EmployeeBenefitRead)
 def get_employee_benefit(

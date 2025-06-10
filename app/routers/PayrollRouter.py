@@ -2,7 +2,7 @@ from typing import List, Optional
 
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.exc import SQLAlchemyError
-from sqlmodel import Session, select
+from sqlmodel import Session, select, and_
 from app.core.db import get_session
 from app.logs.logger import logger
 from app.models import Employee
@@ -121,6 +121,44 @@ def get_payrolls_paginated(
     except SQLAlchemyError:
         logger.exception(f"Erro ao recuperar folhas de pagamento")
         raise HTTPException(status_code=500, detail="Erro interno ao recuperar folhas de pagamento")
+
+@router.get("/filter/{employee_id}", response_model=List[PayrollRead])
+def get_payrolls_by_employee_id(
+    employee_id: int,
+    session = Depends(get_session)
+):
+    logger.debug(f"Solicitação para buscar payrolls pelo ID do funcionário: {employee_id}")
+    try:
+        payrolls = session.query(Payroll).filter(Payroll.employee_id == employee_id).all()
+        if not payrolls:
+            logger.warning(f"Folhas de pagamentos não encontradas")
+            raise HTTPException(status_code=404, detail="Folhas de pagamentos não encontradas")
+        logger.info("Folhas de pagamentos encontradas")
+        return payrolls
+    except SQLAlchemyError:
+        logger.exception(f"Erro ao recuperar folhas de pagamento")
+        raise HTTPException(status_code=500, detail="Erro interno ao recuperar folhas de pagamento")
+
+@router.get("/filter/net_salary_interval", response_model=List[PayrollRead])
+def get_payrolls_by_net_salary(
+    floor: float,
+    limit: float,
+    session = Depends(get_session)
+):
+    if (limit - floor) < 0:
+        logger.warning("Intervalo menor que 0")
+        raise HTTPException(status_code=404, detail="Intervalo menor que 0, utilize outro intervalo")
+    logger.debug(f"Solicitação para buscar payrolls pelo intervalo: {limit - floor}")
+    try:
+        payrolls = session.query(Payroll).filter(and_(Payroll.net_salary >= floor, Payroll.net_salary <= limit)).all()
+        if not payrolls:
+            logger.warning(f"Folhas de pagamentos não encontradas")
+            raise HTTPException(status_code=404, detail="Folhas de pagamentos não encontradas")
+        logger.info("Folhas de pagamentos encontradas")
+        return payrolls
+    except SQLAlchemyError:
+        logger.exception(f"Erro ao recuperar folhas de pagamento")
+        raise HTTPException (status_code=500, detail="Erro interno ao recuperar folhas de pagamento")
 
 @router.get("/{payroll_id}", response_model=PayrollRead)
 def get_payroll(

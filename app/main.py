@@ -19,9 +19,5 @@ app.include_router(PayrollRouter)
 def on_startup():
     create_db_and_tables()
     
-@app.get("/")
-def home():
-    return {"mensagem": "Bem vindo"}
-
 if __name__=="__main__":
     uvicorn.run(app="main:app", host="127.0.0.1", port=8000, reload=True)
