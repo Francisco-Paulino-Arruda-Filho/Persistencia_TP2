@@ -1,5 +1,6 @@
 from typing import List, Optional, TYPE_CHECKING
 from sqlmodel import SQLModel, Field, Relationship
+from datetime import datetime
 
 if TYPE_CHECKING:
     from app.models.Department import Department
@@ -10,7 +11,7 @@ class EmployeeBase(SQLModel):
     name: str
     cpf: str
     position: str
-    admission_date: str  
+    admission_date: datetime
     department_id: Optional[int] = Field(default=None, foreign_key="department.id")
 
 class Employee(EmployeeBase, table=True):
@@ -44,5 +45,5 @@ class EmployeeUpdate(SQLModel):
     name: Optional[str] = None
     cpf: Optional[str] = None
     position: Optional[str] = None
-    admission_date: Optional[str] = None
+    admission_date: Optional[datetime] = None
     department_id: Optional[int] = None
